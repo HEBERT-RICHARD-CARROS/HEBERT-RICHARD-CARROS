@@ -1,16 +1,324 @@
-## Hi there 👋
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garagem de Carros</title>
+    <style>
+        /* Reset e configurações básicas */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: #34495e;
+            padding: 0.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: #2c3e50;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+        }
+        
+        /* Estilos para a galeria de carros */
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .car-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .car-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .car-info {
+            padding: 1rem;
+        }
+        
+        .car-price {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* Estilos para o formulário */
+        .form-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Garagem de Carros</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showPage('home')">Início</a></li>
+            <li><a href="#" onclick="showPage('add-car')">Adicionar Carro</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <!-- Página inicial com lista de carros -->
+        <div id="home-page" class="page">
+            <h2>Carros Disponíveis</h2>
+            <div id="cars-container" class="cars-grid">
+                <!-- Os carros serão carregados aqui via JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Página para adicionar carro -->
+        <div id="add-car-page" class="page" style="display: none;">
+            <div class="form-container">
+                <h2>Adicionar Novo Carro</h2>
+                <form id="car-form">
+                    <div class="form-group">
+                        <label for="car-name">Nome do Carro</label>
+                        <input type="text" id="car-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="car-brand">Marca</label>
+                        <input type="text" id="car-brand" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="car-year">Ano</label>
+                        <input type="number" id="car-year" min="1900" max="2024" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="car-price">Preço (R$)</label>
+                        <input type="number" id="car-price" min="0" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="car-description">Descrição</label>
+                        <textarea id="car-description" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="car-image">URL da Imagem</label>
+                        <input type="url" id="car-image" placeholder="https://exemplo.com/imagem.jpg">
+                    </div>
+                    
+                    <button type="submit">Adicionar Carro</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Garagem de Carros. Todos os direitos reservados.</p>
+    </footer>
 
-<!--
-**HEBERT-RICHARD-CARROS/HEBERT-RICHARD-CARROS** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+    <script>
+        // Navegação entre páginas
+        function showPage(pageId) {
+            // Esconde todas as páginas
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Mostra a página selecionada
+            document.getElementById(`${pageId}-page`).style.display = 'block';
+            
+            // Se for a página inicial, recarrega os carros
+            if (pageId === 'home') {
+                loadCars();
+            }
+        }
+        
+        // Carrega os carros do localStorage
+        function loadCars() {
+            const carsContainer = document.getElementById('cars-container');
+            carsContainer.innerHTML = '';
+            
+            const cars = JSON.parse(localStorage.getItem('cars')) || [];
+            
+            if (cars.length === 0) {
+                carsContainer.innerHTML = '<p>Nenhum carro cadastrado ainda.</p>';
+                return;
+            }
+            
+            cars.forEach((car, index) => {
+                const carCard = document.createElement('div');
+                carCard.className = 'car-card';
+                carCard.innerHTML = `
+                    <img src="${car.image || 'https://via.placeholder.com/300x200?text=Sem+Imagem'}" alt="${car.name}" class="car-image">
+                    <div class="car-info">
+                        <h3>${car.name}</h3>
+                        <p><strong>Marca:</strong> ${car.brand}</p>
+                        <p><strong>Ano:</strong> ${car.year}</p>
+                        <p class="car-price">R$ ${car.price.toLocaleString('pt-BR')}</p>
+                        <p>${car.description || ''}</p>
+                        <button onclick="deleteCar(${index})" style="background-color: #e74c3c; margin-top: 10px;">Remover</button>
+                    </div>
+                `;
+                carsContainer.appendChild(carCard);
+            });
+        }
+        
+        // Adiciona um novo carro
+        document.getElementById('car-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const car = {
+                name: document.getElementById('car-name').value,
+                brand: document.getElementById('car-brand').value,
+                year: parseInt(document.getElementById('car-year').value),
+                price: parseFloat(document.getElementById('car-price').value),
+                description: document.getElementById('car-description').value,
+                image: document.getElementById('car-image').value
+            };
+            
+            // Salva no localStorage
+            const cars = JSON.parse(localStorage.getItem('cars')) || [];
+            cars.push(car);
+            localStorage.setItem('cars', JSON.stringify(cars));
+            
+            // Limpa o formulário
+            document.getElementById('car-form').reset();
+            
+            // Mostra mensagem de sucesso
+            alert('Carro adicionado com sucesso!');
+            
+            // Volta para a página inicial
+            showPage('home');
+        });
+        
+        // Remove um carro
+        function deleteCar(index) {
+            if (confirm('Tem certeza que deseja remover este carro?')) {
+                const cars = JSON.parse(localStorage.getItem('cars')) || [];
+                cars.splice(index, 1);
+                localStorage.setItem('cars', JSON.stringify(cars));
+                loadCars();
+            }
+        }
+        
+        // Carrega os carros quando a página é carregada
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCars();
+        });
+    </script>
+</body>
+</html>
