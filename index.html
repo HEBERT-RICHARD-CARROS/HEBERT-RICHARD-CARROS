@@ -258,6 +258,28 @@
             transform: translateY(-3px);
         }
         
+        .btn-facebook {
+            background-color: #3b5998;
+            box-shadow: 0 4px 10px rgba(59, 89, 152, 0.3);
+        }
+        
+        .btn-facebook:hover {
+            background-color: #2d4373;
+            box-shadow: 0 6px 15px rgba(59, 89, 152, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        .btn-location {
+            background-color: #34a853;
+            box-shadow: 0 4px 10px rgba(52, 168, 83, 0.3);
+        }
+        
+        .btn-location:hover {
+            background-color: #2d8c4d;
+            box-shadow: 0 6px 15px rgba(52, 168, 83, 0.4);
+            transform: translateY(-3px);
+        }
+        
         .social-buttons {
             display: flex;
             gap: 1rem;
@@ -963,11 +985,17 @@
                 <h1 id="hero-title">Veículos Selecionados com Qualidade</h1>
                 <p id="hero-description">Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.</p>
                 <div class="social-buttons">
-                    <a href="https://wa.me/5511987654321" class="btn btn-whatsapp btn-icon" target="_blank">
+                    <a href="https://wa.me/5534997727797" class="btn btn-whatsapp btn-icon" target="_blank">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
-                    <a href="https://instagram.com/hebertrichards" class="btn btn-instagram btn-icon" target="_blank">
+                    <a href="https://www.instagram.com/hebert.richards.3344?igsh=em0xYXhxY2V3ZWg4" class="btn btn-instagram btn-icon" target="_blank">
                         <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://www.facebook.com/share/1A4EtfM2ij/" class="btn btn-facebook btn-icon" target="_blank">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </a>
+                    <a href="https://share.google/eQggN4cvJ6CQb6Ppa" class="btn btn-location btn-icon" target="_blank">
+                        <i class="fas fa-map-marker-alt"></i> Localização
                     </a>
                 </div>
             </section>
@@ -1146,9 +1174,10 @@
                 <div class="footer-logo">Hebert<span>Richards</span></div>
                 <p class="footer-about">Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.</p>
                 <div class="social-links">
-                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://instagram.com/hebertrichards" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/5511987654321" title="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/share/1A4EtfM2ij/" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/hebert.richards.3344?igsh=em0xYXhxY2V3ZWg4" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/5534997727797" title="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://share.google/eQggN4cvJ6CQb6Ppa" title="Localização" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
                 </div>
             </div>
             
@@ -1163,10 +1192,10 @@
             
             <div class="footer-contact">
                 <h3>Contato</h3>
-                <p><i class="fas fa-phone"></i> (11) 3456-7890</p>
-                <p><i class="fas fa-whatsapp"></i> (11) 98765-4321</p>
-                <p><i class="fas fa-envelope"></i> contato@hebertrichards.com.br</p>
-                <p><i class="fas fa-map-marker-alt"></i> Av. das Nações, 1234 - São Paulo, SP</p>
+                <p><i class="fas fa-phone"></i> (34) 99772-7797</p>
+                <p><i class="fas fa-whatsapp"></i> (34) 99772-7797</p>
+                <p><i class="fas fa-envelope"></i> ebertttmineiro@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> <a href="https://share.google/eQggN4cvJ6CQb6Ppa" style="color: #ecf0f1; text-decoration: none;" target="_blank">Ver no Google Maps</a></p>
                 <p><i class="fas fa-clock"></i> Seg-Sex: 8h às 18h | Sáb: 8h às 12h</p>
             </div>
         </div>
@@ -1538,7 +1567,7 @@
                         ${car.description ? `<p class="car-description">${car.description.length > 100 ? car.description.substring(0, 100) + '...' : car.description}</p>` : ''}
                         
                         <div class="car-actions">
-                            <a href="https://wa.me/5511987654321?text=Olá! Tenho interesse no ${car.name} ${car.brand} ${car.year}" class="btn btn-whatsapp btn-icon" target="_blank">
+                            <a href="https://wa.me/5534997727797?text=Olá! Tenho interesse no ${car.name} ${car.brand} ${car.year}" class="btn btn-whatsapp btn-icon" target="_blank">
                                 <i class="fab fa-whatsapp"></i> WhatsApp
                             </a>
                             <button class="btn btn-outline" onclick="showCarDetails('${car.id}')">Detalhes</button>
@@ -1621,8 +1650,8 @@ Câmbio: ${car.transmission || 'Manual'}
 ${car.description ? `Descrição: ${car.description}` : ''}
 
 Interessado? Entre em contato conosco!
-Telefone: (11) 3456-7890
-WhatsApp: (11) 98765-4321
+Telefone: (34) 99772-7797
+WhatsApp: (34) 99772-7797
                 `.trim();
                 
                 alert(details);
