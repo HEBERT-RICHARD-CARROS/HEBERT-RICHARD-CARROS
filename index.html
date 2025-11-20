@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garagem Premium - Sua Vitrine de Carros</title>
+    <title>AutoMasters - Garagem Exclusiva</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset e Variáveis */
@@ -15,25 +15,28 @@
         }
         
         :root {
-            --primary: #2c3e50;
-            --secondary: #e74c3c;
-            --accent: #3498db;
+            --primary: #1a3a5f;
+            --secondary: #d35400;
+            --accent: #2980b9;
             --light: #ecf0f1;
             --dark: #2c3e50;
-            --gray: #95a5a6;
+            --gray: #7f8c8d;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
             --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
         }
         
         body {
-            background-color: #f9f9f9;
+            background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
         }
         
-        /* Header Moderno */
+        /* Header */
         header {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, #2c3e50 100%);
             color: white;
             padding: 0;
             box-shadow: var(--shadow);
@@ -48,7 +51,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.8rem 2rem;
+            padding: 1rem 2rem;
         }
         
         .logo {
@@ -97,30 +100,25 @@
             background-color: var(--secondary);
         }
         
-        /* Campo de Busca */
-        .search-container {
+        .admin-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
             display: flex;
             align-items: center;
-            background: white;
-            border-radius: 30px;
-            padding: 0.3rem 1rem;
-            width: 300px;
         }
         
-        .search-container input {
-            border: none;
-            outline: none;
-            padding: 0.5rem;
-            flex: 1;
-            font-size: 1rem;
+        .admin-btn i {
+            margin-right: 8px;
         }
         
-        .search-container button {
-            background: none;
-            border: none;
-            color: var(--primary);
-            cursor: pointer;
-            font-size: 1.2rem;
+        .admin-btn:hover {
+            background-color: #e67e22;
         }
         
         /* Menu Mobile */
@@ -177,7 +175,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
+            background: linear-gradient(rgba(26, 58, 95, 0.85), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -212,13 +210,13 @@
             border: none;
             cursor: pointer;
             font-size: 1.1rem;
-            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+            box-shadow: 0 4px 10px rgba(211, 84, 0, 0.3);
         }
         
         .btn:hover {
-            background-color: #c0392b;
+            background-color: #e67e22;
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(231, 76, 60, 0.4);
+            box-shadow: 0 6px 15px rgba(211, 84, 0, 0.4);
         }
         
         /* Seção de Destaques */
@@ -245,23 +243,6 @@
             height: 4px;
             background-color: var(--secondary);
             border-radius: 2px;
-        }
-        
-        .view-all {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-        }
-        
-        .view-all i {
-            margin-left: 5px;
-            transition: var(--transition);
-        }
-        
-        .view-all:hover i {
-            transform: translateX(5px);
         }
         
         /* Vitrine de Carros */
@@ -389,78 +370,54 @@
             margin-right: 8px;
         }
         
-        /* Filtros */
-        .filters {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            margin-bottom: 3rem;
-        }
-        
-        .filter-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .filter-group {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .filter-group label {
-            display: block;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        .filter-group select, .filter-group input {
+        /* Modal de Login */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: var(--transition);
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
         }
         
-        .filter-group select:focus, .filter-group input:focus {
-            border-color: var(--accent);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-        }
-        
-        /* Formulário */
-        .form-container {
-            max-width: 900px;
-            margin: 2rem auto;
+        .modal-content {
             background-color: white;
             padding: 3rem;
             border-radius: 12px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: modalFadeIn 0.3s;
         }
         
-        .form-title {
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        .modal-title {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             color: var(--dark);
-            font-size: 2rem;
-        }
-        
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.8rem;
+            font-size: 1.8rem;
         }
         
         .form-group {
             margin-bottom: 1.5rem;
-        }
-        
-        .form-group.full-width {
-            grid-column: 1 / -1;
         }
         
         label {
@@ -490,6 +447,98 @@
             justify-content: flex-end;
             gap: 1.2rem;
             margin-top: 2rem;
+        }
+        
+        /* Área Administrativa */
+        .admin-panel {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .admin-title {
+            font-size: 1.8rem;
+            color: var(--dark);
+        }
+        
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary) 0%, #2c3e50 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+        
+        .admin-table th, .admin-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .admin-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .admin-table tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin: 0 5px;
+            transition: var(--transition);
+        }
+        
+        .edit-btn {
+            color: var(--accent);
+        }
+        
+        .delete-btn {
+            color: var(--danger);
+        }
+        
+        .action-btn:hover {
+            transform: scale(1.2);
         }
         
         /* Footer */
@@ -620,10 +669,6 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
-            .search-container {
-                width: 250px;
-            }
         }
         
         @media (max-width: 900px) {
@@ -635,10 +680,6 @@
                 display: block;
             }
             
-            .search-container {
-                width: 200px;
-            }
-            
             .hero {
                 padding: 3rem 2rem;
             }
@@ -646,19 +687,11 @@
             .hero h1 {
                 font-size: 2.2rem;
             }
-            
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
         }
         
         @media (max-width: 768px) {
             .header-container {
                 padding: 0.8rem 1.5rem;
-            }
-            
-            .search-container {
-                display: none;
             }
             
             .hero {
@@ -678,14 +711,6 @@
                 align-items: flex-start;
             }
             
-            .view-all {
-                margin-top: 1rem;
-            }
-            
-            .filter-row {
-                flex-direction: column;
-            }
-            
             .car-actions {
                 flex-direction: column;
                 gap: 0.8rem;
@@ -696,8 +721,18 @@
                 text-align: center;
             }
             
-            .form-container {
-                padding: 2rem 1.5rem;
+            .admin-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .admin-header .btn {
+                margin-top: 1rem;
+            }
+            
+            .admin-table {
+                display: block;
+                overflow-x: auto;
             }
         }
         
@@ -729,6 +764,10 @@
             .footer-container {
                 grid-template-columns: 1fr;
             }
+            
+            .modal-content {
+                padding: 2rem 1.5rem;
+            }
         }
     </style>
 </head>
@@ -737,22 +776,20 @@
         <div class="header-container">
             <div class="logo">
                 <i class="fas fa-car"></i>
-                Garagem<span>Premium</span>
+                Auto<span>Masters</span>
             </div>
             
             <div class="desktop-nav">
                 <ul>
                     <li><a href="#" class="active" onclick="showPage('home')"><i class="fas fa-home"></i> Início</a></li>
-                    <li><a href="#" onclick="showPage('add-car')"><i class="fas fa-plus-circle"></i> Adicionar Carro</a></li>
                     <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> Sobre</a></li>
                     <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contato</a></li>
                 </ul>
             </div>
             
-            <div class="search-container">
-                <input type="text" id="search-input" placeholder="Buscar carros...">
-                <button><i class="fas fa-search"></i></button>
-            </div>
+            <button class="admin-btn" onclick="openLoginModal()">
+                <i class="fas fa-user-shield"></i> Área do Proprietário
+            </button>
             
             <button class="mobile-menu">
                 <i class="fas fa-bars"></i>
@@ -762,9 +799,9 @@
         <div class="mobile-nav">
             <ul>
                 <li><a href="#" class="active" onclick="showPage('home')"><i class="fas fa-home"></i> Início</a></li>
-                <li><a href="#" onclick="showPage('add-car')"><i class="fas fa-plus-circle"></i> Adicionar Carro</a></li>
                 <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> Sobre</a></li>
                 <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contato</a></li>
+                <li><a href="#" onclick="openLoginModal()"><i class="fas fa-user-shield"></i> Área do Proprietário</a></li>
             </ul>
         </div>
     </header>
@@ -773,58 +810,14 @@
         <!-- Página inicial -->
         <div id="home-page" class="page">
             <section class="hero">
-                <h1>Encontre o Carro dos Seus Sonhos</h1>
-                <p>Explore nossa seleção premium de veículos com fotos de alta qualidade e informações detalhadas.</p>
-                <a href="#" class="btn" onclick="showPage('add-car')"><i class="fas fa-plus"></i> Vender meu carro</a>
+                <h1>Veículos Selecionados com Qualidade</h1>
+                <p>Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.</p>
+                <a href="#" class="btn" onclick="showContactInfo()"><i class="fas fa-phone-alt"></i> Fale Conosco</a>
             </section>
-            
-            <div class="filters">
-                <div class="filter-row">
-                    <div class="filter-group">
-                        <label for="filter-brand">Marca</label>
-                        <select id="filter-brand">
-                            <option value="">Todas as marcas</option>
-                            <option value="Volkswagen">Volkswagen</option>
-                            <option value="Ford">Ford</option>
-                            <option value="Chevrolet">Chevrolet</option>
-                            <option value="Fiat">Fiat</option>
-                            <option value="Toyota">Toyota</option>
-                            <option value="Honda">Honda</option>
-                            <option value="BMW">BMW</option>
-                            <option value="Mercedes-Benz">Mercedes-Benz</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label for="filter-year">Ano</label>
-                        <select id="filter-year">
-                            <option value="">Todos os anos</option>
-                            <option value="2023">2023 ou mais novo</option>
-                            <option value="2020">2020-2022</option>
-                            <option value="2015">2015-2019</option>
-                            <option value="2010">2010-2014</option>
-                            <option value="2000">2000-2009</option>
-                            <option value="1990">Antes de 2000</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label for="filter-price">Preço máximo</label>
-                        <select id="filter-price">
-                            <option value="">Qualquer preço</option>
-                            <option value="50000">Até R$ 50.000</option>
-                            <option value="100000">Até R$ 100.000</option>
-                            <option value="150000">Até R$ 150.000</option>
-                            <option value="200000">Até R$ 200.000</option>
-                            <option value="300000">Mais de R$ 200.000</option>
-                        </select>
-                    </div>
-                </div>
-                <button class="btn" onclick="searchCars()"><i class="fas fa-filter"></i> Aplicar Filtros</button>
-            </div>
             
             <section>
                 <div class="section-header">
-                    <h2 class="section-title">Carros em Destaque</h2>
-                    <a href="#" class="view-all">Ver todos <i class="fas fa-arrow-right"></i></a>
+                    <h2 class="section-title">Nossa Garagem</h2>
                 </div>
                 
                 <div id="cars-container" class="cars-showcase">
@@ -833,85 +826,174 @@
             </section>
         </div>
         
-        <!-- Página para adicionar carro -->
-        <div id="add-car-page" class="page" style="display: none;">
-            <div class="form-container">
-                <h2 class="form-title">Adicionar Novo Carro</h2>
-                <form id="car-form">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="car-name">Modelo do Carro</label>
-                            <input type="text" id="car-name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="car-brand">Marca</label>
-                            <select id="car-brand" required>
-                                <option value="">Selecione a marca</option>
-                                <option value="Volkswagen">Volkswagen</option>
-                                <option value="Ford">Ford</option>
-                                <option value="Chevrolet">Chevrolet</option>
-                                <option value="Fiat">Fiat</option>
-                                <option value="Toyota">Toyota</option>
-                                <option value="Honda">Honda</option>
-                                <option value="BMW">BMW</option>
-                                <option value="Mercedes-Benz">Mercedes-Benz</option>
-                                <option value="Audi">Audi</option>
-                                <option value="Outra">Outra</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="car-year">Ano</label>
-                            <input type="number" id="car-year" min="1900" max="2024" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="car-price">Preço (R$)</label>
-                            <input type="number" id="car-price" min="0" step="0.01" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="car-color">Cor</label>
-                            <input type="text" id="car-color">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="car-kilometers">Quilometragem</label>
-                            <input type="number" id="car-kilometers" min="0">
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <label for="car-description">Descrição</label>
-                            <textarea id="car-description" rows="4" placeholder="Descreva o carro, inclua detalhes, opcionais, estado de conservação..."></textarea>
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <label for="car-image">URL da Imagem</label>
-                            <input type="url" id="car-image" placeholder="https://exemplo.com/imagem.jpg">
-                            <small style="color: var(--gray); display: block; margin-top: 0.5rem;">Dica: Você pode usar serviços como Imgur, Google Photos ou outros para hospedar suas imagens.</small>
-                        </div>
+        <!-- Área Administrativa (visível apenas após login) -->
+        <div id="admin-page" class="page" style="display: none;">
+            <div class="admin-panel">
+                <div class="admin-header">
+                    <h2 class="admin-title">Painel de Controle</h2>
+                    <button class="btn" onclick="openAddCarModal()"><i class="fas fa-plus"></i> Adicionar Carro</button>
+                </div>
+                
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-cars">0</div>
+                        <div class="stat-label">Carros Cadastrados</div>
                     </div>
-                    
-                    <div class="form-actions">
-                        <button type="button" class="btn btn-outline" onclick="showPage('home')">Cancelar</button>
-                        <button type="submit" class="btn btn-icon"><i class="fas fa-plus-circle"></i> Adicionar Carro</button>
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-value">R$ 0</div>
+                        <div class="stat-label">Valor em Estoque</div>
                     </div>
-                </form>
+                    <div class="stat-card">
+                        <div class="stat-number" id="avg-price">R$ 0</div>
+                        <div class="stat-label">Preço Médio</div>
+                    </div>
+                </div>
+                
+                <h3 style="margin-bottom: 1rem;">Carros Cadastrados</h3>
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Modelo</th>
+                                <th>Marca</th>
+                                <th>Ano</th>
+                                <th>Preço</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-cars-list">
+                            <!-- Lista de carros para administração -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Login -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+            <h2 class="modal-title">Acesso Restrito</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <input type="text" id="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" required>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeLoginModal()">Cancelar</button>
+                    <button type="submit" class="btn">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal para Adicionar/Editar Carro -->
+    <div id="car-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeCarModal()">&times;</span>
+            <h2 class="modal-title" id="car-modal-title">Adicionar Novo Carro</h2>
+            <form id="car-form">
+                <input type="hidden" id="car-id">
+                
+                <div class="form-group">
+                    <label for="car-name">Modelo do Carro</label>
+                    <input type="text" id="car-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="car-brand">Marca</label>
+                    <select id="car-brand" required>
+                        <option value="">Selecione a marca</option>
+                        <option value="Volkswagen">Volkswagen</option>
+                        <option value="Ford">Ford</option>
+                        <option value="Chevrolet">Chevrolet</option>
+                        <option value="Fiat">Fiat</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Honda">Honda</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Mercedes-Benz">Mercedes-Benz</option>
+                        <option value="Audi">Audi</option>
+                        <option value="Jeep">Jeep</option>
+                        <option value="Outra">Outra</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="car-year">Ano</label>
+                    <input type="number" id="car-year" min="1990" max="2024" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="car-price">Preço (R$)</label>
+                    <input type="number" id="car-price" min="0" step="0.01" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="car-color">Cor</label>
+                    <input type="text" id="car-color">
+                </div>
+                
+                <div class="form-group">
+                    <label for="car-kilometers">Quilometragem</label>
+                    <input type="number" id="car-kilometers" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="car-fuel">Combustível</label>
+                    <select id="car-fuel">
+                        <option value="Gasolina">Gasolina</option>
+                        <option value="Álcool">Álcool</option>
+                        <option value="Flex">Flex</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Elétrico">Elétrico</option>
+                        <option value="Híbrido">Híbrido</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="car-transmission">Câmbio</label>
+                    <select id="car-transmission">
+                        <option value="Manual">Manual</option>
+                        <option value="Automático">Automático</option>
+                        <option value="Automático Sequencial">Automático Sequencial</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="car-description">Descrição</label>
+                    <textarea id="car-description" rows="4" placeholder="Descreva o carro, inclua detalhes, opcionais, estado de conservação..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="car-image">URL da Imagem</label>
+                    <input type="url" id="car-image" placeholder="https://exemplo.com/imagem.jpg">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeCarModal()">Cancelar</button>
+                    <button type="submit" class="btn" id="car-form-submit">Adicionar Carro</button>
+                </div>
+            </form>
         </div>
     </div>
     
     <footer>
         <div class="footer-container">
             <div>
-                <div class="footer-logo">Garagem<span>Premium</span></div>
-                <p class="footer-about">Sua plataforma confiável para compra e venda de veículos. Conectamos amantes de carros com os veículos dos seus sonhos desde 2023.</p>
+                <div class="footer-logo">Auto<span>Masters</span></div>
+                <p class="footer-about">Há mais de 15 anos no mercado, a AutoMasters oferece os melhores veículos com procedência garantida e atendimento personalizado.</p>
                 <div class="social-links">
                     <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             
@@ -919,27 +1001,41 @@
                 <h3>Links Rápidos</h3>
                 <ul>
                     <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Início</a></li>
-                    <li><a href="#" onclick="showPage('add-car')"><i class="fas fa-plus-circle"></i> Adicionar Carro</a></li>
                     <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
                     <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contato</a></li>
+                    <li><a href="#" onclick="showContactInfo()"><i class="fas fa-car"></i> Ver Veículos</a></li>
                 </ul>
             </div>
             
             <div class="footer-contact">
                 <h3>Contato</h3>
-                <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
-                <p><i class="fas fa-envelope"></i> contato@garagempremium.com.br</p>
-                <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo, SP</p>
-                <p><i class="fas fa-clock"></i> Seg-Sex: 9h às 18h | Sáb: 9h às 13h</p>
+                <p><i class="fas fa-phone"></i> (11) 3456-7890</p>
+                <p><i class="fas fa-whatsapp"></i> (11) 98765-4321</p>
+                <p><i class="fas fa-envelope"></i> contato@automasters.com.br</p>
+                <p><i class="fas fa-map-marker-alt"></i> Av. das Nações, 1234 - São Paulo, SP</p>
+                <p><i class="fas fa-clock"></i> Seg-Sex: 8h às 18h | Sáb: 8h às 12h</p>
             </div>
         </div>
         
         <div class="copyright">
-            &copy; 2023 Garagem Premium. Todos os direitos reservados.
+            &copy; 2023 AutoMasters. Todos os direitos reservados.
         </div>
     </footer>
 
     <script>
+        // Estado da aplicação
+        const state = {
+            isLoggedIn: false,
+            currentUser: null,
+            editingCarId: null
+        };
+        
+        // Credenciais de acesso (em um sistema real, isso seria no backend)
+        const validCredentials = {
+            username: "admin",
+            password: "garagem123"
+        };
+        
         // Navegação entre páginas
         function showPage(pageId) {
             // Esconde todas as páginas
@@ -968,6 +1064,16 @@
                 loadCars();
             }
             
+            // Se for a página administrativa, verifica login e carrega dados
+            if (pageId === 'admin-page') {
+                if (!state.isLoggedIn) {
+                    showPage('home');
+                    openLoginModal();
+                    return;
+                }
+                loadAdminData();
+            }
+            
             // Fecha o menu mobile se estiver aberto
             document.querySelector('.mobile-nav').style.display = 'none';
         }
@@ -978,14 +1084,69 @@
             mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
         });
         
-        // Busca de carros
-        document.querySelector('.search-container button').addEventListener('click', function() {
-            searchCars();
-        });
+        // Modal de Login
+        function openLoginModal() {
+            document.getElementById('login-modal').style.display = 'flex';
+        }
         
-        document.getElementById('search-input').addEventListener('keyup', function(event) {
-            if (event.key === 'Enter') {
-                searchCars();
+        function closeLoginModal() {
+            document.getElementById('login-modal').style.display = 'none';
+            document.getElementById('login-form').reset();
+        }
+        
+        // Modal de Carro
+        function openAddCarModal() {
+            document.getElementById('car-modal-title').textContent = 'Adicionar Novo Carro';
+            document.getElementById('car-form-submit').textContent = 'Adicionar Carro';
+            document.getElementById('car-form').reset();
+            document.getElementById('car-id').value = '';
+            state.editingCarId = null;
+            document.getElementById('car-modal').style.display = 'flex';
+        }
+        
+        function openEditCarModal(carId) {
+            const cars = JSON.parse(localStorage.getItem('cars')) || [];
+            const car = cars.find(c => c.id === carId);
+            
+            if (car) {
+                document.getElementById('car-modal-title').textContent = 'Editar Carro';
+                document.getElementById('car-form-submit').textContent = 'Atualizar Carro';
+                
+                document.getElementById('car-id').value = car.id;
+                document.getElementById('car-name').value = car.name;
+                document.getElementById('car-brand').value = car.brand;
+                document.getElementById('car-year').value = car.year;
+                document.getElementById('car-price').value = car.price;
+                document.getElementById('car-color').value = car.color || '';
+                document.getElementById('car-kilometers').value = car.kilometers || '';
+                document.getElementById('car-fuel').value = car.fuel || 'Gasolina';
+                document.getElementById('car-transmission').value = car.transmission || 'Manual';
+                document.getElementById('car-description').value = car.description || '';
+                document.getElementById('car-image').value = car.image || '';
+                
+                state.editingCarId = carId;
+                document.getElementById('car-modal').style.display = 'flex';
+            }
+        }
+        
+        function closeCarModal() {
+            document.getElementById('car-modal').style.display = 'none';
+        }
+        
+        // Login
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === validCredentials.username && password === validCredentials.password) {
+                state.isLoggedIn = true;
+                state.currentUser = username;
+                closeLoginModal();
+                showPage('admin-page');
+            } else {
+                alert('Usuário ou senha incorretos!');
             }
         });
         
@@ -1000,31 +1161,28 @@
                 carsContainer.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--gray);">
                         <i class="fas fa-car" style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.5;"></i>
-                        <h3>Nenhum carro cadastrado ainda</h3>
-                        <p>Seja o primeiro a adicionar um carro à nossa garagem!</p>
-                        <button class="btn" onclick="showPage('add-car')" style="margin-top: 1.5rem;">
-                            <i class="fas fa-plus-circle"></i> Adicionar Primeiro Carro
-                        </button>
+                        <h3>Nenhum carro disponível no momento</h3>
+                        <p>Entre em contato para saber sobre nossos próximos veículos.</p>
                     </div>
                 `;
                 return;
             }
             
-            // Aplicar filtros
-            const filteredCars = applyFilters(cars);
+            // Mostrar apenas carros ativos
+            const activeCars = cars.filter(car => car.status !== 'vendido');
             
-            if (filteredCars.length === 0) {
+            if (activeCars.length === 0) {
                 carsContainer.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--gray);">
-                        <i class="fas fa-search" style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.5;"></i>
-                        <h3>Nenhum carro encontrado</h3>
-                        <p>Tente ajustar os filtros para ver mais resultados.</p>
+                        <i class="fas fa-car" style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <h3>Todos os veículos foram vendidos!</h3>
+                        <p>Em breve teremos novidades em nossa garagem.</p>
                     </div>
                 `;
                 return;
             }
             
-            filteredCars.forEach((car, index) => {
+            activeCars.forEach((car) => {
                 const carCard = document.createElement('div');
                 carCard.className = 'car-card';
                 
@@ -1045,11 +1203,11 @@
                         <div class="car-features">
                             <div class="feature">
                                 <i class="fas fa-gas-pump"></i>
-                                <span>Flex</span>
+                                <span>${car.fuel || 'Flex'}</span>
                             </div>
                             <div class="feature">
                                 <i class="fas fa-cogs"></i>
-                                <span>Automático</span>
+                                <span>${car.transmission || 'Manual'}</span>
                             </div>
                             <div class="feature">
                                 <i class="fas fa-user-friends"></i>
@@ -1060,8 +1218,8 @@
                         ${car.description ? `<p class="car-description">${car.description.length > 100 ? car.description.substring(0, 100) + '...' : car.description}</p>` : ''}
                         
                         <div class="car-actions">
-                            <button class="btn btn-icon" onclick="contactSeller(${index})"><i class="fas fa-phone-alt"></i> Contato</button>
-                            <button class="btn btn-outline" onclick="showCarDetails(${index})">Detalhes</button>
+                            <button class="btn btn-icon" onclick="showContactInfo()"><i class="fas fa-phone-alt"></i> Contato</button>
+                            <button class="btn btn-outline" onclick="showCarDetails('${car.id}')">Detalhes</button>
                         </div>
                     </div>
                 `;
@@ -1069,86 +1227,129 @@
             });
         }
         
-        // Aplicar filtros
-        function applyFilters(cars) {
-            const brandFilter = document.getElementById('filter-brand').value;
-            const yearFilter = document.getElementById('filter-year').value;
-            const priceFilter = document.getElementById('filter-price').value;
-            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+        // Carrega dados administrativos
+        function loadAdminData() {
+            const cars = JSON.parse(localStorage.getItem('cars')) || [];
+            const adminCarsList = document.getElementById('admin-cars-list');
+            adminCarsList.innerHTML = '';
             
-            return cars.filter(car => {
-                // Filtro por marca
-                if (brandFilter && car.brand !== brandFilter) return false;
-                
-                // Filtro por ano
-                if (yearFilter) {
-                    const year = parseInt(yearFilter);
-                    if (year === 2023 && car.year < 2023) return false;
-                    if (year === 2020 && (car.year < 2020 || car.year > 2022)) return false;
-                    if (year === 2015 && (car.year < 2015 || car.year > 2019)) return false;
-                    if (year === 2010 && (car.year < 2010 || car.year > 2014)) return false;
-                    if (year === 2000 && (car.year < 2000 || car.year > 2009)) return false;
-                    if (year === 1990 && car.year >= 2000) return false;
-                }
-                
-                // Filtro por preço
-                if (priceFilter && car.price > parseInt(priceFilter)) return false;
-                
-                // Filtro por busca
-                if (searchTerm) {
-                    const searchableText = `${car.name} ${car.brand} ${car.year} ${car.color || ''} ${car.description || ''}`.toLowerCase();
-                    if (!searchableText.includes(searchTerm)) return false;
-                }
-                
-                return true;
+            // Atualiza estatísticas
+            const totalCars = cars.length;
+            const totalValue = cars.reduce((sum, car) => sum + car.price, 0);
+            const avgPrice = totalCars > 0 ? totalValue / totalCars : 0;
+            
+            document.getElementById('total-cars').textContent = totalCars;
+            document.getElementById('total-value').textContent = `R$ ${totalValue.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+            document.getElementById('avg-price').textContent = `R$ ${avgPrice.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+            
+            // Preenche a tabela
+            if (cars.length === 0) {
+                adminCarsList.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align: center; padding: 2rem; color: var(--gray);">
+                            <i class="fas fa-car" style="font-size: 2rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                            <p>Nenhum carro cadastrado</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            cars.forEach((car) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${car.name}</td>
+                    <td>${car.brand}</td>
+                    <td>${car.year}</td>
+                    <td>R$ ${car.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</td>
+                    <td>
+                        <span style="padding: 0.3rem 0.6rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; 
+                        background-color: ${car.status === 'vendido' ? '#e74c3c' : '#27ae60'}; color: white;">
+                            ${car.status === 'vendido' ? 'Vendido' : 'Disponível'}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="action-btn edit-btn" onclick="openEditCarModal('${car.id}')" title="Editar">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="action-btn delete-btn" onclick="deleteCar('${car.id}')" title="Excluir">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                adminCarsList.appendChild(row);
             });
         }
         
-        // Buscar carros
-        function searchCars() {
-            loadCars();
-        }
-        
-        // Adicionar event listeners para os filtros
-        document.getElementById('filter-brand').addEventListener('change', loadCars);
-        document.getElementById('filter-year').addEventListener('change', loadCars);
-        document.getElementById('filter-price').addEventListener('change', loadCars);
-        
-        // Adiciona um novo carro
+        // Adiciona/Edita um carro
         document.getElementById('car-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
+            const carId = document.getElementById('car-id').value || generateId();
             const car = {
+                id: carId,
                 name: document.getElementById('car-name').value,
                 brand: document.getElementById('car-brand').value,
                 year: parseInt(document.getElementById('car-year').value),
                 price: parseFloat(document.getElementById('car-price').value),
                 color: document.getElementById('car-color').value,
                 kilometers: document.getElementById('car-kilometers').value ? parseInt(document.getElementById('car-kilometers').value) : null,
+                fuel: document.getElementById('car-fuel').value,
+                transmission: document.getElementById('car-transmission').value,
                 description: document.getElementById('car-description').value,
                 image: document.getElementById('car-image').value,
+                status: 'disponível',
                 dateAdded: new Date().toISOString()
             };
             
             // Salva no localStorage
             const cars = JSON.parse(localStorage.getItem('cars')) || [];
-            cars.push(car);
+            
+            if (state.editingCarId) {
+                // Atualiza carro existente
+                const index = cars.findIndex(c => c.id === state.editingCarId);
+                if (index !== -1) {
+                    cars[index] = car;
+                }
+            } else {
+                // Adiciona novo carro
+                cars.push(car);
+            }
+            
             localStorage.setItem('cars', JSON.stringify(cars));
             
             // Limpa o formulário
             document.getElementById('car-form').reset();
             
-            // Mostra mensagem de sucesso
-            alert('Carro adicionado com sucesso!');
+            // Fecha o modal
+            closeCarModal();
             
-            // Volta para a página inicial
-            showPage('home');
+            // Recarrega os dados
+            loadAdminData();
+            loadCars();
+            
+            // Mostra mensagem de sucesso
+            alert(state.editingCarId ? 'Carro atualizado com sucesso!' : 'Carro adicionado com sucesso!');
         });
         
+        // Excluir carro
+        function deleteCar(carId) {
+            if (confirm('Tem certeza que deseja excluir este carro?')) {
+                const cars = JSON.parse(localStorage.getItem('cars')) || [];
+                const updatedCars = cars.filter(car => car.id !== carId);
+                localStorage.setItem('cars', JSON.stringify(updatedCars));
+                
+                loadAdminData();
+                loadCars();
+                
+                alert('Carro excluído com sucesso!');
+            }
+        }
+        
         // Mostrar detalhes do carro
-        function showCarDetails(index) {
+        function showCarDetails(carId) {
             const cars = JSON.parse(localStorage.getItem('cars')) || [];
-            const car = cars[index];
+            const car = cars.find(c => c.id === carId);
             
             if (car) {
                 const details = `
@@ -1158,21 +1359,37 @@ Ano: ${car.year}
 Preço: R$ ${car.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}
 ${car.color ? `Cor: ${car.color}` : ''}
 ${car.kilometers ? `Quilometragem: ${car.kilometers.toLocaleString('pt-BR')} km` : ''}
+Combustível: ${car.fuel || 'Flex'}
+Câmbio: ${car.transmission || 'Manual'}
 ${car.description ? `Descrição: ${car.description}` : ''}
+
+Interessado? Entre em contato conosco!
+Telefone: (11) 3456-7890
+WhatsApp: (11) 98765-4321
                 `.trim();
                 
                 alert(details);
             }
         }
         
-        // Contatar vendedor
-        function contactSeller(index) {
-            const cars = JSON.parse(localStorage.getItem('cars')) || [];
-            const car = cars[index];
-            
-            if (car) {
-                alert(`Interessado no ${car.name}? Entre em contato conosco pelo telefone (11) 9999-9999 para mais informações!`);
-            }
+        // Mostrar informações de contato
+        function showContactInfo() {
+            alert(`Entre em contato conosco para mais informações!
+
+Telefone: (11) 3456-7890
+WhatsApp: (11) 98765-4321
+E-mail: contato@automasters.com.br
+Endereço: Av. das Nações, 1234 - São Paulo, SP
+
+Horário de atendimento:
+Segunda a Sexta: 8h às 18h
+Sábado: 8h às 12h
+            `);
+        }
+        
+        // Gerar ID único
+        function generateId() {
+            return 'car_' + Math.random().toString(36).substr(2, 9);
         }
         
         // Carrega os carros quando a página é carregada
@@ -1184,47 +1401,33 @@ ${car.description ? `Descrição: ${car.description}` : ''}
             if (cars.length === 0) {
                 const sampleCars = [
                     {
+                        id: generateId(),
                         name: "Golf GTI",
                         brand: "Volkswagen",
                         year: 2022,
                         price: 189900,
                         color: "Vermelho",
                         kilometers: 15000,
+                        fuel: "Gasolina",
+                        transmission: "Automático",
                         description: "Carro esportivo em excelente estado, único dono, com todos os serviços realizados na concessionária. Completo, com teto solar, bancos em couro e sistema de som premium.",
                         image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                        status: "disponível",
                         dateAdded: new Date().toISOString()
                     },
                     {
+                        id: generateId(),
                         name: "Corolla XEi",
                         brand: "Toyota",
                         year: 2023,
                         price: 159990,
                         color: "Prata",
                         kilometers: 8000,
+                        fuel: "Flex",
+                        transmission: "Automático",
                         description: "Seminovo, com garantia de fábrica, completo, ar-condicionado digital, multimídia e câmera de ré. Excelente estado de conservação.",
                         image: "https://images.unsplash.com/photo-1603587070813-50d1220677b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-                        dateAdded: new Date().toISOString()
-                    },
-                    {
-                        name: "BMW 320i",
-                        brand: "BMW",
-                        year: 2021,
-                        price: 245000,
-                        color: "Preto",
-                        kilometers: 22000,
-                        description: "Carro de luxo em perfeito estado, com todos os opcionais, pacote M Sport, teto panorâmico e assistentes de direção.",
-                        image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-                        dateAdded: new Date().toISOString()
-                    },
-                    {
-                        name: "Jeep Compass",
-                        brand: "Jeep",
-                        year: 2022,
-                        price: 175000,
-                        color: "Branco",
-                        kilometers: 18000,
-                        description: "SUV premium, 4x4, com teto solar, bancos em couro, sistema de entretenimento Uconnect e assistência de permanência em faixa.",
-                        image: "https://images.unsplash.com/photo-1563720223485-2442d9efd995?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                        status: "disponível",
                         dateAdded: new Date().toISOString()
                     }
                 ];
