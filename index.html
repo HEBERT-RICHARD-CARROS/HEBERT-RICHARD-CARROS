@@ -69,7 +69,7 @@
             color: var(--secondary);
         }
         
-        /* Menu Desktop */
+        /* Menu */
         .desktop-nav ul {
             display: flex;
             list-style: none;
@@ -523,78 +523,6 @@
             transform: scale(1.2);
         }
         
-        /* Seletor de Ícones */
-        .icon-selector {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-            max-height: 150px;
-            overflow-y: auto;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-        
-        .icon-option {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0.5rem;
-            border: 1px solid #eee;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .icon-option:hover {
-            background-color: #f5f5f5;
-        }
-        
-        .icon-option.selected {
-            background-color: var(--accent);
-            color: white;
-        }
-        
-        .icon-option i {
-            font-size: 1.2rem;
-            margin-bottom: 0.3rem;
-        }
-        
-        .icon-option span {
-            font-size: 0.7rem;
-            text-align: center;
-        }
-        
-        /* Upload de Imagem */
-        .image-upload-container {
-            border: 2px dashed #ddd;
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-        
-        .image-upload-container:hover {
-            border-color: var(--accent);
-        }
-        
-        .image-upload-container i {
-            font-size: 3rem;
-            color: var(--gray);
-            margin-bottom: 1rem;
-        }
-        
-        .image-preview {
-            max-width: 100%;
-            max-height: 200px;
-            margin-top: 1rem;
-            border-radius: 8px;
-            display: none;
-        }
-        
         /* Footer */
         footer {
             background-color: var(--primary);
@@ -718,263 +646,6 @@
             color: rgba(255, 255, 255, 0.7);
         }
         
-        /* Novos estilos para a área de personalização */
-        .customization-panel {
-            background-color: white;
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: var(--shadow);
-            margin-bottom: 3rem;
-        }
-
-        .customization-tabs {
-            display: flex;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 2rem;
-        }
-
-        .customization-tab {
-            padding: 1rem 2rem;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: var(--transition);
-        }
-
-        .customization-tab.active {
-            border-bottom-color: var(--secondary);
-            color: var(--secondary);
-            font-weight: 600;
-        }
-
-        .customization-content {
-            display: none;
-        }
-
-        .customization-content.active {
-            display: block;
-        }
-
-        .color-picker {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .color-preview {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            border: 2px solid #ddd;
-        }
-
-        .color-input {
-            flex: 1;
-        }
-
-        .theme-preview {
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            background-color: #f9f9f9;
-        }
-
-        .preview-element {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            margin: 0.5rem;
-            border-radius: 4px;
-        }
-
-        .preview-primary {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .preview-secondary {
-            background-color: var(--secondary);
-            color: white;
-        }
-
-        .preview-accent {
-            background-color: var(--accent);
-            color: white;
-        }
-
-        .reset-btn {
-            background-color: var(--danger);
-        }
-
-        .reset-btn:hover {
-            background-color: #c0392b;
-        }
-
-        /* Menu Mobile */
-        .mobile-menu {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .mobile-nav {
-            display: none;
-            background-color: var(--primary);
-            padding: 1rem;
-        }
-
-        .mobile-nav ul {
-            list-style: none;
-        }
-
-        .mobile-nav ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .mobile-nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            display: block;
-            border-radius: 4px;
-            transition: var(--transition);
-        }
-
-        .mobile-nav ul li a:hover {
-            background-color: var(--secondary);
-        }
-
-        /* Responsividade */
-        @media (max-width: 1100px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-        }
-        
-        @media (max-width: 900px) {
-            .desktop-nav {
-                display: none;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .hero {
-                padding: 3rem 2rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-container {
-                padding: 0.8rem 1.5rem;
-            }
-            
-            .hero {
-                padding: 2.5rem 1.5rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .car-actions {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-            
-            .car-actions .btn {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .admin-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .admin-header .btn {
-                margin-top: 1rem;
-            }
-            
-            .admin-table {
-                display: block;
-                overflow-x: auto;
-            }
-            
-            .icon-selector {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .social-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .social-buttons .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .customization-tabs {
-                flex-direction: column;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .header-container {
-                padding: 0.8rem 1rem;
-            }
-            
-            .logo {
-                font-size: 1.5rem;
-            }
-            
-            .hero {
-                padding: 2rem 1rem;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .section-title {
-                font-size: 1.6rem;
-            }
-            
-            .cars-showcase {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .modal-content {
-                padding: 2rem 1.5rem;
-            }
-            
-            .icon-selector {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
         /* Estilo para quando não há carros */
         .empty-state {
             text-align: center;
@@ -999,28 +670,15 @@
             
             <nav class="desktop-nav">
                 <ul>
-                    <li><a href="#" class="active" onclick="showPage('home')"><i class="fas fa-home"></i> Início</a></li>
-                    <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> Sobre</a></li>
-                    <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contato</a></li>
+                    <li><a href="#" class="active" id="home-link"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="#" id="about-link"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                    <li><a href="#" id="contact-link"><i class="fas fa-envelope"></i> Contato</a></li>
                 </ul>
             </nav>
             
-            <button class="admin-btn" onclick="openLoginModal()">
+            <button class="admin-btn" id="admin-btn">
                 <i class="fas fa-user-shield"></i> Área do Proprietário
             </button>
-            
-            <button class="mobile-menu" onclick="toggleMobileMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-        
-        <div class="mobile-nav" id="mobile-nav">
-            <ul>
-                <li><a href="#" class="active" onclick="showPage('home')"><i class="fas fa-home"></i> Início</a></li>
-                <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> Sobre</a></li>
-                <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contato</a></li>
-                <li><a href="#" onclick="openLoginModal()"><i class="fas fa-user-shield"></i> Área do Proprietário</a></li>
-            </ul>
         </div>
     </header>
     
@@ -1057,10 +715,8 @@
                 <div class="admin-header">
                     <h2 class="admin-title">Painel de Controle - Hebert Richards</h2>
                     <div>
-                        <button class="btn" onclick="openAddCarModal()"><i class="fas fa-plus"></i> Adicionar Carro</button>
-                        <button class="btn btn-outline" onclick="openSiteSettingsModal()"><i class="fas fa-cog"></i> Configurações</button>
-                        <button class="btn" onclick="openCustomizationPanel()"><i class="fas fa-palette"></i> Personalizar</button>
-                        <button class="btn reset-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Sair</button>
+                        <button class="btn" id="add-car-btn"><i class="fas fa-plus"></i> Adicionar Carro</button>
+                        <button class="btn reset-btn" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Sair</button>
                     </div>
                 </div>
                 
@@ -1099,27 +755,12 @@
                 </div>
             </div>
         </div>
-
-        <!-- Páginas Sobre e Contato (simplificadas) -->
-        <div id="about-page" class="page" style="display: none;">
-            <div class="admin-panel">
-                <h2 class="admin-title">Sobre Nós</h2>
-                <p>Página em construção. Em breve mais informações sobre nossa empresa.</p>
-            </div>
-        </div>
-
-        <div id="contact-page" class="page" style="display: none;">
-            <div class="admin-panel">
-                <h2 class="admin-title">Contato</h2>
-                <p>Página em construção. Em breve formulário de contato.</p>
-            </div>
-        </div>
     </div>
     
     <!-- Modal de Login -->
     <div id="login-modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+            <span class="close-modal" id="close-login-modal">&times;</span>
             <h2 class="modal-title">Acesso Restrito</h2>
             <form id="login-form">
                 <div class="form-group">
@@ -1133,7 +774,7 @@
                 </div>
                 
                 <div class="form-actions">
-                    <button type="button" class="btn btn-outline" onclick="closeLoginModal()">Cancelar</button>
+                    <button type="button" class="btn btn-outline" id="cancel-login">Cancelar</button>
                     <button type="submit" class="btn">Entrar</button>
                 </div>
             </form>
@@ -1143,7 +784,7 @@
     <!-- Modal para Adicionar/Editar Carro -->
     <div id="car-modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeCarModal()">&times;</span>
+            <span class="close-modal" id="close-car-modal">&times;</span>
             <h2 class="modal-title" id="car-modal-title">Adicionar Novo Carro</h2>
             <form id="car-form">
                 <input type="hidden" id="car-id">
@@ -1217,230 +858,11 @@
                     <textarea id="car-description" rows="4" placeholder="Descreva o carro, inclua detalhes, opcionais, estado de conservação..."></textarea>
                 </div>
                 
-                <div class="form-group">
-                    <label>Ícone do Combustível</label>
-                    <div class="icon-selector" id="fuel-icon-selector">
-                        <!-- Ícones serão preenchidos via JavaScript -->
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Ícone do Câmbio</label>
-                    <div class="icon-selector" id="transmission-icon-selector">
-                        <!-- Ícones serão preenchidos via JavaScript -->
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Ícone Adicional</label>
-                    <div class="icon-selector" id="extra-icon-selector">
-                        <!-- Ícones serão preenchidos via JavaScript -->
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="car-image">Imagem do Carro</label>
-                    <div class="image-upload-container" onclick="document.getElementById('image-upload').click()">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <p>Clique para fazer upload de uma imagem</p>
-                        <input type="file" id="image-upload" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
-                        <img id="image-preview" class="image-preview" src="" alt="Prévia da imagem">
-                    </div>
-                </div>
-                
                 <div class="form-actions">
-                    <button type="button" class="btn btn-outline" onclick="closeCarModal()">Cancelar</button>
+                    <button type="button" class="btn btn-outline" id="cancel-car-modal">Cancelar</button>
                     <button type="submit" class="btn" id="car-form-submit">Adicionar Carro</button>
                 </div>
             </form>
-        </div>
-    </div>
-    
-    <!-- Modal de Configurações do Site -->
-    <div id="site-settings-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeSiteSettingsModal()">&times;</span>
-            <h2 class="modal-title">Configurações do Site</h2>
-            <form id="site-settings-form">
-                <div class="form-group">
-                    <label for="site-title">Título do Site</label>
-                    <input type="text" id="site-title" value="Hebert Richards">
-                </div>
-                
-                <div class="form-group">
-                    <label for="hero-title">Título Principal (Hero)</label>
-                    <input type="text" id="hero-title-input" value="Veículos Selecionados com Qualidade">
-                </div>
-                
-                <div class="form-group">
-                    <label for="hero-description">Descrição do Hero</label>
-                    <textarea id="hero-description-input" rows="3">Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.</textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="showcase-title">Título da Vitrine</label>
-                    <input type="text" id="showcase-title-input" value="Nossa Garagem">
-                </div>
-                
-                <div class="form-group">
-                    <label for="contact-phone">Telefone de Contato</label>
-                    <input type="text" id="contact-phone" value="(11) 3456-7890">
-                </div>
-                
-                <div class="form-group">
-                    <label for="contact-whatsapp">WhatsApp</label>
-                    <input type="text" id="contact-whatsapp" value="(11) 98765-4321">
-                </div>
-                
-                <div class="form-group">
-                    <label for="contact-email">E-mail</label>
-                    <input type="email" id="contact-email" value="contato@hebertrichards.com.br">
-                </div>
-                
-                <div class="form-group">
-                    <label for="contact-address">Endereço</label>
-                    <input type="text" id="contact-address" value="Av. das Nações, 1234 - São Paulo, SP">
-                </div>
-                
-                <div class="form-group">
-                    <label for="instagram-url">URL do Instagram</label>
-                    <input type="url" id="instagram-url" value="https://instagram.com/hebertrichards">
-                </div>
-                
-                <div class="form-actions">
-                    <button type="button" class="btn btn-outline" onclick="closeSiteSettingsModal()">Cancelar</button>
-                    <button type="submit" class="btn">Salvar Configurações</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal de Personalização -->
-    <div id="customization-modal" class="modal">
-        <div class="modal-content" style="max-width: 800px;">
-            <span class="close-modal" onclick="closeCustomizationModal()">&times;</span>
-            <h2 class="modal-title">Personalizar Site</h2>
-            
-            <div class="customization-tabs">
-                <div class="customization-tab active" onclick="openCustomizationTab('colors')">Cores</div>
-                <div class="customization-tab" onclick="openCustomizationTab('content')">Conteúdo</div>
-                <div class="customization-tab" onclick="openCustomizationTab('layout')">Layout</div>
-            </div>
-            
-            <div id="colors-tab" class="customization-content active">
-                <h3>Personalizar Cores do Site</h3>
-                
-                <div class="form-group">
-                    <label for="primary-color">Cor Primária</label>
-                    <div class="color-picker">
-                        <div class="color-preview" id="primary-preview" style="background-color: #1a3a5f;"></div>
-                        <input type="color" id="primary-color" value="#1a3a5f" class="color-input">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="secondary-color">Cor Secundária</label>
-                    <div class="color-picker">
-                        <div class="color-preview" id="secondary-preview" style="background-color: #d35400;"></div>
-                        <input type="color" id="secondary-color" value="#d35400" class="color-input">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="accent-color">Cor de Destaque</label>
-                    <div class="color-picker">
-                        <div class="color-preview" id="accent-preview" style="background-color: #2980b9;"></div>
-                        <input type="color" id="accent-color" value="#2980b9" class="color-input">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="dark-color">Cor Escura</label>
-                    <div class="color-picker">
-                        <div class="color-preview" id="dark-preview" style="background-color: #2c3e50;"></div>
-                        <input type="color" id="dark-color" value="#2c3e50" class="color-input">
-                    </div>
-                </div>
-                
-                <div class="theme-preview">
-                    <h4>Prévia do Tema</h4>
-                    <div class="preview-element preview-primary">Primária</div>
-                    <div class="preview-element preview-secondary">Secundária</div>
-                    <div class="preview-element preview-accent">Destaque</div>
-                </div>
-            </div>
-            
-            <div id="content-tab" class="customization-content">
-                <h3>Personalizar Conteúdo</h3>
-                
-                <div class="form-group">
-                    <label for="company-name">Nome da Empresa</label>
-                    <input type="text" id="company-name" value="Hebert Richards">
-                </div>
-                
-                <div class="form-group">
-                    <label for="company-slogan">Slogan</label>
-                    <input type="text" id="company-slogan" value="Veículos Premium">
-                </div>
-                
-                <div class="form-group">
-                    <label for="about-text">Texto Sobre a Empresa</label>
-                    <textarea id="about-text" rows="5">Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.</textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="business-hours">Horário de Funcionamento</label>
-                    <input type="text" id="business-hours" value="Seg-Sex: 8h às 18h | Sáb: 8h às 12h">
-                </div>
-            </div>
-            
-            <div id="layout-tab" class="customization-content">
-                <h3>Personalizar Layout</h3>
-                
-                <div class="form-group">
-                    <label for="header-style">Estilo do Cabeçalho</label>
-                    <select id="header-style">
-                        <option value="default">Padrão</option>
-                        <option value="transparent">Transparente</option>
-                        <option value="solid">Sólido</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="hero-style">Estilo do Hero</label>
-                    <select id="hero-style">
-                        <option value="default">Padrão</option>
-                        <option value="minimal">Minimalista</option>
-                        <option value="fullscreen">Tela Cheia</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="card-style">Estilo dos Cards</label>
-                    <select id="card-style">
-                        <option value="default">Padrão</option>
-                        <option value="modern">Moderno</option>
-                        <option value="minimal">Minimalista</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="font-family">Fonte do Site</label>
-                    <select id="font-family">
-                        <option value="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Segoe UI (Padrão)</option>
-                        <option value="Arial, sans-serif">Arial</option>
-                        <option value="'Helvetica Neue', Helvetica, sans-serif">Helvetica</option>
-                        <option value="'Roboto', sans-serif">Roboto</option>
-                        <option value="'Open Sans', sans-serif">Open Sans</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="form-actions">
-                <button type="button" class="btn reset-btn" onclick="resetCustomization()">Redefinir</button>
-                <button type="button" class="btn btn-outline" onclick="closeCustomizationModal()">Cancelar</button>
-                <button type="button" class="btn" onclick="saveCustomization()">Salvar Personalização</button>
-            </div>
         </div>
     </div>
     
@@ -1459,20 +881,19 @@
             <div class="footer-links">
                 <h3>Links Rápidos</h3>
                 <ul>
-                    <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Início</a></li>
-                    <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
-                    <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contato</a></li>
-                    <li><a href="#" onclick="showContactInfo()"><i class="fas fa-car"></i> Ver Veículos</a></li>
+                    <li><a href="#" id="footer-home-link"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="#" id="footer-about-link"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
+                    <li><a href="#" id="footer-contact-link"><i class="fas fa-envelope"></i> Contato</a></li>
                 </ul>
             </div>
             
             <div class="footer-contact">
                 <h3>Contato</h3>
-                <p><i class="fas fa-phone"></i> <span id="footer-phone">(11) 3456-7890</span></p>
-                <p><i class="fas fa-whatsapp"></i> <span id="footer-whatsapp">(11) 98765-4321</span></p>
-                <p><i class="fas fa-envelope"></i> <span id="footer-email">contato@hebertrichards.com.br</span></p>
-                <p><i class="fas fa-map-marker-alt"></i> <span id="footer-address">Av. das Nações, 1234 - São Paulo, SP</span></p>
-                <p><i class="fas fa-clock"></i> <span id="footer-hours">Seg-Sex: 8h às 18h | Sáb: 8h às 12h</span></p>
+                <p><i class="fas fa-phone"></i> (11) 3456-7890</p>
+                <p><i class="fas fa-whatsapp"></i> (11) 98765-4321</p>
+                <p><i class="fas fa-envelope"></i> contato@hebertrichards.com.br</p>
+                <p><i class="fas fa-map-marker-alt"></i> Av. das Nações, 1234 - São Paulo, SP</p>
+                <p><i class="fas fa-clock"></i> Seg-Sex: 8h às 18h | Sáb: 8h às 12h</p>
             </div>
         </div>
         
@@ -1486,36 +907,7 @@
         const state = {
             isLoggedIn: false,
             currentUser: null,
-            editingCarId: null,
-            siteSettings: {
-                title: "Hebert Richards",
-                heroTitle: "Veículos Selecionados com Qualidade",
-                heroDescription: "Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.",
-                showcaseTitle: "Nossa Garagem",
-                contactPhone: "(11) 3456-7890",
-                contactWhatsapp: "(11) 98765-4321",
-                contactEmail: "contato@hebertrichards.com.br",
-                contactAddress: "Av. das Nações, 1234 - São Paulo, SP",
-                instagramUrl: "https://instagram.com/hebertrichards",
-                companyName: "Hebert Richards",
-                companySlogan: "Veículos Premium",
-                aboutText: "Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.",
-                businessHours: "Seg-Sex: 8h às 18h | Sáb: 8h às 12h"
-            },
-            customization: {
-                colors: {
-                    primary: "#1a3a5f",
-                    secondary: "#d35400",
-                    accent: "#2980b9",
-                    dark: "#2c3e50"
-                },
-                layout: {
-                    headerStyle: "default",
-                    heroStyle: "default",
-                    cardStyle: "default",
-                    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
-                }
-            }
+            editingCarId: null
         };
         
         // Credenciais de acesso
@@ -1524,82 +916,115 @@
             password: "Iverenides4615"
         };
         
-        // Ícones disponíveis
-        const availableIcons = {
-            fuel: [
-                { class: "fas fa-gas-pump", name: "Gasolina" },
-                { class: "fas fa-fire", name: "Combustível" },
-                { class: "fas fa-oil-can", name: "Óleo" },
-                { class: "fas fa-battery-full", name: "Bateria" },
-                { class: "fas fa-charging-station", name: "Elétrico" }
-            ],
-            transmission: [
-                { class: "fas fa-cogs", name: "Câmbio" },
-                { class: "fas fa-exchange-alt", name: "Transmissão" },
-                { class: "fas fa-sliders-h", name: "Controles" },
-                { class: "fas fa-tachometer-alt", name: "Velocímetro" }
-            ],
-            extra: [
-                { class: "fas fa-user-friends", name: "Passageiros" },
-                { class: "fas fa-suitcase", name: "Porta-malas" },
-                { class: "fas fa-snowflake", name: "Ar Condicionado" },
-                { class: "fas fa-shield-alt", name: "Segurança" },
-                { class: "fas fa-music", name: "Som" },
-                { class: "fas fa-tv", name: "Multimídia" },
-                { class: "fas fa-car", name: "Carro" },
-                { class: "fas fa-key", name: "Chave" },
-                { class: "fas fa-palette", name: "Cor" },
-                { class: "fas fa-cog", name: "Configurações" }
-            ]
-        };
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar event listeners
+            setupEventListeners();
+            
+            // Carregar carros
+            loadCars();
+            
+            // Adicionar carros de exemplo se não houver nenhum
+            const cars = JSON.parse(localStorage.getItem('cars')) || [];
+            if (cars.length === 0) {
+                const sampleCars = [
+                    {
+                        id: generateId(),
+                        name: "Golf GTI",
+                        brand: "Volkswagen",
+                        year: 2022,
+                        price: 189900,
+                        color: "Vermelho",
+                        kilometers: 15000,
+                        fuel: "Gasolina",
+                        transmission: "Automático",
+                        description: "Carro esportivo em excelente estado, único dono, com todos os serviços realizados na concessionária.",
+                        image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                        status: "disponível",
+                        dateAdded: new Date().toISOString()
+                    },
+                    {
+                        id: generateId(),
+                        name: "Corolla XEi",
+                        brand: "Toyota",
+                        year: 2023,
+                        price: 159990,
+                        color: "Prata",
+                        kilometers: 8000,
+                        fuel: "Flex",
+                        transmission: "Automático",
+                        description: "Seminovo, com garantia de fábrica, completo, ar-condicionado digital, multimídia e câmera de ré.",
+                        image: "https://images.unsplash.com/photo-1603587070813-50d1220677b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                        status: "disponível",
+                        dateAdded: new Date().toISOString()
+                    }
+                ];
+                
+                localStorage.setItem('cars', JSON.stringify(sampleCars));
+                loadCars();
+            }
+        });
+        
+        // Configurar todos os event listeners
+        function setupEventListeners() {
+            // Navegação
+            document.getElementById('home-link').addEventListener('click', () => showPage('home'));
+            document.getElementById('about-link').addEventListener('click', () => showPage('home'));
+            document.getElementById('contact-link').addEventListener('click', () => showPage('home'));
+            document.getElementById('footer-home-link').addEventListener('click', () => showPage('home'));
+            document.getElementById('footer-about-link').addEventListener('click', () => showPage('home'));
+            document.getElementById('footer-contact-link').addEventListener('click', () => showPage('home'));
+            
+            // Área administrativa
+            document.getElementById('admin-btn').addEventListener('click', openLoginModal);
+            document.getElementById('logout-btn').addEventListener('click', logout);
+            document.getElementById('add-car-btn').addEventListener('click', openAddCarModal);
+            
+            // Modais
+            document.getElementById('close-login-modal').addEventListener('click', closeLoginModal);
+            document.getElementById('cancel-login').addEventListener('click', closeLoginModal);
+            document.getElementById('close-car-modal').addEventListener('click', closeCarModal);
+            document.getElementById('cancel-car-modal').addEventListener('click', closeCarModal);
+            
+            // Formulários
+            document.getElementById('login-form').addEventListener('submit', handleLogin);
+            document.getElementById('car-form').addEventListener('submit', handleCarFormSubmit);
+        }
         
         // Navegação entre páginas
         function showPage(pageId) {
             // Esconde todas as páginas
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => {
-                page.style.display = 'none';
-            });
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('admin-page').style.display = 'none';
+            
+            // Mostra a página selecionada
+            if (pageId === 'home') {
+                document.getElementById('home-page').style.display = 'block';
+                loadCars();
+            } else if (pageId === 'admin-page') {
+                if (!state.isLoggedIn) {
+                    openLoginModal();
+                    return;
+                }
+                document.getElementById('admin-page').style.display = 'block';
+                loadAdminData();
+            }
             
             // Atualiza a navegação ativa
-            const navLinks = document.querySelectorAll('nav a, .mobile-nav a');
+            updateActiveNav(pageId);
+        }
+        
+        // Atualiza a navegação ativa
+        function updateActiveNav(pageId) {
+            const navLinks = document.querySelectorAll('.desktop-nav a, .footer-links a');
             navLinks.forEach(link => {
                 link.classList.remove('active');
             });
             
-            // Encontra e ativa o link correto
-            const activeLinks = document.querySelectorAll(`a[onclick*="${pageId}"]`);
-            activeLinks.forEach(link => link.classList.add('active'));
-            
-            // Mostra a página selecionada
-            const targetPage = document.getElementById(`${pageId}-page`);
-            if (targetPage) {
-                targetPage.style.display = 'block';
-                
-                // Se for a página administrativa, verifica login
-                if (pageId === 'admin-page') {
-                    if (!state.isLoggedIn) {
-                        showPage('home');
-                        openLoginModal();
-                        return;
-                    }
-                    loadAdminData();
-                }
-                
-                // Se for a página inicial, recarrega os carros
-                if (pageId === 'home') {
-                    loadCars();
-                }
+            if (pageId === 'home') {
+                document.getElementById('home-link').classList.add('active');
+                document.getElementById('footer-home-link').classList.add('active');
             }
-            
-            // Fecha o menu mobile se estiver aberto
-            document.getElementById('mobile-nav').style.display = 'none';
-        }
-        
-        // Menu mobile
-        function toggleMobileMenu() {
-            const mobileNav = document.getElementById('mobile-nav');
-            mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
         }
         
         // Modal de Login
@@ -1618,11 +1043,7 @@
             document.getElementById('car-form-submit').textContent = 'Adicionar Carro';
             document.getElementById('car-form').reset();
             document.getElementById('car-id').value = '';
-            document.getElementById('image-preview').style.display = 'none';
             state.editingCarId = null;
-            
-            // Preenche os seletores de ícones
-            fillIconSelectors();
             
             document.getElementById('car-modal').style.display = 'flex';
         }
@@ -1646,16 +1067,6 @@
                 document.getElementById('car-transmission').value = car.transmission || 'Manual';
                 document.getElementById('car-description').value = car.description || '';
                 
-                if (car.image) {
-                    document.getElementById('image-preview').src = car.image;
-                    document.getElementById('image-preview').style.display = 'block';
-                } else {
-                    document.getElementById('image-preview').style.display = 'none';
-                }
-                
-                // Preenche os seletores de ícones
-                fillIconSelectors(car.fuelIcon, car.transmissionIcon, car.extraIcon);
-                
                 state.editingCarId = carId;
                 document.getElementById('car-modal').style.display = 'flex';
             }
@@ -1665,233 +1076,8 @@
             document.getElementById('car-modal').style.display = 'none';
         }
         
-        // Modal de Configurações do Site
-        function openSiteSettingsModal() {
-            // Preenche o formulário com as configurações atuais
-            document.getElementById('site-title').value = state.siteSettings.title;
-            document.getElementById('hero-title-input').value = state.siteSettings.heroTitle;
-            document.getElementById('hero-description-input').value = state.siteSettings.heroDescription;
-            document.getElementById('showcase-title-input').value = state.siteSettings.showcaseTitle;
-            document.getElementById('contact-phone').value = state.siteSettings.contactPhone;
-            document.getElementById('contact-whatsapp').value = state.siteSettings.contactWhatsapp;
-            document.getElementById('contact-email').value = state.siteSettings.contactEmail;
-            document.getElementById('contact-address').value = state.siteSettings.contactAddress;
-            document.getElementById('instagram-url').value = state.siteSettings.instagramUrl;
-            
-            document.getElementById('site-settings-modal').style.display = 'flex';
-        }
-        
-        function closeSiteSettingsModal() {
-            document.getElementById('site-settings-modal').style.display = 'none';
-        }
-
-        // Modal de Personalização
-        function openCustomizationPanel() {
-            // Preenche o formulário com as personalizações atuais
-            document.getElementById('primary-color').value = state.customization.colors.primary;
-            document.getElementById('secondary-color').value = state.customization.colors.secondary;
-            document.getElementById('accent-color').value = state.customization.colors.accent;
-            document.getElementById('dark-color').value = state.customization.colors.dark;
-            
-            // Atualiza as prévias de cor
-            updateColorPreviews();
-            
-            document.getElementById('company-name').value = state.siteSettings.companyName;
-            document.getElementById('company-slogan').value = state.siteSettings.companySlogan;
-            document.getElementById('about-text').value = state.siteSettings.aboutText;
-            document.getElementById('business-hours').value = state.siteSettings.businessHours;
-            
-            document.getElementById('header-style').value = state.customization.layout.headerStyle;
-            document.getElementById('hero-style').value = state.customization.layout.heroStyle;
-            document.getElementById('card-style').value = state.customization.layout.cardStyle;
-            document.getElementById('font-family').value = state.customization.layout.fontFamily;
-            
-            document.getElementById('customization-modal').style.display = 'flex';
-        }
-
-        function closeCustomizationModal() {
-            document.getElementById('customization-modal').style.display = 'none';
-        }
-
-        function openCustomizationTab(tabName) {
-            // Esconde todas as abas
-            const tabs = document.querySelectorAll('.customization-content');
-            tabs.forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Remove a classe active de todas as abas
-            const tabButtons = document.querySelectorAll('.customization-tab');
-            tabButtons.forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Ativa a aba selecionada
-            document.getElementById(tabName + '-tab').classList.add('active');
-            event.target.classList.add('active');
-        }
-
-        function updateColorPreviews() {
-            document.getElementById('primary-preview').style.backgroundColor = document.getElementById('primary-color').value;
-            document.getElementById('secondary-preview').style.backgroundColor = document.getElementById('secondary-color').value;
-            document.getElementById('accent-preview').style.backgroundColor = document.getElementById('accent-color').value;
-            document.getElementById('dark-preview').style.backgroundColor = document.getElementById('dark-color').value;
-            
-            // Atualiza a prévia do tema
-            document.querySelectorAll('.preview-primary').forEach(el => {
-                el.style.backgroundColor = document.getElementById('primary-color').value;
-            });
-            document.querySelectorAll('.preview-secondary').forEach(el => {
-                el.style.backgroundColor = document.getElementById('secondary-color').value;
-            });
-            document.querySelectorAll('.preview-accent').forEach(el => {
-                el.style.backgroundColor = document.getElementById('accent-color').value;
-            });
-        }
-
-        function saveCustomization() {
-            // Salva as cores
-            state.customization.colors.primary = document.getElementById('primary-color').value;
-            state.customization.colors.secondary = document.getElementById('secondary-color').value;
-            state.customization.colors.accent = document.getElementById('accent-color').value;
-            state.customization.colors.dark = document.getElementById('dark-color').value;
-            
-            // Salva o conteúdo
-            state.siteSettings.companyName = document.getElementById('company-name').value;
-            state.siteSettings.companySlogan = document.getElementById('company-slogan').value;
-            state.siteSettings.aboutText = document.getElementById('about-text').value;
-            state.siteSettings.businessHours = document.getElementById('business-hours').value;
-            
-            // Salva o layout
-            state.customization.layout.headerStyle = document.getElementById('header-style').value;
-            state.customization.layout.heroStyle = document.getElementById('hero-style').value;
-            state.customization.layout.cardStyle = document.getElementById('card-style').value;
-            state.customization.layout.fontFamily = document.getElementById('font-family').value;
-            
-            // Aplica as personalizações
-            applyCustomization();
-            
-            // Salva no localStorage
-            localStorage.setItem('siteCustomization', JSON.stringify(state.customization));
-            localStorage.setItem('siteSettings', JSON.stringify(state.siteSettings));
-            
-            closeCustomizationModal();
-            alert('Personalização salva com sucesso!');
-        }
-
-        function resetCustomization() {
-            if (confirm('Tem certeza que deseja redefinir todas as personalizações para os valores padrão?')) {
-                state.customization = {
-                    colors: {
-                        primary: "#1a3a5f",
-                        secondary: "#d35400",
-                        accent: "#2980b9",
-                        dark: "#2c3e50"
-                    },
-                    layout: {
-                        headerStyle: "default",
-                        heroStyle: "default",
-                        cardStyle: "default",
-                        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
-                    }
-                };
-                
-                // Atualiza o formulário
-                document.getElementById('primary-color').value = state.customization.colors.primary;
-                document.getElementById('secondary-color').value = state.customization.colors.secondary;
-                document.getElementById('accent-color').value = state.customization.colors.accent;
-                document.getElementById('dark-color').value = state.customization.colors.dark;
-                
-                updateColorPreviews();
-                
-                // Aplica as personalizações
-                applyCustomization();
-                
-                alert('Personalizações redefinidas para os valores padrão!');
-            }
-        }
-
-        function applyCustomization() {
-            // Aplica as cores
-            document.documentElement.style.setProperty('--primary', state.customization.colors.primary);
-            document.documentElement.style.setProperty('--secondary', state.customization.colors.secondary);
-            document.documentElement.style.setProperty('--accent', state.customization.colors.accent);
-            document.documentElement.style.setProperty('--dark', state.customization.colors.dark);
-            
-            // Aplica a fonte
-            document.body.style.fontFamily = state.customization.layout.fontFamily;
-            
-            // Atualiza o conteúdo
-            updateSiteInterface();
-        }
-        
-        // Preenche os seletores de ícones
-        function fillIconSelectors(selectedFuelIcon = "fas fa-gas-pump", selectedTransmissionIcon = "fas fa-cogs", selectedExtraIcon = "fas fa-user-friends") {
-            // Ícones de combustível
-            const fuelSelector = document.getElementById('fuel-icon-selector');
-            fuelSelector.innerHTML = '';
-            
-            availableIcons.fuel.forEach(icon => {
-                const iconOption = document.createElement('div');
-                iconOption.className = `icon-option ${icon.class === selectedFuelIcon ? 'selected' : ''}`;
-                iconOption.setAttribute('data-icon', icon.class);
-                iconOption.innerHTML = `<i class="${icon.class}"></i><span>${icon.name}</span>`;
-                iconOption.onclick = function() {
-                    document.querySelectorAll('#fuel-icon-selector .icon-option').forEach(opt => opt.classList.remove('selected'));
-                    this.classList.add('selected');
-                };
-                fuelSelector.appendChild(iconOption);
-            });
-            
-            // Ícones de transmissão
-            const transmissionSelector = document.getElementById('transmission-icon-selector');
-            transmissionSelector.innerHTML = '';
-            
-            availableIcons.transmission.forEach(icon => {
-                const iconOption = document.createElement('div');
-                iconOption.className = `icon-option ${icon.class === selectedTransmissionIcon ? 'selected' : ''}`;
-                iconOption.setAttribute('data-icon', icon.class);
-                iconOption.innerHTML = `<i class="${icon.class}"></i><span>${icon.name}</span>`;
-                iconOption.onclick = function() {
-                    document.querySelectorAll('#transmission-icon-selector .icon-option').forEach(opt => opt.classList.remove('selected'));
-                    this.classList.add('selected');
-                };
-                transmissionSelector.appendChild(iconOption);
-            });
-            
-            // Ícones extras
-            const extraSelector = document.getElementById('extra-icon-selector');
-            extraSelector.innerHTML = '';
-            
-            availableIcons.extra.forEach(icon => {
-                const iconOption = document.createElement('div');
-                iconOption.className = `icon-option ${icon.class === selectedExtraIcon ? 'selected' : ''}`;
-                iconOption.setAttribute('data-icon', icon.class);
-                iconOption.innerHTML = `<i class="${icon.class}"></i><span>${icon.name}</span>`;
-                iconOption.onclick = function() {
-                    document.querySelectorAll('#extra-icon-selector .icon-option').forEach(opt => opt.classList.remove('selected'));
-                    this.classList.add('selected');
-                };
-                extraSelector.appendChild(iconOption);
-            });
-        }
-        
-        // Upload de imagem
-        function handleImageUpload(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const preview = document.getElementById('image-preview');
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-        
         // Login
-        document.getElementById('login-form').addEventListener('submit', function(e) {
+        function handleLogin(e) {
             e.preventDefault();
             
             const username = document.getElementById('username').value;
@@ -1902,10 +1088,11 @@
                 state.currentUser = username;
                 closeLoginModal();
                 showPage('admin-page');
+                alert('Login realizado com sucesso!');
             } else {
                 alert('Usuário ou senha incorretos!');
             }
-        });
+        }
         
         // Logout
         function logout() {
@@ -1915,62 +1102,68 @@
             alert('Logout realizado com sucesso!');
         }
         
-        // Configurações do site
-        document.getElementById('site-settings-form').addEventListener('submit', function(e) {
+        // Adicionar/Editar Carro
+        function handleCarFormSubmit(e) {
             e.preventDefault();
             
-            // Atualiza as configurações
-            state.siteSettings.title = document.getElementById('site-title').value;
-            state.siteSettings.heroTitle = document.getElementById('hero-title-input').value;
-            state.siteSettings.heroDescription = document.getElementById('hero-description-input').value;
-            state.siteSettings.showcaseTitle = document.getElementById('showcase-title-input').value;
-            state.siteSettings.contactPhone = document.getElementById('contact-phone').value;
-            state.siteSettings.contactWhatsapp = document.getElementById('contact-whatsapp').value;
-            state.siteSettings.contactEmail = document.getElementById('contact-email').value;
-            state.siteSettings.contactAddress = document.getElementById('contact-address').value;
-            state.siteSettings.instagramUrl = document.getElementById('instagram-url').value;
+            const carId = document.getElementById('car-id').value || generateId();
+            const car = {
+                id: carId,
+                name: document.getElementById('car-name').value,
+                brand: document.getElementById('car-brand').value,
+                year: parseInt(document.getElementById('car-year').value),
+                price: parseFloat(document.getElementById('car-price').value),
+                color: document.getElementById('car-color').value,
+                kilometers: document.getElementById('car-kilometers').value ? parseInt(document.getElementById('car-kilometers').value) : null,
+                fuel: document.getElementById('car-fuel').value,
+                transmission: document.getElementById('car-transmission').value,
+                description: document.getElementById('car-description').value,
+                status: 'disponível',
+                dateAdded: new Date().toISOString()
+            };
             
             // Salva no localStorage
-            localStorage.setItem('siteSettings', JSON.stringify(state.siteSettings));
+            const cars = JSON.parse(localStorage.getItem('cars')) || [];
             
-            // Atualiza a interface
-            updateSiteInterface();
+            if (state.editingCarId) {
+                // Atualiza carro existente
+                const index = cars.findIndex(c => c.id === state.editingCarId);
+                if (index !== -1) {
+                    cars[index] = car;
+                }
+            } else {
+                // Adiciona novo carro
+                cars.push(car);
+            }
             
-            closeSiteSettingsModal();
-            alert('Configurações salvas com sucesso!');
-        });
+            localStorage.setItem('cars', JSON.stringify(cars));
+            
+            // Limpa o formulário
+            document.getElementById('car-form').reset();
+            
+            // Fecha o modal
+            closeCarModal();
+            
+            // Recarrega os dados
+            loadAdminData();
+            loadCars();
+            
+            // Mostra mensagem de sucesso
+            alert(state.editingCarId ? 'Carro atualizado com sucesso!' : 'Carro adicionado com sucesso!');
+        }
         
-        // Atualiza a interface com as configurações do site
-        function updateSiteInterface() {
-            document.getElementById('hero-title').textContent = state.siteSettings.heroTitle;
-            document.getElementById('hero-description').textContent = state.siteSettings.heroDescription;
-            document.getElementById('showcase-title').textContent = state.siteSettings.showcaseTitle;
-            
-            // Atualiza o logo
-            document.querySelector('.logo').innerHTML = `<i class="fas fa-car"></i> ${state.siteSettings.title}<span>${state.siteSettings.companySlogan}</span>`;
-            document.querySelector('.footer-logo').innerHTML = `${state.siteSettings.companyName}<span>${state.siteSettings.companySlogan}</span>`;
-            
-            // Atualiza o texto sobre a empresa
-            document.querySelector('.footer-about').textContent = state.siteSettings.aboutText;
-            
-            // Atualiza os botões sociais
-            const whatsappBtn = document.querySelector('.btn-whatsapp');
-            const instagramBtn = document.querySelector('.btn-instagram');
-            
-            if (whatsappBtn) {
-                whatsappBtn.href = `https://wa.me/55${state.siteSettings.contactWhatsapp.replace(/\D/g, '')}`;
+        // Excluir carro
+        function deleteCar(carId) {
+            if (confirm('Tem certeza que deseja excluir este carro?')) {
+                const cars = JSON.parse(localStorage.getItem('cars')) || [];
+                const updatedCars = cars.filter(car => car.id !== carId);
+                localStorage.setItem('cars', JSON.stringify(updatedCars));
+                
+                loadAdminData();
+                loadCars();
+                
+                alert('Carro excluído com sucesso!');
             }
-            
-            if (instagramBtn) {
-                instagramBtn.href = state.siteSettings.instagramUrl;
-            }
-            
-            // Atualiza o footer
-            document.getElementById('footer-phone').textContent = state.siteSettings.contactPhone;
-            document.getElementById('footer-whatsapp').textContent = state.siteSettings.contactWhatsapp;
-            document.getElementById('footer-email').textContent = state.siteSettings.contactEmail;
-            document.getElementById('footer-address').textContent = state.siteSettings.contactAddress;
-            document.getElementById('footer-hours').textContent = state.siteSettings.businessHours;
         }
         
         // Carrega os carros do localStorage
@@ -2025,15 +1218,15 @@
                         
                         <div class="car-features">
                             <div class="feature">
-                                <i class="${car.fuelIcon || 'fas fa-gas-pump'}"></i>
+                                <i class="fas fa-gas-pump"></i>
                                 <span>${car.fuel || 'Flex'}</span>
                             </div>
                             <div class="feature">
-                                <i class="${car.transmissionIcon || 'fas fa-cogs'}"></i>
+                                <i class="fas fa-cogs"></i>
                                 <span>${car.transmission || 'Manual'}</span>
                             </div>
                             <div class="feature">
-                                <i class="${car.extraIcon || 'fas fa-user-friends'}"></i>
+                                <i class="fas fa-user-friends"></i>
                                 <span>5 lugares</span>
                             </div>
                         </div>
@@ -2041,7 +1234,7 @@
                         ${car.description ? `<p class="car-description">${car.description.length > 100 ? car.description.substring(0, 100) + '...' : car.description}</p>` : ''}
                         
                         <div class="car-actions">
-                            <a href="https://wa.me/55${state.siteSettings.contactWhatsapp.replace(/\D/g, '')}?text=Olá! Tenho interesse no ${car.name} ${car.brand} ${car.year}" class="btn btn-whatsapp btn-icon" target="_blank">
+                            <a href="https://wa.me/5511987654321?text=Olá! Tenho interesse no ${car.name} ${car.brand} ${car.year}" class="btn btn-whatsapp btn-icon" target="_blank">
                                 <i class="fab fa-whatsapp"></i> WhatsApp
                             </a>
                             <button class="btn btn-outline" onclick="showCarDetails('${car.id}')">Detalhes</button>
@@ -2074,9 +1267,6 @@
                         <td colspan="6" class="empty-state">
                             <i class="fas fa-car"></i>
                             <p>Nenhum carro cadastrado</p>
-                            <button class="btn" onclick="openAddCarModal()" style="margin-top: 1rem;">
-                                <i class="fas fa-plus"></i> Adicionar Primeiro Carro
-                            </button>
                         </td>
                     </tr>
                 `;
@@ -2109,79 +1299,6 @@
             });
         }
         
-        // Adiciona/Edita um carro
-        document.getElementById('car-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Obtém os ícones selecionados
-            const selectedFuelIcon = document.querySelector('#fuel-icon-selector .icon-option.selected')?.getAttribute('data-icon') || 'fas fa-gas-pump';
-            const selectedTransmissionIcon = document.querySelector('#transmission-icon-selector .icon-option.selected')?.getAttribute('data-icon') || 'fas fa-cogs';
-            const selectedExtraIcon = document.querySelector('#extra-icon-selector .icon-option.selected')?.getAttribute('data-icon') || 'fas fa-user-friends';
-            
-            const carId = document.getElementById('car-id').value || generateId();
-            const car = {
-                id: carId,
-                name: document.getElementById('car-name').value,
-                brand: document.getElementById('car-brand').value,
-                year: parseInt(document.getElementById('car-year').value),
-                price: parseFloat(document.getElementById('car-price').value),
-                color: document.getElementById('car-color').value,
-                kilometers: document.getElementById('car-kilometers').value ? parseInt(document.getElementById('car-kilometers').value) : null,
-                fuel: document.getElementById('car-fuel').value,
-                transmission: document.getElementById('car-transmission').value,
-                description: document.getElementById('car-description').value,
-                image: document.getElementById('image-preview').src || '',
-                fuelIcon: selectedFuelIcon,
-                transmissionIcon: selectedTransmissionIcon,
-                extraIcon: selectedExtraIcon,
-                status: 'disponível',
-                dateAdded: new Date().toISOString()
-            };
-            
-            // Salva no localStorage
-            const cars = JSON.parse(localStorage.getItem('cars')) || [];
-            
-            if (state.editingCarId) {
-                // Atualiza carro existente
-                const index = cars.findIndex(c => c.id === state.editingCarId);
-                if (index !== -1) {
-                    cars[index] = car;
-                }
-            } else {
-                // Adiciona novo carro
-                cars.push(car);
-            }
-            
-            localStorage.setItem('cars', JSON.stringify(cars));
-            
-            // Limpa o formulário
-            document.getElementById('car-form').reset();
-            
-            // Fecha o modal
-            closeCarModal();
-            
-            // Recarrega os dados
-            loadAdminData();
-            loadCars();
-            
-            // Mostra mensagem de sucesso
-            alert(state.editingCarId ? 'Carro atualizado com sucesso!' : 'Carro adicionado com sucesso!');
-        });
-        
-        // Excluir carro
-        function deleteCar(carId) {
-            if (confirm('Tem certeza que deseja excluir este carro?')) {
-                const cars = JSON.parse(localStorage.getItem('cars')) || [];
-                const updatedCars = cars.filter(car => car.id !== carId);
-                localStorage.setItem('cars', JSON.stringify(updatedCars));
-                
-                loadAdminData();
-                loadCars();
-                
-                alert('Carro excluído com sucesso!');
-            }
-        }
-        
         // Mostrar detalhes do carro
         function showCarDetails(carId) {
             const cars = JSON.parse(localStorage.getItem('cars')) || [];
@@ -2200,103 +1317,18 @@ Câmbio: ${car.transmission || 'Manual'}
 ${car.description ? `Descrição: ${car.description}` : ''}
 
 Interessado? Entre em contato conosco!
-Telefone: ${state.siteSettings.contactPhone}
-WhatsApp: ${state.siteSettings.contactWhatsapp}
+Telefone: (11) 3456-7890
+WhatsApp: (11) 98765-4321
                 `.trim();
                 
                 alert(details);
             }
         }
         
-        // Mostrar informações de contato
-        function showContactInfo() {
-            alert(`Entre em contato conosco para mais informações!
-
-Telefone: ${state.siteSettings.contactPhone}
-WhatsApp: ${state.siteSettings.contactWhatsapp}
-E-mail: ${state.siteSettings.contactEmail}
-Endereço: ${state.siteSettings.contactAddress}
-
-Horário de atendimento:
-${state.siteSettings.businessHours}
-            `);
-        }
-        
         // Gerar ID único
         function generateId() {
             return 'car_' + Math.random().toString(36).substr(2, 9);
         }
-        
-        // Carrega os dados quando a página é carregada
-        document.addEventListener('DOMContentLoaded', function() {
-            // Carrega configurações do site
-            const savedSettings = localStorage.getItem('siteSettings');
-            if (savedSettings) {
-                state.siteSettings = JSON.parse(savedSettings);
-                updateSiteInterface();
-            }
-            
-            // Carrega personalizações
-            const savedCustomization = localStorage.getItem('siteCustomization');
-            if (savedCustomization) {
-                state.customization = JSON.parse(savedCustomization);
-                applyCustomization();
-            }
-            
-            // Atualiza os eventos dos inputs de cor
-            document.getElementById('primary-color').addEventListener('input', updateColorPreviews);
-            document.getElementById('secondary-color').addEventListener('input', updateColorPreviews);
-            document.getElementById('accent-color').addEventListener('input', updateColorPreviews);
-            document.getElementById('dark-color').addEventListener('input', updateColorPreviews);
-            
-            loadCars();
-            
-            // Adiciona alguns carros de exemplo se estiver vazio
-            const cars = JSON.parse(localStorage.getItem('cars')) || [];
-            if (cars.length === 0) {
-                const sampleCars = [
-                    {
-                        id: generateId(),
-                        name: "Golf GTI",
-                        brand: "Volkswagen",
-                        year: 2022,
-                        price: 189900,
-                        color: "Vermelho",
-                        kilometers: 15000,
-                        fuel: "Gasolina",
-                        transmission: "Automático",
-                        description: "Carro esportivo em excelente estado, único dono, com todos os serviços realizados na concessionária. Completo, com teto solar, bancos em couro e sistema de som premium.",
-                        image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-                        fuelIcon: "fas fa-gas-pump",
-                        transmissionIcon: "fas fa-cogs",
-                        extraIcon: "fas fa-user-friends",
-                        status: "disponível",
-                        dateAdded: new Date().toISOString()
-                    },
-                    {
-                        id: generateId(),
-                        name: "Corolla XEi",
-                        brand: "Toyota",
-                        year: 2023,
-                        price: 159990,
-                        color: "Prata",
-                        kilometers: 8000,
-                        fuel: "Flex",
-                        transmission: "Automático",
-                        description: "Seminovo, com garantia de fábrica, completo, ar-condicionado digital, multimídia e câmera de ré. Excelente estado de conservação.",
-                        image: "https://images.unsplash.com/photo-1603587070813-50d1220677b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-                        fuelIcon: "fas fa-gas-pump",
-                        transmissionIcon: "fas fa-cogs",
-                        extraIcon: "fas fa-user-friends",
-                        status: "disponível",
-                        dateAdded: new Date().toISOString()
-                    }
-                ];
-                
-                localStorage.setItem('cars', JSON.stringify(sampleCars));
-                loadCars();
-            }
-        });
     </script>
 </body>
 </html>
