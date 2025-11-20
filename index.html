@@ -3,42 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garagem de Carros</title>
+    <meta name="description" content="Garagem Premium - Encontre os melhores carros com fotos e detalhes. Compre seu veículo com segurança e confiança.">
+    <title>Garagem Premium - Seu próximo carro está aqui</title>
     <style>
         /* Reset e configurações básicas */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: #f5f7fa;
+            color: var(--text-color);
             line-height: 1.6;
         }
         
+        /* Header e Navegação */
         header {
-            background-color: #2c3e50;
+            background-color: var(--primary-color);
             color: white;
-            padding: 1rem;
-            text-align: center;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
-        nav {
-            background-color: #34495e;
-            padding: 0.5rem;
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
         }
         
         nav ul {
             display: flex;
-            justify-content: center;
             list-style: none;
         }
         
         nav ul li {
-            margin: 0 1rem;
+            margin: 0 0.5rem;
         }
         
         nav ul li a {
@@ -46,24 +77,130 @@
             text-decoration: none;
             padding: 0.5rem 1rem;
             border-radius: 4px;
-            transition: background-color 0.3s;
+            transition: var(--transition);
+            font-weight: 500;
         }
         
-        nav ul li a:hover {
-            background-color: #2c3e50;
+        nav ul li a:hover, nav ul li a.active {
+            background-color: var(--secondary-color);
         }
         
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Container principal */
         .container {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
         
-        h1, h2, h3 {
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
         
-        /* Estilos para a galeria de carros */
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        /* Filtros e Busca */
+        .filters {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .filter-group select, .filter-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .search-box {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+        
+        .search-box button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        /* Galeria de carros */
         .cars-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -74,49 +211,104 @@
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
         
         .car-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
         
         .car-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            border-bottom: 3px solid var(--secondary-color);
         }
         
         .car-info {
-            padding: 1rem;
+            padding: 1.5rem;
+        }
+        
+        .car-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .car-details {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
         
         .car-price {
             font-weight: bold;
-            color: #e74c3c;
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin: 0.5rem 0;
         }
         
-        /* Estilos para o formulário */
+        .car-description {
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .car-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        /* Formulário */
         .form-container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 2rem auto;
             background-color: white;
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--dark-color);
+            font-size: 1.8rem;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
         }
         
         .form-group {
             margin-bottom: 1.5rem;
         }
         
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
         label {
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: bold;
+            font-weight: 600;
+            color: var(--dark-color);
         }
         
         input, textarea, select {
@@ -125,108 +317,543 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 1rem;
+            transition: var(--transition);
         }
         
-        button {
-            background-color: #3498db;
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        /* Sobre e Contato */
+        .about-section, .contact-section {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--dark-color);
+            font-size: 1.8rem;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            background-color: var(--light-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
             color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
         }
         
-        button:hover {
-            background-color: #2980b9;
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary-color);
+        }
+        
+        .footer-about {
+            line-height: 1.7;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links ul li a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Mensagens e estados */
+        .message {
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #bdc3c7;
         }
         
         /* Responsividade */
         @media (max-width: 768px) {
-            nav ul {
+            .header-container {
                 flex-direction: column;
-                align-items: center;
+                text-align: center;
             }
             
-            nav ul li {
-                margin: 0.5rem 0;
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                padding: 2rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-row {
+                flex-direction: column;
+            }
+            
+            .car-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .car-actions .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .about-section, .contact-section {
+                padding: 2rem 1rem;
             }
         }
         
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
+        @media (max-width: 480px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                margin-top: 1rem;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0.2rem 0;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Garagem de Carros</h1>
+        <div class="header-container">
+            <div class="logo">Garagem<span>Premium</span></div>
+            <button class="mobile-menu">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active" onclick="showPage('home')">Início</a></li>
+                    <li><a href="#" onclick="showPage('add-car')">Adicionar Carro</a></li>
+                    <li><a href="#" onclick="showPage('about')">Sobre</a></li>
+                    <li><a href="#" onclick="showPage('contact')">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     
-    <nav>
-        <ul>
-            <li><a href="#" onclick="showPage('home')">Início</a></li>
-            <li><a href="#" onclick="showPage('add-car')">Adicionar Carro</a></li>
-        </ul>
-    </nav>
-    
     <div class="container">
-        <!-- Página inicial com lista de carros -->
+        <!-- Página inicial -->
         <div id="home-page" class="page">
-            <h2>Carros Disponíveis</h2>
-            <div id="cars-container" class="cars-grid">
-                <!-- Os carros serão carregados aqui via JavaScript -->
-            </div>
+            <section class="hero">
+                <h1>Encontre o carro dos seus sonhos</h1>
+                <p>Explore nossa seleção premium de veículos com fotos de alta qualidade e informações detalhadas.</p>
+                <a href="#" class="btn" onclick="showPage('add-car')">Vender meu carro</a>
+            </section>
+            
+            <section class="filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="filter-brand">Marca</label>
+                        <select id="filter-brand">
+                            <option value="">Todas as marcas</option>
+                            <option value="Volkswagen">Volkswagen</option>
+                            <option value="Ford">Ford</option>
+                            <option value="Chevrolet">Chevrolet</option>
+                            <option value="Fiat">Fiat</option>
+                            <option value="Toyota">Toyota</option>
+                            <option value="Honda">Honda</option>
+                            <option value="BMW">BMW</option>
+                            <option value="Mercedes-Benz">Mercedes-Benz</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-year">Ano</label>
+                        <select id="filter-year">
+                            <option value="">Todos os anos</option>
+                            <option value="2023">2023 ou mais novo</option>
+                            <option value="2020">2020-2022</option>
+                            <option value="2015">2015-2019</option>
+                            <option value="2010">2010-2014</option>
+                            <option value="2000">2000-2009</option>
+                            <option value="1990">Antes de 2000</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-price">Preço máximo</label>
+                        <select id="filter-price">
+                            <option value="">Qualquer preço</option>
+                            <option value="50000">Até R$ 50.000</option>
+                            <option value="100000">Até R$ 100.000</option>
+                            <option value="150000">Até R$ 150.000</option>
+                            <option value="200000">Até R$ 200.000</option>
+                            <option value="300000">Mais de R$ 200.000</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Digite o modelo, marca ou característica do carro...">
+                    <button onclick="searchCars()">Buscar</button>
+                </div>
+            </section>
+            
+            <section>
+                <h2 style="margin-bottom: 1.5rem;">Carros Disponíveis</h2>
+                <div id="cars-container" class="cars-grid">
+                    <!-- Os carros serão carregados aqui via JavaScript -->
+                </div>
+            </section>
         </div>
         
         <!-- Página para adicionar carro -->
         <div id="add-car-page" class="page" style="display: none;">
             <div class="form-container">
-                <h2>Adicionar Novo Carro</h2>
+                <h2 class="form-title">Adicionar Novo Carro</h2>
                 <form id="car-form">
-                    <div class="form-group">
-                        <label for="car-name">Nome do Carro</label>
-                        <input type="text" id="car-name" required>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="car-name">Modelo do Carro</label>
+                            <input type="text" id="car-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="car-brand">Marca</label>
+                            <select id="car-brand" required>
+                                <option value="">Selecione a marca</option>
+                                <option value="Volkswagen">Volkswagen</option>
+                                <option value="Ford">Ford</option>
+                                <option value="Chevrolet">Chevrolet</option>
+                                <option value="Fiat">Fiat</option>
+                                <option value="Toyota">Toyota</option>
+                                <option value="Honda">Honda</option>
+                                <option value="BMW">BMW</option>
+                                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                                <option value="Audi">Audi</option>
+                                <option value="Outra">Outra</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="car-year">Ano</label>
+                            <input type="number" id="car-year" min="1900" max="2024" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="car-price">Preço (R$)</label>
+                            <input type="number" id="car-price" min="0" step="0.01" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="car-color">Cor</label>
+                            <input type="text" id="car-color">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="car-kilometers">Quilometragem</label>
+                            <input type="number" id="car-kilometers" min="0">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="car-description">Descrição</label>
+                            <textarea id="car-description" rows="4" placeholder="Descreva o carro, inclua detalhes, opcionais, estado de conservação..."></textarea>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="car-image">URL da Imagem</label>
+                            <input type="url" id="car-image" placeholder="https://exemplo.com/imagem.jpg">
+                            <small style="color: var(--text-light); display: block; margin-top: 0.5rem;">Dica: Você pode usar serviços como Imgur, Google Photos ou outros para hospedar suas imagens.</small>
+                        </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="car-brand">Marca</label>
-                        <input type="text" id="car-brand" required>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="showPage('home')">Cancelar</button>
+                        <button type="submit" class="btn">Adicionar Carro</button>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="car-year">Ano</label>
-                        <input type="number" id="car-year" min="1900" max="2024" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="car-price">Preço (R$)</label>
-                        <input type="number" id="car-price" min="0" step="0.01" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="car-description">Descrição</label>
-                        <textarea id="car-description" rows="4"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="car-image">URL da Imagem</label>
-                        <input type="url" id="car-image" placeholder="https://exemplo.com/imagem.jpg">
-                    </div>
-                    
-                    <button type="submit">Adicionar Carro</button>
                 </form>
             </div>
+        </div>
+        
+        <!-- Página Sobre -->
+        <div id="about-page" class="page" style="display: none;">
+            <section class="about-section">
+                <h2 class="section-title">Sobre a Garagem Premium</h2>
+                <div class="about-content">
+                    <p>Somos uma plataforma dedicada a conectar amantes de carros com os veículos dos seus sonhos. Nossa missão é fornecer uma experiência transparente e agradável para compra e venda de automóveis.</p>
+                    
+                    <p>Na Garagem Premium, acreditamos que cada carro tem uma história, e nos esforçamos para apresentar cada veículo com fotos de alta qualidade e descrições detalhadas, para que você possa tomar a melhor decisão.</p>
+                    
+                    <p>Nossa equipe é formada por entusiastas automotivos com anos de experiência no mercado, sempre buscando os melhores veículos e as melhores oportunidades para nossos clientes.</p>
+                    
+                    <h3 style="margin: 2rem 0 1rem;">Por que escolher a Garagem Premium?</h3>
+                    <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                        <li>Fotos de alta qualidade de todos os ângulos</li>
+                        <li>Descrições detalhadas e transparentes</li>
+                        <li>Filtros avançados para encontrar exatamente o que procura</li>
+                        <li>Atendimento especializado</li>
+                        <li>Processo seguro e confiável</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Página Contato -->
+        <div id="contact-page" class="page" style="display: none;">
+            <section class="contact-section">
+                <h2 class="section-title">Entre em Contato</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <h3>Telefone</h3>
+                                <p>(11) 9999-9999</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div>
+                                <h3>E-mail</h3>
+                                <p>contato@garagempremium.com.br</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h3>Endereço</h3>
+                                <p>Av. Paulista, 1000 - São Paulo, SP</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">🕒</div>
+                            <div>
+                                <h3>Horário de Atendimento</h3>
+                                <p>Segunda a Sexta: 9h às 18h<br>Sábado: 9h às 13h</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 style="margin-bottom: 1rem;">Envie uma mensagem</h3>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="contact-name">Seu Nome</label>
+                                <input type="text" id="contact-name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-email">Seu E-mail</label>
+                                <input type="email" id="contact-email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-message">Mensagem</label>
+                                <textarea id="contact-message" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
     
     <footer>
-        <p>&copy; 2023 Garagem de Carros. Todos os direitos reservados.</p>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">Garagem<span>Premium</span></div>
+                <p class="footer-about">Sua plataforma confiável para compra e venda de veículos. Conectamos amantes de carros com os veículos dos seus sonhos.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Twitter">🐦</a>
+                    <a href="#" title="YouTube">▶️</a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#" onclick="showPage('home')">Início</a></li>
+                    <li><a href="#" onclick="showPage('add-car')">Adicionar Carro</a></li>
+                    <li><a href="#" onclick="showPage('about')">Sobre Nós</a></li>
+                    <li><a href="#" onclick="showPage('contact')">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contato</h3>
+                <p>📞 (11) 9999-9999</p>
+                <p>✉️ contato@garagempremium.com.br</p>
+                <p>📍 Av. Paulista, 1000 - São Paulo, SP</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 Garagem Premium. Todos os direitos reservados.
+        </div>
     </footer>
 
     <script>
@@ -238,6 +865,20 @@
                 page.style.display = 'none';
             });
             
+            // Atualiza a navegação ativa
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Encontra e ativa o link correto
+            const activeLink = Array.from(navLinks).find(link => 
+                link.getAttribute('onclick')?.includes(`'${pageId}'`)
+            );
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
             // Mostra a página selecionada
             document.getElementById(`${pageId}-page`).style.display = 'block';
             
@@ -247,6 +888,11 @@
             }
         }
         
+        // Menu mobile
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+        
         // Carrega os carros do localStorage
         function loadCars() {
             const carsContainer = document.getElementById('cars-container');
@@ -255,27 +901,101 @@
             const cars = JSON.parse(localStorage.getItem('cars')) || [];
             
             if (cars.length === 0) {
-                carsContainer.innerHTML = '<p>Nenhum carro cadastrado ainda.</p>';
+                carsContainer.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <i>🚗</i>
+                        <h3>Nenhum carro cadastrado ainda</h3>
+                        <p>Seja o primeiro a adicionar um carro à nossa garagem!</p>
+                        <button class="btn" onclick="showPage('add-car')" style="margin-top: 1rem;">Adicionar Primeiro Carro</button>
+                    </div>
+                `;
                 return;
             }
             
-            cars.forEach((car, index) => {
+            // Aplicar filtros
+            const filteredCars = applyFilters(cars);
+            
+            if (filteredCars.length === 0) {
+                carsContainer.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <i>🔍</i>
+                        <h3>Nenhum carro encontrado</h3>
+                        <p>Tente ajustar os filtros para ver mais resultados.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            filteredCars.forEach((car, index) => {
                 const carCard = document.createElement('div');
                 carCard.className = 'car-card';
                 carCard.innerHTML = `
-                    <img src="${car.image || 'https://via.placeholder.com/300x200?text=Sem+Imagem'}" alt="${car.name}" class="car-image">
+                    <img src="${car.image || 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'}" alt="${car.name}" class="car-image">
                     <div class="car-info">
-                        <h3>${car.name}</h3>
-                        <p><strong>Marca:</strong> ${car.brand}</p>
-                        <p><strong>Ano:</strong> ${car.year}</p>
-                        <p class="car-price">R$ ${car.price.toLocaleString('pt-BR')}</p>
-                        <p>${car.description || ''}</p>
-                        <button onclick="deleteCar(${index})" style="background-color: #e74c3c; margin-top: 10px;">Remover</button>
+                        <h3 class="car-title">${car.name}</h3>
+                        <p class="car-details">${car.brand} • ${car.year} ${car.color ? '• ' + car.color : ''}</p>
+                        <p class="car-price">R$ ${car.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</p>
+                        ${car.kilometers ? `<p class="car-details">${car.kilometers.toLocaleString('pt-BR')} km</p>` : ''}
+                        ${car.description ? `<p class="car-description">${car.description}</p>` : ''}
+                        <div class="car-actions">
+                            <button class="btn">Entrar em Contato</button>
+                            <button class="btn btn-outline" onclick="showCarDetails(${index})">Detalhes</button>
+                        </div>
                     </div>
                 `;
                 carsContainer.appendChild(carCard);
             });
         }
+        
+        // Aplicar filtros
+        function applyFilters(cars) {
+            const brandFilter = document.getElementById('filter-brand').value;
+            const yearFilter = document.getElementById('filter-year').value;
+            const priceFilter = document.getElementById('filter-price').value;
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            
+            return cars.filter(car => {
+                // Filtro por marca
+                if (brandFilter && car.brand !== brandFilter) return false;
+                
+                // Filtro por ano
+                if (yearFilter) {
+                    const year = parseInt(yearFilter);
+                    if (year === 2023 && car.year < 2023) return false;
+                    if (year === 2020 && (car.year < 2020 || car.year > 2022)) return false;
+                    if (year === 2015 && (car.year < 2015 || car.year > 2019)) return false;
+                    if (year === 2010 && (car.year < 2010 || car.year > 2014)) return false;
+                    if (year === 2000 && (car.year < 2000 || car.year > 2009)) return false;
+                    if (year === 1990 && car.year >= 2000) return false;
+                }
+                
+                // Filtro por preço
+                if (priceFilter && car.price > parseInt(priceFilter)) return false;
+                
+                // Filtro por busca
+                if (searchTerm) {
+                    const searchableText = `${car.name} ${car.brand} ${car.year} ${car.color || ''} ${car.description || ''}`.toLowerCase();
+                    if (!searchableText.includes(searchTerm)) return false;
+                }
+                
+                return true;
+            });
+        }
+        
+        // Buscar carros
+        function searchCars() {
+            loadCars();
+        }
+        
+        // Adicionar event listeners para os filtros
+        document.getElementById('filter-brand').addEventListener('change', loadCars);
+        document.getElementById('filter-year').addEventListener('change', loadCars);
+        document.getElementById('filter-price').addEventListener('change', loadCars);
+        document.getElementById('search-input').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                searchCars();
+            }
+        });
         
         // Adiciona um novo carro
         document.getElementById('car-form').addEventListener('submit', function(e) {
@@ -286,8 +1006,11 @@
                 brand: document.getElementById('car-brand').value,
                 year: parseInt(document.getElementById('car-year').value),
                 price: parseFloat(document.getElementById('car-price').value),
+                color: document.getElementById('car-color').value,
+                kilometers: document.getElementById('car-kilometers').value ? parseInt(document.getElementById('car-kilometers').value) : null,
                 description: document.getElementById('car-description').value,
-                image: document.getElementById('car-image').value
+                image: document.getElementById('car-image').value,
+                dateAdded: new Date().toISOString()
             };
             
             // Salva no localStorage
@@ -305,19 +1028,68 @@
             showPage('home');
         });
         
-        // Remove um carro
-        function deleteCar(index) {
-            if (confirm('Tem certeza que deseja remover este carro?')) {
-                const cars = JSON.parse(localStorage.getItem('cars')) || [];
-                cars.splice(index, 1);
-                localStorage.setItem('cars', JSON.stringify(cars));
-                loadCars();
+        // Formulário de contato
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            document.getElementById('contact-form').reset();
+        });
+        
+        // Mostrar detalhes do carro
+        function showCarDetails(index) {
+            const cars = JSON.parse(localStorage.getItem('cars')) || [];
+            const car = cars[index];
+            
+            if (car) {
+                const details = `
+Modelo: ${car.name}
+Marca: ${car.brand}
+Ano: ${car.year}
+Preço: R$ ${car.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}
+${car.color ? `Cor: ${car.color}` : ''}
+${car.kilometers ? `Quilometragem: ${car.kilometers.toLocaleString('pt-BR')} km` : ''}
+${car.description ? `Descrição: ${car.description}` : ''}
+                `.trim();
+                
+                alert(details);
             }
         }
         
         // Carrega os carros quando a página é carregada
         document.addEventListener('DOMContentLoaded', function() {
             loadCars();
+            
+            // Adiciona alguns carros de exemplo se estiver vazio
+            const cars = JSON.parse(localStorage.getItem('cars')) || [];
+            if (cars.length === 0) {
+                const sampleCars = [
+                    {
+                        name: "Golf GTI",
+                        brand: "Volkswagen",
+                        year: 2020,
+                        price: 145900,
+                        color: "Vermelho",
+                        kilometers: 32000,
+                        description: "Carro esportivo em excelente estado, único dono, com todos os serviços realizados na concessionária.",
+                        image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                        dateAdded: new Date().toISOString()
+                    },
+                    {
+                        name: "Corolla XEi",
+                        brand: "Toyota",
+                        year: 2022,
+                        price: 129990,
+                        color: "Prata",
+                        kilometers: 15000,
+                        description: "Seminovo, com garantia de fábrica, completo, ar-condicionado digital, multimídia e câmera de ré.",
+                        image: "https://images.unsplash.com/photo-1603587070813-50d1220677b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                        dateAdded: new Date().toISOString()
+                    }
+                ];
+                
+                localStorage.setItem('cars', JSON.stringify(sampleCars));
+                loadCars();
+            }
         });
     </script>
 </body>
