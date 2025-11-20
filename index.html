@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoMasters - Garagem Exclusiva</title>
+    <title>AutoMasters - Garagem Premium</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset e Variáveis */
@@ -541,6 +541,77 @@
             transform: scale(1.2);
         }
         
+        /* Seletor de Ícones */
+        .icon-selector {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            max-height: 150px;
+            overflow-y: auto;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .icon-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.5rem;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .icon-option:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .icon-option.selected {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .icon-option i {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .icon-option span {
+            font-size: 0.7rem;
+            text-align: center;
+        }
+        
+        /* Upload de Imagem */
+        .image-upload-container {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+        
+        .image-upload-container:hover {
+            border-color: var(--accent);
+        }
+        
+        .image-upload-container i {
+            font-size: 3rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+        
+        .image-preview {
+            max-width: 100%;
+            max-height: 200px;
+            margin-top: 1rem;
+            border-radius: 8px;
+            display: none;
+        }
+        
         /* Footer */
         footer {
             background-color: var(--primary);
@@ -734,6 +805,10 @@
                 display: block;
                 overflow-x: auto;
             }
+            
+            .icon-selector {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
         
         @media (max-width: 480px) {
@@ -767,6 +842,10 @@
             
             .modal-content {
                 padding: 2rem 1.5rem;
+            }
+            
+            .icon-selector {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -810,14 +889,14 @@
         <!-- Página inicial -->
         <div id="home-page" class="page">
             <section class="hero">
-                <h1>Veículos Selecionados com Qualidade</h1>
-                <p>Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.</p>
+                <h1 id="hero-title">Veículos Selecionados com Qualidade</h1>
+                <p id="hero-description">Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.</p>
                 <a href="#" class="btn" onclick="showContactInfo()"><i class="fas fa-phone-alt"></i> Fale Conosco</a>
             </section>
             
             <section>
                 <div class="section-header">
-                    <h2 class="section-title">Nossa Garagem</h2>
+                    <h2 class="section-title" id="showcase-title">Nossa Garagem</h2>
                 </div>
                 
                 <div id="cars-container" class="cars-showcase">
@@ -831,7 +910,10 @@
             <div class="admin-panel">
                 <div class="admin-header">
                     <h2 class="admin-title">Painel de Controle</h2>
-                    <button class="btn" onclick="openAddCarModal()"><i class="fas fa-plus"></i> Adicionar Carro</button>
+                    <div>
+                        <button class="btn" onclick="openAddCarModal()"><i class="fas fa-plus"></i> Adicionar Carro</button>
+                        <button class="btn btn-outline" onclick="openSiteSettingsModal()"><i class="fas fa-cog"></i> Configurações</button>
+                    </div>
                 </div>
                 
                 <div class="stats-cards">
@@ -973,8 +1055,34 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="car-image">URL da Imagem</label>
-                    <input type="url" id="car-image" placeholder="https://exemplo.com/imagem.jpg">
+                    <label>Ícone do Combustível</label>
+                    <div class="icon-selector" id="fuel-icon-selector">
+                        <!-- Ícones serão preenchidos via JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Ícone do Câmbio</label>
+                    <div class="icon-selector" id="transmission-icon-selector">
+                        <!-- Ícones serão preenchidos via JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Ícone Adicional</label>
+                    <div class="icon-selector" id="extra-icon-selector">
+                        <!-- Ícones serão preenchidos via JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="car-image">Imagem do Carro</label>
+                    <div class="image-upload-container" onclick="document.getElementById('image-upload').click()">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Clique para fazer upload de uma imagem</p>
+                        <input type="file" id="image-upload" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
+                        <img id="image-preview" class="image-preview" src="" alt="Prévia da imagem">
+                    </div>
                 </div>
                 
                 <div class="form-actions">
@@ -985,10 +1093,64 @@
         </div>
     </div>
     
+    <!-- Modal de Configurações do Site -->
+    <div id="site-settings-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeSiteSettingsModal()">&times;</span>
+            <h2 class="modal-title">Configurações do Site</h2>
+            <form id="site-settings-form">
+                <div class="form-group">
+                    <label for="site-title">Título do Site</label>
+                    <input type="text" id="site-title" value="AutoMasters">
+                </div>
+                
+                <div class="form-group">
+                    <label for="hero-title">Título Principal (Hero)</label>
+                    <input type="text" id="hero-title-input" value="Veículos Selecionados com Qualidade">
+                </div>
+                
+                <div class="form-group">
+                    <label for="hero-description">Descrição do Hero</label>
+                    <textarea id="hero-description-input" rows="3">Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="showcase-title">Título da Vitrine</label>
+                    <input type="text" id="showcase-title-input" value="Nossa Garagem">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-phone">Telefone de Contato</label>
+                    <input type="text" id="contact-phone" value="(11) 3456-7890">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-whatsapp">WhatsApp</label>
+                    <input type="text" id="contact-whatsapp" value="(11) 98765-4321">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-email">E-mail</label>
+                    <input type="email" id="contact-email" value="contato@automasters.com.br">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-address">Endereço</label>
+                    <input type="text" id="contact-address" value="Av. das Nações, 1234 - São Paulo, SP">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeSiteSettingsModal()">Cancelar</button>
+                    <button type="submit" class="btn">Salvar Configurações</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
     <footer>
         <div class="footer-container">
             <div>
-                <div class="footer-logo">Auto<span>Masters</span></div>
+                <div class="footer-logo" id="footer-logo">Auto<span>Masters</span></div>
                 <p class="footer-about">Há mais de 15 anos no mercado, a AutoMasters oferece os melhores veículos com procedência garantida e atendimento personalizado.</p>
                 <div class="social-links">
                     <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -1009,16 +1171,16 @@
             
             <div class="footer-contact">
                 <h3>Contato</h3>
-                <p><i class="fas fa-phone"></i> (11) 3456-7890</p>
-                <p><i class="fas fa-whatsapp"></i> (11) 98765-4321</p>
-                <p><i class="fas fa-envelope"></i> contato@automasters.com.br</p>
-                <p><i class="fas fa-map-marker-alt"></i> Av. das Nações, 1234 - São Paulo, SP</p>
+                <p><i class="fas fa-phone"></i> <span id="footer-phone">(11) 3456-7890</span></p>
+                <p><i class="fas fa-whatsapp"></i> <span id="footer-whatsapp">(11) 98765-4321</span></p>
+                <p><i class="fas fa-envelope"></i> <span id="footer-email">contato@automasters.com.br</span></p>
+                <p><i class="fas fa-map-marker-alt"></i> <span id="footer-address">Av. das Nações, 1234 - São Paulo, SP</span></p>
                 <p><i class="fas fa-clock"></i> Seg-Sex: 8h às 18h | Sáb: 8h às 12h</p>
             </div>
         </div>
         
         <div class="copyright">
-            &copy; 2023 AutoMasters. Todos os direitos reservados.
+            &copy; 2023 <span id="footer-copyright">AutoMasters</span>. Todos os direitos reservados.
         </div>
     </footer>
 
@@ -1027,13 +1189,52 @@
         const state = {
             isLoggedIn: false,
             currentUser: null,
-            editingCarId: null
+            editingCarId: null,
+            siteSettings: {
+                title: "AutoMasters",
+                heroTitle: "Veículos Selecionados com Qualidade",
+                heroDescription: "Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.",
+                showcaseTitle: "Nossa Garagem",
+                contactPhone: "(11) 3456-7890",
+                contactWhatsapp: "(11) 98765-4321",
+                contactEmail: "contato@automasters.com.br",
+                contactAddress: "Av. das Nações, 1234 - São Paulo, SP"
+            }
         };
         
-        // Credenciais de acesso (em um sistema real, isso seria no backend)
+        // Credenciais de acesso
         const validCredentials = {
-            username: "admin",
-            password: "garagem123"
+            username: "11771651636",
+            password: "Iverenides4615"
+        };
+        
+        // Ícones disponíveis
+        const availableIcons = {
+            fuel: [
+                { class: "fas fa-gas-pump", name: "Gasolina" },
+                { class: "fas fa-fire", name: "Combustível" },
+                { class: "fas fa-oil-can", name: "Óleo" },
+                { class: "fas fa-battery-full", name: "Bateria" },
+                { class: "fas fa-charging-station", name: "Elétrico" }
+            ],
+            transmission: [
+                { class: "fas fa-cogs", name: "Câmbio" },
+                { class: "fas fa-exchange-alt", name: "Transmissão" },
+                { class: "fas fa-sliders-h", name: "Controles" },
+                { class: "fas fa-tachometer-alt", name: "Velocímetro" }
+            ],
+            extra: [
+                { class: "fas fa-user-friends", name: "Passageiros" },
+                { class: "fas fa-suitcase", name: "Porta-malas" },
+                { class: "fas fa-snowflake", name: "Ar Condicionado" },
+                { class: "fas fa-shield-alt", name: "Segurança" },
+                { class: "fas fa-music", name: "Som" },
+                { class: "fas fa-tv", name: "Multimídia" },
+                { class: "fas fa-car", name: "Carro" },
+                { class: "fas fa-key", name: "Chave" },
+                { class: "fas fa-palette", name: "Cor" },
+                { class: "fas fa-cog", name: "Configurações" }
+            ]
         };
         
         // Navegação entre páginas
@@ -1100,7 +1301,12 @@
             document.getElementById('car-form-submit').textContent = 'Adicionar Carro';
             document.getElementById('car-form').reset();
             document.getElementById('car-id').value = '';
+            document.getElementById('image-preview').style.display = 'none';
             state.editingCarId = null;
+            
+            // Preenche os seletores de ícones
+            fillIconSelectors();
+            
             document.getElementById('car-modal').style.display = 'flex';
         }
         
@@ -1122,7 +1328,16 @@
                 document.getElementById('car-fuel').value = car.fuel || 'Gasolina';
                 document.getElementById('car-transmission').value = car.transmission || 'Manual';
                 document.getElementById('car-description').value = car.description || '';
-                document.getElementById('car-image').value = car.image || '';
+                
+                if (car.image) {
+                    document.getElementById('image-preview').src = car.image;
+                    document.getElementById('image-preview').style.display = 'block';
+                } else {
+                    document.getElementById('image-preview').style.display = 'none';
+                }
+                
+                // Preenche os seletores de ícones
+                fillIconSelectors(car.fuelIcon, car.transmissionIcon, car.extraIcon);
                 
                 state.editingCarId = carId;
                 document.getElementById('car-modal').style.display = 'flex';
@@ -1131,6 +1346,90 @@
         
         function closeCarModal() {
             document.getElementById('car-modal').style.display = 'none';
+        }
+        
+        // Modal de Configurações do Site
+        function openSiteSettingsModal() {
+            // Preenche o formulário com as configurações atuais
+            document.getElementById('site-title').value = state.siteSettings.title;
+            document.getElementById('hero-title-input').value = state.siteSettings.heroTitle;
+            document.getElementById('hero-description-input').value = state.siteSettings.heroDescription;
+            document.getElementById('showcase-title-input').value = state.siteSettings.showcaseTitle;
+            document.getElementById('contact-phone').value = state.siteSettings.contactPhone;
+            document.getElementById('contact-whatsapp').value = state.siteSettings.contactWhatsapp;
+            document.getElementById('contact-email').value = state.siteSettings.contactEmail;
+            document.getElementById('contact-address').value = state.siteSettings.contactAddress;
+            
+            document.getElementById('site-settings-modal').style.display = 'flex';
+        }
+        
+        function closeSiteSettingsModal() {
+            document.getElementById('site-settings-modal').style.display = 'none';
+        }
+        
+        // Preenche os seletores de ícones
+        function fillIconSelectors(selectedFuelIcon = "fas fa-gas-pump", selectedTransmissionIcon = "fas fa-cogs", selectedExtraIcon = "fas fa-user-friends") {
+            // Ícones de combustível
+            const fuelSelector = document.getElementById('fuel-icon-selector');
+            fuelSelector.innerHTML = '';
+            
+            availableIcons.fuel.forEach(icon => {
+                const iconOption = document.createElement('div');
+                iconOption.className = `icon-option ${icon.class === selectedFuelIcon ? 'selected' : ''}`;
+                iconOption.setAttribute('data-icon', icon.class);
+                iconOption.innerHTML = `<i class="${icon.class}"></i><span>${icon.name}</span>`;
+                iconOption.onclick = function() {
+                    document.querySelectorAll('#fuel-icon-selector .icon-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                };
+                fuelSelector.appendChild(iconOption);
+            });
+            
+            // Ícones de transmissão
+            const transmissionSelector = document.getElementById('transmission-icon-selector');
+            transmissionSelector.innerHTML = '';
+            
+            availableIcons.transmission.forEach(icon => {
+                const iconOption = document.createElement('div');
+                iconOption.className = `icon-option ${icon.class === selectedTransmissionIcon ? 'selected' : ''}`;
+                iconOption.setAttribute('data-icon', icon.class);
+                iconOption.innerHTML = `<i class="${icon.class}"></i><span>${icon.name}</span>`;
+                iconOption.onclick = function() {
+                    document.querySelectorAll('#transmission-icon-selector .icon-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                };
+                transmissionSelector.appendChild(iconOption);
+            });
+            
+            // Ícones extras
+            const extraSelector = document.getElementById('extra-icon-selector');
+            extraSelector.innerHTML = '';
+            
+            availableIcons.extra.forEach(icon => {
+                const iconOption = document.createElement('div');
+                iconOption.className = `icon-option ${icon.class === selectedExtraIcon ? 'selected' : ''}`;
+                iconOption.setAttribute('data-icon', icon.class);
+                iconOption.innerHTML = `<i class="${icon.class}"></i><span>${icon.name}</span>`;
+                iconOption.onclick = function() {
+                    document.querySelectorAll('#extra-icon-selector .icon-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                };
+                extraSelector.appendChild(iconOption);
+            });
+        }
+        
+        // Upload de imagem
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('image-preview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
         }
         
         // Login
@@ -1149,6 +1448,43 @@
                 alert('Usuário ou senha incorretos!');
             }
         });
+        
+        // Configurações do site
+        document.getElementById('site-settings-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Atualiza as configurações
+            state.siteSettings.title = document.getElementById('site-title').value;
+            state.siteSettings.heroTitle = document.getElementById('hero-title-input').value;
+            state.siteSettings.heroDescription = document.getElementById('hero-description-input').value;
+            state.siteSettings.showcaseTitle = document.getElementById('showcase-title-input').value;
+            state.siteSettings.contactPhone = document.getElementById('contact-phone').value;
+            state.siteSettings.contactWhatsapp = document.getElementById('contact-whatsapp').value;
+            state.siteSettings.contactEmail = document.getElementById('contact-email').value;
+            state.siteSettings.contactAddress = document.getElementById('contact-address').value;
+            
+            // Salva no localStorage
+            localStorage.setItem('siteSettings', JSON.stringify(state.siteSettings));
+            
+            // Atualiza a interface
+            updateSiteInterface();
+            
+            closeSiteSettingsModal();
+            alert('Configurações salvas com sucesso!');
+        });
+        
+        // Atualiza a interface com as configurações do site
+        function updateSiteInterface() {
+            document.getElementById('hero-title').textContent = state.siteSettings.heroTitle;
+            document.getElementById('hero-description').textContent = state.siteSettings.heroDescription;
+            document.getElementById('showcase-title').textContent = state.siteSettings.showcaseTitle;
+            document.getElementById('footer-logo').innerHTML = `${state.siteSettings.title}<span>Masters</span>`;
+            document.getElementById('footer-phone').textContent = state.siteSettings.contactPhone;
+            document.getElementById('footer-whatsapp').textContent = state.siteSettings.contactWhatsapp;
+            document.getElementById('footer-email').textContent = state.siteSettings.contactEmail;
+            document.getElementById('footer-address').textContent = state.siteSettings.contactAddress;
+            document.getElementById('footer-copyright').textContent = state.siteSettings.title;
+        }
         
         // Carrega os carros do localStorage
         function loadCars() {
@@ -1202,15 +1538,15 @@
                         
                         <div class="car-features">
                             <div class="feature">
-                                <i class="fas fa-gas-pump"></i>
+                                <i class="${car.fuelIcon || 'fas fa-gas-pump'}"></i>
                                 <span>${car.fuel || 'Flex'}</span>
                             </div>
                             <div class="feature">
-                                <i class="fas fa-cogs"></i>
+                                <i class="${car.transmissionIcon || 'fas fa-cogs'}"></i>
                                 <span>${car.transmission || 'Manual'}</span>
                             </div>
                             <div class="feature">
-                                <i class="fas fa-user-friends"></i>
+                                <i class="${car.extraIcon || 'fas fa-user-friends'}"></i>
                                 <span>5 lugares</span>
                             </div>
                         </div>
@@ -1285,6 +1621,11 @@
         document.getElementById('car-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Obtém os ícones selecionados
+            const selectedFuelIcon = document.querySelector('#fuel-icon-selector .icon-option.selected')?.getAttribute('data-icon') || 'fas fa-gas-pump';
+            const selectedTransmissionIcon = document.querySelector('#transmission-icon-selector .icon-option.selected')?.getAttribute('data-icon') || 'fas fa-cogs';
+            const selectedExtraIcon = document.querySelector('#extra-icon-selector .icon-option.selected')?.getAttribute('data-icon') || 'fas fa-user-friends';
+            
             const carId = document.getElementById('car-id').value || generateId();
             const car = {
                 id: carId,
@@ -1297,7 +1638,10 @@
                 fuel: document.getElementById('car-fuel').value,
                 transmission: document.getElementById('car-transmission').value,
                 description: document.getElementById('car-description').value,
-                image: document.getElementById('car-image').value,
+                image: document.getElementById('image-preview').src || '',
+                fuelIcon: selectedFuelIcon,
+                transmissionIcon: selectedTransmissionIcon,
+                extraIcon: selectedExtraIcon,
                 status: 'disponível',
                 dateAdded: new Date().toISOString()
             };
@@ -1364,8 +1708,8 @@ Câmbio: ${car.transmission || 'Manual'}
 ${car.description ? `Descrição: ${car.description}` : ''}
 
 Interessado? Entre em contato conosco!
-Telefone: (11) 3456-7890
-WhatsApp: (11) 98765-4321
+Telefone: ${state.siteSettings.contactPhone}
+WhatsApp: ${state.siteSettings.contactWhatsapp}
                 `.trim();
                 
                 alert(details);
@@ -1376,10 +1720,10 @@ WhatsApp: (11) 98765-4321
         function showContactInfo() {
             alert(`Entre em contato conosco para mais informações!
 
-Telefone: (11) 3456-7890
-WhatsApp: (11) 98765-4321
-E-mail: contato@automasters.com.br
-Endereço: Av. das Nações, 1234 - São Paulo, SP
+Telefone: ${state.siteSettings.contactPhone}
+WhatsApp: ${state.siteSettings.contactWhatsapp}
+E-mail: ${state.siteSettings.contactEmail}
+Endereço: ${state.siteSettings.contactAddress}
 
 Horário de atendimento:
 Segunda a Sexta: 8h às 18h
@@ -1392,8 +1736,15 @@ Sábado: 8h às 12h
             return 'car_' + Math.random().toString(36).substr(2, 9);
         }
         
-        // Carrega os carros quando a página é carregada
+        // Carrega os dados quando a página é carregada
         document.addEventListener('DOMContentLoaded', function() {
+            // Carrega configurações do site
+            const savedSettings = localStorage.getItem('siteSettings');
+            if (savedSettings) {
+                state.siteSettings = JSON.parse(savedSettings);
+                updateSiteInterface();
+            }
+            
             loadCars();
             
             // Adiciona alguns carros de exemplo se estiver vazio
@@ -1412,6 +1763,9 @@ Sábado: 8h às 12h
                         transmission: "Automático",
                         description: "Carro esportivo em excelente estado, único dono, com todos os serviços realizados na concessionária. Completo, com teto solar, bancos em couro e sistema de som premium.",
                         image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                        fuelIcon: "fas fa-gas-pump",
+                        transmissionIcon: "fas fa-cogs",
+                        extraIcon: "fas fa-user-friends",
                         status: "disponível",
                         dateAdded: new Date().toISOString()
                     },
@@ -1427,6 +1781,9 @@ Sábado: 8h às 12h
                         transmission: "Automático",
                         description: "Seminovo, com garantia de fábrica, completo, ar-condicionado digital, multimídia e câmera de ré. Excelente estado de conservação.",
                         image: "https://images.unsplash.com/photo-1603587070813-50d1220677b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                        fuelIcon: "fas fa-gas-pump",
+                        transmissionIcon: "fas fa-cogs",
+                        extraIcon: "fas fa-user-friends",
                         status: "disponível",
                         dateAdded: new Date().toISOString()
                     }
