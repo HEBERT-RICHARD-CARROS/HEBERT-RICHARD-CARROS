@@ -811,19 +811,19 @@
         <div class="header-container">
             <div class="logo">
                 <i class="fas fa-car"></i>
-                Auto<span>Masters</span>
+                <span id="site-logo-text">Auto</span><span>Masters</span>
             </div>
             
             <div class="desktop-nav">
                 <ul>
-                    <li><a href="#" class="active" onclick="showPage('home')"><i class="fas fa-home"></i> Início</a></li>
-                    <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> Sobre</a></li>
-                    <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contato</a></li>
+                    <li><a href="#" class="active" onclick="showPage('home')"><i class="fas fa-home"></i> <span id="nav-home">Início</span></a></li>
+                    <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> <span id="nav-about">Sobre</span></a></li>
+                    <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> <span id="nav-contact">Contato</span></a></li>
                 </ul>
             </div>
             
             <button class="admin-btn" onclick="openLoginModal()">
-                <i class="fas fa-user-shield"></i> Área do Proprietário
+                <i class="fas fa-user-shield"></i> <span id="admin-btn-text">Área do Proprietário</span>
             </button>
             
             <button class="mobile-menu">
@@ -833,10 +833,10 @@
         
         <div class="mobile-nav">
             <ul>
-                <li><a href="#" class="active" onclick="showPage('home')"><i class="fas fa-home"></i> Início</a></li>
-                <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> Sobre</a></li>
-                <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contato</a></li>
-                <li><a href="#" onclick="openLoginModal()"><i class="fas fa-user-shield"></i> Área do Proprietário</a></li>
+                <li><a href="#" class="active" onclick="showPage('home')"><i class="fas fa-home"></i> <span id="mobile-nav-home">Início</span></a></li>
+                <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> <span id="mobile-nav-about">Sobre</span></a></li>
+                <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> <span id="mobile-nav-contact">Contato</span></a></li>
+                <li><a href="#" onclick="openLoginModal()"><i class="fas fa-user-shield"></i> <span id="mobile-admin-btn">Área do Proprietário</span></a></li>
             </ul>
         </div>
     </header>
@@ -847,7 +847,7 @@
             <section class="hero">
                 <h1 id="hero-title">Veículos Selecionados com Qualidade</h1>
                 <p id="hero-description">Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.</p>
-                <a href="#" class="btn" onclick="showContactInfo()"><i class="fas fa-phone-alt"></i> Fale Conosco</a>
+                <a href="#" class="btn" onclick="showContactInfo()"><i class="fas fa-phone-alt"></i> <span id="hero-button-text">Fale Conosco</span></a>
             </section>
             
             <section>
@@ -868,7 +868,8 @@
                     <h2 class="admin-title">Painel de Controle</h2>
                     <div>
                         <button class="btn" onclick="openAddCarModal()"><i class="fas fa-plus"></i> Adicionar Carro</button>
-                        <button class="btn btn-outline" onclick="openSiteSettingsModal()"><i class="fas fa-cog"></i> Configurações</button>
+                        <button class="btn btn-outline" onclick="openSiteSettingsModal()"><i class="fas fa-cog"></i> Configurações do Site</button>
+                        <button class="btn btn-outline" onclick="openTextSettingsModal()"><i class="fas fa-edit"></i> Editar Textos</button>
                     </div>
                 </div>
                 
@@ -1061,21 +1062,6 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="hero-title">Título Principal (Hero)</label>
-                    <input type="text" id="hero-title-input" value="Veículos Selecionados com Qualidade">
-                </div>
-                
-                <div class="form-group">
-                    <label for="hero-description">Descrição do Hero</label>
-                    <textarea id="hero-description-input" rows="3">Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.</textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="showcase-title">Título da Vitrine</label>
-                    <input type="text" id="showcase-title-input" value="Nossa Garagem">
-                </div>
-                
-                <div class="form-group">
                     <label for="contact-phone">Telefone de Contato</label>
                     <input type="text" id="contact-phone" value="(11) 3456-7890">
                 </div>
@@ -1103,11 +1089,75 @@
         </div>
     </div>
     
+    <!-- Modal de Edição de Textos -->
+    <div id="text-settings-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeTextSettingsModal()">&times;</span>
+            <h2 class="modal-title">Editar Textos do Site</h2>
+            <form id="text-settings-form">
+                <div class="form-group">
+                    <label for="site-logo-text">Texto do Logo</label>
+                    <input type="text" id="site-logo-text-input" value="Auto">
+                </div>
+                
+                <div class="form-group">
+                    <label for="nav-home-text">Texto do Menu Início</label>
+                    <input type="text" id="nav-home-text" value="Início">
+                </div>
+                
+                <div class="form-group">
+                    <label for="nav-about-text">Texto do Menu Sobre</label>
+                    <input type="text" id="nav-about-text" value="Sobre">
+                </div>
+                
+                <div class="form-group">
+                    <label for="nav-contact-text">Texto do Menu Contato</label>
+                    <input type="text" id="nav-contact-text" value="Contato">
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-btn-text">Texto do Botão Admin</label>
+                    <input type="text" id="admin-btn-text-input" value="Área do Proprietário">
+                </div>
+                
+                <div class="form-group">
+                    <label for="hero-title-text">Título Principal (Hero)</label>
+                    <input type="text" id="hero-title-text" value="Veículos Selecionados com Qualidade">
+                </div>
+                
+                <div class="form-group">
+                    <label for="hero-description-text">Descrição do Hero</label>
+                    <textarea id="hero-description-text" rows="3">Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="hero-button-text">Texto do Botão Hero</label>
+                    <input type="text" id="hero-button-text-input" value="Fale Conosco">
+                </div>
+                
+                <div class="form-group">
+                    <label for="showcase-title-text">Título da Vitrine</label>
+                    <input type="text" id="showcase-title-text" value="Nossa Garagem">
+                </div>
+                
+                <div class="form-group">
+                    <label for="footer-about-text">Texto do Footer Sobre</label>
+                    <textarea id="footer-about-text" rows="3">Há mais de 15 anos no mercado, a AutoMasters oferece os melhores veículos com procedência garantida e atendimento personalizado.</textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeTextSettingsModal()">Cancelar</button>
+                    <button type="submit" class="btn">Salvar Textos</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
     <footer>
         <div class="footer-container">
             <div>
                 <div class="footer-logo" id="footer-logo">Auto<span>Masters</span></div>
-                <p class="footer-about">Há mais de 15 anos no mercado, a AutoMasters oferece os melhores veículos com procedência garantida e atendimento personalizado.</p>
+                <p class="footer-about" id="footer-about-text">Há mais de 15 anos no mercado, a AutoMasters oferece os melhores veículos com procedência garantida e atendimento personalizado.</p>
                 <div class="social-links">
                     <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1118,9 +1168,9 @@
             <div class="footer-links">
                 <h3>Links Rápidos</h3>
                 <ul>
-                    <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Início</a></li>
-                    <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
-                    <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contato</a></li>
+                    <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> <span id="footer-nav-home">Início</span></a></li>
+                    <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> <span id="footer-nav-about">Sobre Nós</span></a></li>
+                    <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> <span id="footer-nav-contact">Contato</span></a></li>
                     <li><a href="#" onclick="showContactInfo()"><i class="fas fa-car"></i> Ver Veículos</a></li>
                 </ul>
             </div>
@@ -1148,13 +1198,22 @@
             editingCarId: null,
             siteSettings: {
                 title: "AutoMasters",
-                heroTitle: "Veículos Selecionados com Qualidade",
-                heroDescription: "Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.",
-                showcaseTitle: "Nossa Garagem",
                 contactPhone: "(11) 3456-7890",
                 contactWhatsapp: "(11) 98765-4321",
                 contactEmail: "contato@automasters.com.br",
                 contactAddress: "Av. das Nações, 1234 - São Paulo, SP"
+            },
+            textSettings: {
+                logoText: "Auto",
+                navHome: "Início",
+                navAbout: "Sobre",
+                navContact: "Contato",
+                adminBtnText: "Área do Proprietário",
+                heroTitle: "Veículos Selecionados com Qualidade",
+                heroDescription: "Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.",
+                heroButtonText: "Fale Conosco",
+                showcaseTitle: "Nossa Garagem",
+                footerAbout: "Há mais de 15 anos no mercado, a AutoMasters oferece os melhores veículos com procedência garantida e atendimento personalizado."
             }
         };
         
@@ -1310,9 +1369,6 @@
         function openSiteSettingsModal() {
             // Preenche o formulário com as configurações atuais
             document.getElementById('site-title').value = state.siteSettings.title;
-            document.getElementById('hero-title-input').value = state.siteSettings.heroTitle;
-            document.getElementById('hero-description-input').value = state.siteSettings.heroDescription;
-            document.getElementById('showcase-title-input').value = state.siteSettings.showcaseTitle;
             document.getElementById('contact-phone').value = state.siteSettings.contactPhone;
             document.getElementById('contact-whatsapp').value = state.siteSettings.contactWhatsapp;
             document.getElementById('contact-email').value = state.siteSettings.contactEmail;
@@ -1323,6 +1379,27 @@
         
         function closeSiteSettingsModal() {
             document.getElementById('site-settings-modal').style.display = 'none';
+        }
+        
+        // Modal de Edição de Textos
+        function openTextSettingsModal() {
+            // Preenche o formulário com os textos atuais
+            document.getElementById('site-logo-text-input').value = state.textSettings.logoText;
+            document.getElementById('nav-home-text').value = state.textSettings.navHome;
+            document.getElementById('nav-about-text').value = state.textSettings.navAbout;
+            document.getElementById('nav-contact-text').value = state.textSettings.navContact;
+            document.getElementById('admin-btn-text-input').value = state.textSettings.adminBtnText;
+            document.getElementById('hero-title-text').value = state.textSettings.heroTitle;
+            document.getElementById('hero-description-text').value = state.textSettings.heroDescription;
+            document.getElementById('hero-button-text-input').value = state.textSettings.heroButtonText;
+            document.getElementById('showcase-title-text').value = state.textSettings.showcaseTitle;
+            document.getElementById('footer-about-text').value = state.textSettings.footerAbout;
+            
+            document.getElementById('text-settings-modal').style.display = 'flex';
+        }
+        
+        function closeTextSettingsModal() {
+            document.getElementById('text-settings-modal').style.display = 'none';
         }
         
         // Preenche os seletores de ícones
@@ -1413,9 +1490,6 @@
             
             // Atualiza as configurações
             state.siteSettings.title = document.getElementById('site-title').value;
-            state.siteSettings.heroTitle = document.getElementById('hero-title-input').value;
-            state.siteSettings.heroDescription = document.getElementById('hero-description-input').value;
-            state.siteSettings.showcaseTitle = document.getElementById('showcase-title-input').value;
             state.siteSettings.contactPhone = document.getElementById('contact-phone').value;
             state.siteSettings.contactWhatsapp = document.getElementById('contact-whatsapp').value;
             state.siteSettings.contactEmail = document.getElementById('contact-email').value;
@@ -1431,17 +1505,61 @@
             alert('Configurações salvas com sucesso!');
         });
         
+        // Textos do site
+        document.getElementById('text-settings-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Atualiza os textos
+            state.textSettings.logoText = document.getElementById('site-logo-text-input').value;
+            state.textSettings.navHome = document.getElementById('nav-home-text').value;
+            state.textSettings.navAbout = document.getElementById('nav-about-text').value;
+            state.textSettings.navContact = document.getElementById('nav-contact-text').value;
+            state.textSettings.adminBtnText = document.getElementById('admin-btn-text-input').value;
+            state.textSettings.heroTitle = document.getElementById('hero-title-text').value;
+            state.textSettings.heroDescription = document.getElementById('hero-description-text').value;
+            state.textSettings.heroButtonText = document.getElementById('hero-button-text-input').value;
+            state.textSettings.showcaseTitle = document.getElementById('showcase-title-text').value;
+            state.textSettings.footerAbout = document.getElementById('footer-about-text').value;
+            
+            // Salva no localStorage
+            localStorage.setItem('textSettings', JSON.stringify(state.textSettings));
+            
+            // Atualiza a interface
+            updateTextInterface();
+            
+            closeTextSettingsModal();
+            alert('Textos salvos com sucesso!');
+        });
+        
         // Atualiza a interface com as configurações do site
         function updateSiteInterface() {
-            document.getElementById('hero-title').textContent = state.siteSettings.heroTitle;
-            document.getElementById('hero-description').textContent = state.siteSettings.heroDescription;
-            document.getElementById('showcase-title').textContent = state.siteSettings.showcaseTitle;
             document.getElementById('footer-logo').innerHTML = `${state.siteSettings.title}<span>Masters</span>`;
             document.getElementById('footer-phone').textContent = state.siteSettings.contactPhone;
             document.getElementById('footer-whatsapp').textContent = state.siteSettings.contactWhatsapp;
             document.getElementById('footer-email').textContent = state.siteSettings.contactEmail;
             document.getElementById('footer-address').textContent = state.siteSettings.contactAddress;
             document.getElementById('footer-copyright').textContent = state.siteSettings.title;
+        }
+        
+        // Atualiza a interface com os textos personalizados
+        function updateTextInterface() {
+            document.getElementById('site-logo-text').textContent = state.textSettings.logoText;
+            document.getElementById('nav-home').textContent = state.textSettings.navHome;
+            document.getElementById('nav-about').textContent = state.textSettings.navAbout;
+            document.getElementById('nav-contact').textContent = state.textSettings.navContact;
+            document.getElementById('admin-btn-text').textContent = state.textSettings.adminBtnText;
+            document.getElementById('mobile-nav-home').textContent = state.textSettings.navHome;
+            document.getElementById('mobile-nav-about').textContent = state.textSettings.navAbout;
+            document.getElementById('mobile-nav-contact').textContent = state.textSettings.navContact;
+            document.getElementById('mobile-admin-btn').textContent = state.textSettings.adminBtnText;
+            document.getElementById('hero-title').textContent = state.textSettings.heroTitle;
+            document.getElementById('hero-description').textContent = state.textSettings.heroDescription;
+            document.getElementById('hero-button-text').textContent = state.textSettings.heroButtonText;
+            document.getElementById('showcase-title').textContent = state.textSettings.showcaseTitle;
+            document.getElementById('footer-about-text').textContent = state.textSettings.footerAbout;
+            document.getElementById('footer-nav-home').textContent = state.textSettings.navHome;
+            document.getElementById('footer-nav-about').textContent = state.textSettings.navAbout;
+            document.getElementById('footer-nav-contact').textContent = state.textSettings.navContact;
         }
         
         // Carrega os carros do localStorage
@@ -1701,6 +1819,13 @@ Sábado: 8h às 12h
             if (savedSettings) {
                 state.siteSettings = JSON.parse(savedSettings);
                 updateSiteInterface();
+            }
+            
+            // Carrega textos personalizados
+            const savedTexts = localStorage.getItem('textSettings');
+            if (savedTexts) {
+                state.textSettings = JSON.parse(savedTexts);
+                updateTextInterface();
             }
             
             loadCars();
