@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoMasters - Garagem Premium</title>
+    <title>Hebert Richards - Veículos Premium</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -172,6 +172,33 @@
             background-color: #e67e22;
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(211, 84, 0, 0.4);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+        }
+        
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            box-shadow: 0 4px 10px rgba(220, 39, 67, 0.3);
+        }
+        
+        .btn-instagram:hover {
+            box-shadow: 0 6px 15px rgba(220, 39, 67, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         
         /* Seção de Destaques */
@@ -691,6 +718,135 @@
             color: rgba(255, 255, 255, 0.7);
         }
         
+        /* Novos estilos para a área de personalização */
+        .customization-panel {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+        }
+
+        .customization-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 2rem;
+        }
+
+        .customization-tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+        }
+
+        .customization-tab.active {
+            border-bottom-color: var(--secondary);
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .customization-content {
+            display: none;
+        }
+
+        .customization-content.active {
+            display: block;
+        }
+
+        .color-picker {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .color-preview {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+        }
+
+        .color-input {
+            flex: 1;
+        }
+
+        .theme-preview {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            background-color: #f9f9f9;
+        }
+
+        .preview-element {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .preview-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .preview-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .preview-accent {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .reset-btn {
+            background-color: var(--danger);
+        }
+
+        .reset-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Menu Mobile */
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            background-color: var(--primary);
+            padding: 1rem;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .mobile-nav ul li a:hover {
+            background-color: var(--secondary);
+        }
+
         /* Responsividade */
         @media (max-width: 1100px) {
             .hero h1 {
@@ -765,6 +921,20 @@
             .icon-selector {
                 grid-template-columns: repeat(3, 1fr);
             }
+            
+            .social-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .customization-tabs {
+                flex-direction: column;
+            }
         }
         
         @media (max-width: 480px) {
@@ -804,6 +974,19 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        /* Estilo para quando não há carros */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray);
+        }
+        
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
     </style>
 </head>
 <body>
@@ -811,32 +994,32 @@
         <div class="header-container">
             <div class="logo">
                 <i class="fas fa-car"></i>
-                <span id="site-logo-text">Auto</span><span>Masters</span>
+                Hebert<span>Richards</span>
             </div>
             
-            <div class="desktop-nav">
+            <nav class="desktop-nav">
                 <ul>
-                    <li><a href="#" class="active" onclick="showPage('home')"><i class="fas fa-home"></i> <span id="nav-home">Início</span></a></li>
-                    <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> <span id="nav-about">Sobre</span></a></li>
-                    <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> <span id="nav-contact">Contato</span></a></li>
+                    <li><a href="#" class="active" onclick="showPage('home')"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                    <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contato</a></li>
                 </ul>
-            </div>
+            </nav>
             
             <button class="admin-btn" onclick="openLoginModal()">
-                <i class="fas fa-user-shield"></i> <span id="admin-btn-text">Área do Proprietário</span>
+                <i class="fas fa-user-shield"></i> Área do Proprietário
             </button>
             
-            <button class="mobile-menu">
+            <button class="mobile-menu" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
         
-        <div class="mobile-nav">
+        <div class="mobile-nav" id="mobile-nav">
             <ul>
-                <li><a href="#" class="active" onclick="showPage('home')"><i class="fas fa-home"></i> <span id="mobile-nav-home">Início</span></a></li>
-                <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> <span id="mobile-nav-about">Sobre</span></a></li>
-                <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> <span id="mobile-nav-contact">Contato</span></a></li>
-                <li><a href="#" onclick="openLoginModal()"><i class="fas fa-user-shield"></i> <span id="mobile-admin-btn">Área do Proprietário</span></a></li>
+                <li><a href="#" class="active" onclick="showPage('home')"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contato</a></li>
+                <li><a href="#" onclick="openLoginModal()"><i class="fas fa-user-shield"></i> Área do Proprietário</a></li>
             </ul>
         </div>
     </header>
@@ -847,7 +1030,14 @@
             <section class="hero">
                 <h1 id="hero-title">Veículos Selecionados com Qualidade</h1>
                 <p id="hero-description">Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.</p>
-                <a href="#" class="btn" onclick="showContactInfo()"><i class="fas fa-phone-alt"></i> <span id="hero-button-text">Fale Conosco</span></a>
+                <div class="social-buttons">
+                    <a href="https://wa.me/5511987654321" class="btn btn-whatsapp btn-icon" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="https://instagram.com/hebertrichards" class="btn btn-instagram btn-icon" target="_blank">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </div>
             </section>
             
             <section>
@@ -865,11 +1055,12 @@
         <div id="admin-page" class="page" style="display: none;">
             <div class="admin-panel">
                 <div class="admin-header">
-                    <h2 class="admin-title">Painel de Controle</h2>
+                    <h2 class="admin-title">Painel de Controle - Hebert Richards</h2>
                     <div>
                         <button class="btn" onclick="openAddCarModal()"><i class="fas fa-plus"></i> Adicionar Carro</button>
-                        <button class="btn btn-outline" onclick="openSiteSettingsModal()"><i class="fas fa-cog"></i> Configurações do Site</button>
-                        <button class="btn btn-outline" onclick="openTextSettingsModal()"><i class="fas fa-edit"></i> Editar Textos</button>
+                        <button class="btn btn-outline" onclick="openSiteSettingsModal()"><i class="fas fa-cog"></i> Configurações</button>
+                        <button class="btn" onclick="openCustomizationPanel()"><i class="fas fa-palette"></i> Personalizar</button>
+                        <button class="btn reset-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Sair</button>
                     </div>
                 </div>
                 
@@ -906,6 +1097,21 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+
+        <!-- Páginas Sobre e Contato (simplificadas) -->
+        <div id="about-page" class="page" style="display: none;">
+            <div class="admin-panel">
+                <h2 class="admin-title">Sobre Nós</h2>
+                <p>Página em construção. Em breve mais informações sobre nossa empresa.</p>
+            </div>
+        </div>
+
+        <div id="contact-page" class="page" style="display: none;">
+            <div class="admin-panel">
+                <h2 class="admin-title">Contato</h2>
+                <p>Página em construção. Em breve formulário de contato.</p>
             </div>
         </div>
     </div>
@@ -1058,7 +1264,22 @@
             <form id="site-settings-form">
                 <div class="form-group">
                     <label for="site-title">Título do Site</label>
-                    <input type="text" id="site-title" value="AutoMasters">
+                    <input type="text" id="site-title" value="Hebert Richards">
+                </div>
+                
+                <div class="form-group">
+                    <label for="hero-title">Título Principal (Hero)</label>
+                    <input type="text" id="hero-title-input" value="Veículos Selecionados com Qualidade">
+                </div>
+                
+                <div class="form-group">
+                    <label for="hero-description">Descrição do Hero</label>
+                    <textarea id="hero-description-input" rows="3">Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="showcase-title">Título da Vitrine</label>
+                    <input type="text" id="showcase-title-input" value="Nossa Garagem">
                 </div>
                 
                 <div class="form-group">
@@ -1073,12 +1294,17 @@
                 
                 <div class="form-group">
                     <label for="contact-email">E-mail</label>
-                    <input type="email" id="contact-email" value="contato@automasters.com.br">
+                    <input type="email" id="contact-email" value="contato@hebertrichards.com.br">
                 </div>
                 
                 <div class="form-group">
                     <label for="contact-address">Endereço</label>
                     <input type="text" id="contact-address" value="Av. das Nações, 1234 - São Paulo, SP">
+                </div>
+                
+                <div class="form-group">
+                    <label for="instagram-url">URL do Instagram</label>
+                    <input type="url" id="instagram-url" value="https://instagram.com/hebertrichards">
                 </div>
                 
                 <div class="form-actions">
@@ -1088,89 +1314,154 @@
             </form>
         </div>
     </div>
-    
-    <!-- Modal de Edição de Textos -->
-    <div id="text-settings-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeTextSettingsModal()">&times;</span>
-            <h2 class="modal-title">Editar Textos do Site</h2>
-            <form id="text-settings-form">
+
+    <!-- Modal de Personalização -->
+    <div id="customization-modal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <span class="close-modal" onclick="closeCustomizationModal()">&times;</span>
+            <h2 class="modal-title">Personalizar Site</h2>
+            
+            <div class="customization-tabs">
+                <div class="customization-tab active" onclick="openCustomizationTab('colors')">Cores</div>
+                <div class="customization-tab" onclick="openCustomizationTab('content')">Conteúdo</div>
+                <div class="customization-tab" onclick="openCustomizationTab('layout')">Layout</div>
+            </div>
+            
+            <div id="colors-tab" class="customization-content active">
+                <h3>Personalizar Cores do Site</h3>
+                
                 <div class="form-group">
-                    <label for="site-logo-text">Texto do Logo</label>
-                    <input type="text" id="site-logo-text-input" value="Auto">
+                    <label for="primary-color">Cor Primária</label>
+                    <div class="color-picker">
+                        <div class="color-preview" id="primary-preview" style="background-color: #1a3a5f;"></div>
+                        <input type="color" id="primary-color" value="#1a3a5f" class="color-input">
+                    </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="nav-home-text">Texto do Menu Início</label>
-                    <input type="text" id="nav-home-text" value="Início">
+                    <label for="secondary-color">Cor Secundária</label>
+                    <div class="color-picker">
+                        <div class="color-preview" id="secondary-preview" style="background-color: #d35400;"></div>
+                        <input type="color" id="secondary-color" value="#d35400" class="color-input">
+                    </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="nav-about-text">Texto do Menu Sobre</label>
-                    <input type="text" id="nav-about-text" value="Sobre">
+                    <label for="accent-color">Cor de Destaque</label>
+                    <div class="color-picker">
+                        <div class="color-preview" id="accent-preview" style="background-color: #2980b9;"></div>
+                        <input type="color" id="accent-color" value="#2980b9" class="color-input">
+                    </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="nav-contact-text">Texto do Menu Contato</label>
-                    <input type="text" id="nav-contact-text" value="Contato">
+                    <label for="dark-color">Cor Escura</label>
+                    <div class="color-picker">
+                        <div class="color-preview" id="dark-preview" style="background-color: #2c3e50;"></div>
+                        <input type="color" id="dark-color" value="#2c3e50" class="color-input">
+                    </div>
+                </div>
+                
+                <div class="theme-preview">
+                    <h4>Prévia do Tema</h4>
+                    <div class="preview-element preview-primary">Primária</div>
+                    <div class="preview-element preview-secondary">Secundária</div>
+                    <div class="preview-element preview-accent">Destaque</div>
+                </div>
+            </div>
+            
+            <div id="content-tab" class="customization-content">
+                <h3>Personalizar Conteúdo</h3>
+                
+                <div class="form-group">
+                    <label for="company-name">Nome da Empresa</label>
+                    <input type="text" id="company-name" value="Hebert Richards">
                 </div>
                 
                 <div class="form-group">
-                    <label for="admin-btn-text">Texto do Botão Admin</label>
-                    <input type="text" id="admin-btn-text-input" value="Área do Proprietário">
+                    <label for="company-slogan">Slogan</label>
+                    <input type="text" id="company-slogan" value="Veículos Premium">
                 </div>
                 
                 <div class="form-group">
-                    <label for="hero-title-text">Título Principal (Hero)</label>
-                    <input type="text" id="hero-title-text" value="Veículos Selecionados com Qualidade">
+                    <label for="about-text">Texto Sobre a Empresa</label>
+                    <textarea id="about-text" rows="5">Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.</textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label for="hero-description-text">Descrição do Hero</label>
-                    <textarea id="hero-description-text" rows="3">Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.</textarea>
+                    <label for="business-hours">Horário de Funcionamento</label>
+                    <input type="text" id="business-hours" value="Seg-Sex: 8h às 18h | Sáb: 8h às 12h">
+                </div>
+            </div>
+            
+            <div id="layout-tab" class="customization-content">
+                <h3>Personalizar Layout</h3>
+                
+                <div class="form-group">
+                    <label for="header-style">Estilo do Cabeçalho</label>
+                    <select id="header-style">
+                        <option value="default">Padrão</option>
+                        <option value="transparent">Transparente</option>
+                        <option value="solid">Sólido</option>
+                    </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="hero-button-text">Texto do Botão Hero</label>
-                    <input type="text" id="hero-button-text-input" value="Fale Conosco">
+                    <label for="hero-style">Estilo do Hero</label>
+                    <select id="hero-style">
+                        <option value="default">Padrão</option>
+                        <option value="minimal">Minimalista</option>
+                        <option value="fullscreen">Tela Cheia</option>
+                    </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="showcase-title-text">Título da Vitrine</label>
-                    <input type="text" id="showcase-title-text" value="Nossa Garagem">
+                    <label for="card-style">Estilo dos Cards</label>
+                    <select id="card-style">
+                        <option value="default">Padrão</option>
+                        <option value="modern">Moderno</option>
+                        <option value="minimal">Minimalista</option>
+                    </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="footer-about-text">Texto do Footer Sobre</label>
-                    <textarea id="footer-about-text" rows="3">Há mais de 15 anos no mercado, a AutoMasters oferece os melhores veículos com procedência garantida e atendimento personalizado.</textarea>
+                    <label for="font-family">Fonte do Site</label>
+                    <select id="font-family">
+                        <option value="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Segoe UI (Padrão)</option>
+                        <option value="Arial, sans-serif">Arial</option>
+                        <option value="'Helvetica Neue', Helvetica, sans-serif">Helvetica</option>
+                        <option value="'Roboto', sans-serif">Roboto</option>
+                        <option value="'Open Sans', sans-serif">Open Sans</option>
+                    </select>
                 </div>
-                
-                <div class="form-actions">
-                    <button type="button" class="btn btn-outline" onclick="closeTextSettingsModal()">Cancelar</button>
-                    <button type="submit" class="btn">Salvar Textos</button>
-                </div>
-            </form>
+            </div>
+            
+            <div class="form-actions">
+                <button type="button" class="btn reset-btn" onclick="resetCustomization()">Redefinir</button>
+                <button type="button" class="btn btn-outline" onclick="closeCustomizationModal()">Cancelar</button>
+                <button type="button" class="btn" onclick="saveCustomization()">Salvar Personalização</button>
+            </div>
         </div>
     </div>
     
     <footer>
         <div class="footer-container">
             <div>
-                <div class="footer-logo" id="footer-logo">Auto<span>Masters</span></div>
-                <p class="footer-about" id="footer-about-text">Há mais de 15 anos no mercado, a AutoMasters oferece os melhores veículos com procedência garantida e atendimento personalizado.</p>
+                <div class="footer-logo">Hebert<span>Richards</span></div>
+                <p class="footer-about">Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.</p>
                 <div class="social-links">
                     <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/hebertrichards" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/5511987654321" title="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             
             <div class="footer-links">
                 <h3>Links Rápidos</h3>
                 <ul>
-                    <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> <span id="footer-nav-home">Início</span></a></li>
-                    <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> <span id="footer-nav-about">Sobre Nós</span></a></li>
-                    <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> <span id="footer-nav-contact">Contato</span></a></li>
+                    <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
+                    <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contato</a></li>
                     <li><a href="#" onclick="showContactInfo()"><i class="fas fa-car"></i> Ver Veículos</a></li>
                 </ul>
             </div>
@@ -1179,14 +1470,14 @@
                 <h3>Contato</h3>
                 <p><i class="fas fa-phone"></i> <span id="footer-phone">(11) 3456-7890</span></p>
                 <p><i class="fas fa-whatsapp"></i> <span id="footer-whatsapp">(11) 98765-4321</span></p>
-                <p><i class="fas fa-envelope"></i> <span id="footer-email">contato@automasters.com.br</span></p>
+                <p><i class="fas fa-envelope"></i> <span id="footer-email">contato@hebertrichards.com.br</span></p>
                 <p><i class="fas fa-map-marker-alt"></i> <span id="footer-address">Av. das Nações, 1234 - São Paulo, SP</span></p>
-                <p><i class="fas fa-clock"></i> Seg-Sex: 8h às 18h | Sáb: 8h às 12h</p>
+                <p><i class="fas fa-clock"></i> <span id="footer-hours">Seg-Sex: 8h às 18h | Sáb: 8h às 12h</span></p>
             </div>
         </div>
         
         <div class="copyright">
-            &copy; 2023 <span id="footer-copyright">AutoMasters</span>. Todos os direitos reservados.
+            &copy; 2023 Hebert Richards. Todos os direitos reservados.
         </div>
     </footer>
 
@@ -1197,23 +1488,33 @@
             currentUser: null,
             editingCarId: null,
             siteSettings: {
-                title: "AutoMasters",
-                contactPhone: "(11) 3456-7890",
-                contactWhatsapp: "(11) 98765-4321",
-                contactEmail: "contato@automasters.com.br",
-                contactAddress: "Av. das Nações, 1234 - São Paulo, SP"
-            },
-            textSettings: {
-                logoText: "Auto",
-                navHome: "Início",
-                navAbout: "Sobre",
-                navContact: "Contato",
-                adminBtnText: "Área do Proprietário",
+                title: "Hebert Richards",
                 heroTitle: "Veículos Selecionados com Qualidade",
                 heroDescription: "Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.",
-                heroButtonText: "Fale Conosco",
                 showcaseTitle: "Nossa Garagem",
-                footerAbout: "Há mais de 15 anos no mercado, a AutoMasters oferece os melhores veículos com procedência garantida e atendimento personalizado."
+                contactPhone: "(11) 3456-7890",
+                contactWhatsapp: "(11) 98765-4321",
+                contactEmail: "contato@hebertrichards.com.br",
+                contactAddress: "Av. das Nações, 1234 - São Paulo, SP",
+                instagramUrl: "https://instagram.com/hebertrichards",
+                companyName: "Hebert Richards",
+                companySlogan: "Veículos Premium",
+                aboutText: "Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.",
+                businessHours: "Seg-Sex: 8h às 18h | Sáb: 8h às 12h"
+            },
+            customization: {
+                colors: {
+                    primary: "#1a3a5f",
+                    secondary: "#d35400",
+                    accent: "#2980b9",
+                    dark: "#2c3e50"
+                },
+                layout: {
+                    headerStyle: "default",
+                    heroStyle: "default",
+                    cardStyle: "default",
+                    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                }
             }
         };
         
@@ -1267,40 +1568,39 @@
             });
             
             // Encontra e ativa o link correto
-            const activeLinks = Array.from(navLinks).filter(link => 
-                link.getAttribute('onclick')?.includes(`'${pageId}'`)
-            );
-            if (activeLinks.length > 0) {
-                activeLinks.forEach(link => link.classList.add('active'));
-            }
+            const activeLinks = document.querySelectorAll(`a[onclick*="${pageId}"]`);
+            activeLinks.forEach(link => link.classList.add('active'));
             
             // Mostra a página selecionada
-            document.getElementById(`${pageId}-page`).style.display = 'block';
-            
-            // Se for a página inicial, recarrega os carros
-            if (pageId === 'home') {
-                loadCars();
-            }
-            
-            // Se for a página administrativa, verifica login e carrega dados
-            if (pageId === 'admin-page') {
-                if (!state.isLoggedIn) {
-                    showPage('home');
-                    openLoginModal();
-                    return;
+            const targetPage = document.getElementById(`${pageId}-page`);
+            if (targetPage) {
+                targetPage.style.display = 'block';
+                
+                // Se for a página administrativa, verifica login
+                if (pageId === 'admin-page') {
+                    if (!state.isLoggedIn) {
+                        showPage('home');
+                        openLoginModal();
+                        return;
+                    }
+                    loadAdminData();
                 }
-                loadAdminData();
+                
+                // Se for a página inicial, recarrega os carros
+                if (pageId === 'home') {
+                    loadCars();
+                }
             }
             
             // Fecha o menu mobile se estiver aberto
-            document.querySelector('.mobile-nav').style.display = 'none';
+            document.getElementById('mobile-nav').style.display = 'none';
         }
         
         // Menu mobile
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            const mobileNav = document.querySelector('.mobile-nav');
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobile-nav');
             mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
-        });
+        }
         
         // Modal de Login
         function openLoginModal() {
@@ -1369,10 +1669,14 @@
         function openSiteSettingsModal() {
             // Preenche o formulário com as configurações atuais
             document.getElementById('site-title').value = state.siteSettings.title;
+            document.getElementById('hero-title-input').value = state.siteSettings.heroTitle;
+            document.getElementById('hero-description-input').value = state.siteSettings.heroDescription;
+            document.getElementById('showcase-title-input').value = state.siteSettings.showcaseTitle;
             document.getElementById('contact-phone').value = state.siteSettings.contactPhone;
             document.getElementById('contact-whatsapp').value = state.siteSettings.contactWhatsapp;
             document.getElementById('contact-email').value = state.siteSettings.contactEmail;
             document.getElementById('contact-address').value = state.siteSettings.contactAddress;
+            document.getElementById('instagram-url').value = state.siteSettings.instagramUrl;
             
             document.getElementById('site-settings-modal').style.display = 'flex';
         }
@@ -1380,26 +1684,145 @@
         function closeSiteSettingsModal() {
             document.getElementById('site-settings-modal').style.display = 'none';
         }
-        
-        // Modal de Edição de Textos
-        function openTextSettingsModal() {
-            // Preenche o formulário com os textos atuais
-            document.getElementById('site-logo-text-input').value = state.textSettings.logoText;
-            document.getElementById('nav-home-text').value = state.textSettings.navHome;
-            document.getElementById('nav-about-text').value = state.textSettings.navAbout;
-            document.getElementById('nav-contact-text').value = state.textSettings.navContact;
-            document.getElementById('admin-btn-text-input').value = state.textSettings.adminBtnText;
-            document.getElementById('hero-title-text').value = state.textSettings.heroTitle;
-            document.getElementById('hero-description-text').value = state.textSettings.heroDescription;
-            document.getElementById('hero-button-text-input').value = state.textSettings.heroButtonText;
-            document.getElementById('showcase-title-text').value = state.textSettings.showcaseTitle;
-            document.getElementById('footer-about-text').value = state.textSettings.footerAbout;
+
+        // Modal de Personalização
+        function openCustomizationPanel() {
+            // Preenche o formulário com as personalizações atuais
+            document.getElementById('primary-color').value = state.customization.colors.primary;
+            document.getElementById('secondary-color').value = state.customization.colors.secondary;
+            document.getElementById('accent-color').value = state.customization.colors.accent;
+            document.getElementById('dark-color').value = state.customization.colors.dark;
             
-            document.getElementById('text-settings-modal').style.display = 'flex';
+            // Atualiza as prévias de cor
+            updateColorPreviews();
+            
+            document.getElementById('company-name').value = state.siteSettings.companyName;
+            document.getElementById('company-slogan').value = state.siteSettings.companySlogan;
+            document.getElementById('about-text').value = state.siteSettings.aboutText;
+            document.getElementById('business-hours').value = state.siteSettings.businessHours;
+            
+            document.getElementById('header-style').value = state.customization.layout.headerStyle;
+            document.getElementById('hero-style').value = state.customization.layout.heroStyle;
+            document.getElementById('card-style').value = state.customization.layout.cardStyle;
+            document.getElementById('font-family').value = state.customization.layout.fontFamily;
+            
+            document.getElementById('customization-modal').style.display = 'flex';
         }
-        
-        function closeTextSettingsModal() {
-            document.getElementById('text-settings-modal').style.display = 'none';
+
+        function closeCustomizationModal() {
+            document.getElementById('customization-modal').style.display = 'none';
+        }
+
+        function openCustomizationTab(tabName) {
+            // Esconde todas as abas
+            const tabs = document.querySelectorAll('.customization-content');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove a classe active de todas as abas
+            const tabButtons = document.querySelectorAll('.customization-tab');
+            tabButtons.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Ativa a aba selecionada
+            document.getElementById(tabName + '-tab').classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function updateColorPreviews() {
+            document.getElementById('primary-preview').style.backgroundColor = document.getElementById('primary-color').value;
+            document.getElementById('secondary-preview').style.backgroundColor = document.getElementById('secondary-color').value;
+            document.getElementById('accent-preview').style.backgroundColor = document.getElementById('accent-color').value;
+            document.getElementById('dark-preview').style.backgroundColor = document.getElementById('dark-color').value;
+            
+            // Atualiza a prévia do tema
+            document.querySelectorAll('.preview-primary').forEach(el => {
+                el.style.backgroundColor = document.getElementById('primary-color').value;
+            });
+            document.querySelectorAll('.preview-secondary').forEach(el => {
+                el.style.backgroundColor = document.getElementById('secondary-color').value;
+            });
+            document.querySelectorAll('.preview-accent').forEach(el => {
+                el.style.backgroundColor = document.getElementById('accent-color').value;
+            });
+        }
+
+        function saveCustomization() {
+            // Salva as cores
+            state.customization.colors.primary = document.getElementById('primary-color').value;
+            state.customization.colors.secondary = document.getElementById('secondary-color').value;
+            state.customization.colors.accent = document.getElementById('accent-color').value;
+            state.customization.colors.dark = document.getElementById('dark-color').value;
+            
+            // Salva o conteúdo
+            state.siteSettings.companyName = document.getElementById('company-name').value;
+            state.siteSettings.companySlogan = document.getElementById('company-slogan').value;
+            state.siteSettings.aboutText = document.getElementById('about-text').value;
+            state.siteSettings.businessHours = document.getElementById('business-hours').value;
+            
+            // Salva o layout
+            state.customization.layout.headerStyle = document.getElementById('header-style').value;
+            state.customization.layout.heroStyle = document.getElementById('hero-style').value;
+            state.customization.layout.cardStyle = document.getElementById('card-style').value;
+            state.customization.layout.fontFamily = document.getElementById('font-family').value;
+            
+            // Aplica as personalizações
+            applyCustomization();
+            
+            // Salva no localStorage
+            localStorage.setItem('siteCustomization', JSON.stringify(state.customization));
+            localStorage.setItem('siteSettings', JSON.stringify(state.siteSettings));
+            
+            closeCustomizationModal();
+            alert('Personalização salva com sucesso!');
+        }
+
+        function resetCustomization() {
+            if (confirm('Tem certeza que deseja redefinir todas as personalizações para os valores padrão?')) {
+                state.customization = {
+                    colors: {
+                        primary: "#1a3a5f",
+                        secondary: "#d35400",
+                        accent: "#2980b9",
+                        dark: "#2c3e50"
+                    },
+                    layout: {
+                        headerStyle: "default",
+                        heroStyle: "default",
+                        cardStyle: "default",
+                        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                    }
+                };
+                
+                // Atualiza o formulário
+                document.getElementById('primary-color').value = state.customization.colors.primary;
+                document.getElementById('secondary-color').value = state.customization.colors.secondary;
+                document.getElementById('accent-color').value = state.customization.colors.accent;
+                document.getElementById('dark-color').value = state.customization.colors.dark;
+                
+                updateColorPreviews();
+                
+                // Aplica as personalizações
+                applyCustomization();
+                
+                alert('Personalizações redefinidas para os valores padrão!');
+            }
+        }
+
+        function applyCustomization() {
+            // Aplica as cores
+            document.documentElement.style.setProperty('--primary', state.customization.colors.primary);
+            document.documentElement.style.setProperty('--secondary', state.customization.colors.secondary);
+            document.documentElement.style.setProperty('--accent', state.customization.colors.accent);
+            document.documentElement.style.setProperty('--dark', state.customization.colors.dark);
+            
+            // Aplica a fonte
+            document.body.style.fontFamily = state.customization.layout.fontFamily;
+            
+            // Atualiza o conteúdo
+            updateSiteInterface();
         }
         
         // Preenche os seletores de ícones
@@ -1484,16 +1907,28 @@
             }
         });
         
+        // Logout
+        function logout() {
+            state.isLoggedIn = false;
+            state.currentUser = null;
+            showPage('home');
+            alert('Logout realizado com sucesso!');
+        }
+        
         // Configurações do site
         document.getElementById('site-settings-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Atualiza as configurações
             state.siteSettings.title = document.getElementById('site-title').value;
+            state.siteSettings.heroTitle = document.getElementById('hero-title-input').value;
+            state.siteSettings.heroDescription = document.getElementById('hero-description-input').value;
+            state.siteSettings.showcaseTitle = document.getElementById('showcase-title-input').value;
             state.siteSettings.contactPhone = document.getElementById('contact-phone').value;
             state.siteSettings.contactWhatsapp = document.getElementById('contact-whatsapp').value;
             state.siteSettings.contactEmail = document.getElementById('contact-email').value;
             state.siteSettings.contactAddress = document.getElementById('contact-address').value;
+            state.siteSettings.instagramUrl = document.getElementById('instagram-url').value;
             
             // Salva no localStorage
             localStorage.setItem('siteSettings', JSON.stringify(state.siteSettings));
@@ -1505,61 +1940,37 @@
             alert('Configurações salvas com sucesso!');
         });
         
-        // Textos do site
-        document.getElementById('text-settings-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Atualiza os textos
-            state.textSettings.logoText = document.getElementById('site-logo-text-input').value;
-            state.textSettings.navHome = document.getElementById('nav-home-text').value;
-            state.textSettings.navAbout = document.getElementById('nav-about-text').value;
-            state.textSettings.navContact = document.getElementById('nav-contact-text').value;
-            state.textSettings.adminBtnText = document.getElementById('admin-btn-text-input').value;
-            state.textSettings.heroTitle = document.getElementById('hero-title-text').value;
-            state.textSettings.heroDescription = document.getElementById('hero-description-text').value;
-            state.textSettings.heroButtonText = document.getElementById('hero-button-text-input').value;
-            state.textSettings.showcaseTitle = document.getElementById('showcase-title-text').value;
-            state.textSettings.footerAbout = document.getElementById('footer-about-text').value;
-            
-            // Salva no localStorage
-            localStorage.setItem('textSettings', JSON.stringify(state.textSettings));
-            
-            // Atualiza a interface
-            updateTextInterface();
-            
-            closeTextSettingsModal();
-            alert('Textos salvos com sucesso!');
-        });
-        
         // Atualiza a interface com as configurações do site
         function updateSiteInterface() {
-            document.getElementById('footer-logo').innerHTML = `${state.siteSettings.title}<span>Masters</span>`;
+            document.getElementById('hero-title').textContent = state.siteSettings.heroTitle;
+            document.getElementById('hero-description').textContent = state.siteSettings.heroDescription;
+            document.getElementById('showcase-title').textContent = state.siteSettings.showcaseTitle;
+            
+            // Atualiza o logo
+            document.querySelector('.logo').innerHTML = `<i class="fas fa-car"></i> ${state.siteSettings.title}<span>${state.siteSettings.companySlogan}</span>`;
+            document.querySelector('.footer-logo').innerHTML = `${state.siteSettings.companyName}<span>${state.siteSettings.companySlogan}</span>`;
+            
+            // Atualiza o texto sobre a empresa
+            document.querySelector('.footer-about').textContent = state.siteSettings.aboutText;
+            
+            // Atualiza os botões sociais
+            const whatsappBtn = document.querySelector('.btn-whatsapp');
+            const instagramBtn = document.querySelector('.btn-instagram');
+            
+            if (whatsappBtn) {
+                whatsappBtn.href = `https://wa.me/55${state.siteSettings.contactWhatsapp.replace(/\D/g, '')}`;
+            }
+            
+            if (instagramBtn) {
+                instagramBtn.href = state.siteSettings.instagramUrl;
+            }
+            
+            // Atualiza o footer
             document.getElementById('footer-phone').textContent = state.siteSettings.contactPhone;
             document.getElementById('footer-whatsapp').textContent = state.siteSettings.contactWhatsapp;
             document.getElementById('footer-email').textContent = state.siteSettings.contactEmail;
             document.getElementById('footer-address').textContent = state.siteSettings.contactAddress;
-            document.getElementById('footer-copyright').textContent = state.siteSettings.title;
-        }
-        
-        // Atualiza a interface com os textos personalizados
-        function updateTextInterface() {
-            document.getElementById('site-logo-text').textContent = state.textSettings.logoText;
-            document.getElementById('nav-home').textContent = state.textSettings.navHome;
-            document.getElementById('nav-about').textContent = state.textSettings.navAbout;
-            document.getElementById('nav-contact').textContent = state.textSettings.navContact;
-            document.getElementById('admin-btn-text').textContent = state.textSettings.adminBtnText;
-            document.getElementById('mobile-nav-home').textContent = state.textSettings.navHome;
-            document.getElementById('mobile-nav-about').textContent = state.textSettings.navAbout;
-            document.getElementById('mobile-nav-contact').textContent = state.textSettings.navContact;
-            document.getElementById('mobile-admin-btn').textContent = state.textSettings.adminBtnText;
-            document.getElementById('hero-title').textContent = state.textSettings.heroTitle;
-            document.getElementById('hero-description').textContent = state.textSettings.heroDescription;
-            document.getElementById('hero-button-text').textContent = state.textSettings.heroButtonText;
-            document.getElementById('showcase-title').textContent = state.textSettings.showcaseTitle;
-            document.getElementById('footer-about-text').textContent = state.textSettings.footerAbout;
-            document.getElementById('footer-nav-home').textContent = state.textSettings.navHome;
-            document.getElementById('footer-nav-about').textContent = state.textSettings.navAbout;
-            document.getElementById('footer-nav-contact').textContent = state.textSettings.navContact;
+            document.getElementById('footer-hours').textContent = state.siteSettings.businessHours;
         }
         
         // Carrega os carros do localStorage
@@ -1571,8 +1982,8 @@
             
             if (cars.length === 0) {
                 carsContainer.innerHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--gray);">
-                        <i class="fas fa-car" style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <i class="fas fa-car"></i>
                         <h3>Nenhum carro disponível no momento</h3>
                         <p>Entre em contato para saber sobre nossos próximos veículos.</p>
                     </div>
@@ -1585,8 +1996,8 @@
             
             if (activeCars.length === 0) {
                 carsContainer.innerHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--gray);">
-                        <i class="fas fa-car" style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <i class="fas fa-car"></i>
                         <h3>Todos os veículos foram vendidos!</h3>
                         <p>Em breve teremos novidades em nossa garagem.</p>
                     </div>
@@ -1630,7 +2041,9 @@
                         ${car.description ? `<p class="car-description">${car.description.length > 100 ? car.description.substring(0, 100) + '...' : car.description}</p>` : ''}
                         
                         <div class="car-actions">
-                            <button class="btn btn-icon" onclick="showContactInfo()"><i class="fas fa-phone-alt"></i> Contato</button>
+                            <a href="https://wa.me/55${state.siteSettings.contactWhatsapp.replace(/\D/g, '')}?text=Olá! Tenho interesse no ${car.name} ${car.brand} ${car.year}" class="btn btn-whatsapp btn-icon" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
                             <button class="btn btn-outline" onclick="showCarDetails('${car.id}')">Detalhes</button>
                         </div>
                     </div>
@@ -1658,9 +2071,12 @@
             if (cars.length === 0) {
                 adminCarsList.innerHTML = `
                     <tr>
-                        <td colspan="6" style="text-align: center; padding: 2rem; color: var(--gray);">
-                            <i class="fas fa-car" style="font-size: 2rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <td colspan="6" class="empty-state">
+                            <i class="fas fa-car"></i>
                             <p>Nenhum carro cadastrado</p>
+                            <button class="btn" onclick="openAddCarModal()" style="margin-top: 1rem;">
+                                <i class="fas fa-plus"></i> Adicionar Primeiro Carro
+                            </button>
                         </td>
                     </tr>
                 `;
@@ -1802,8 +2218,7 @@ E-mail: ${state.siteSettings.contactEmail}
 Endereço: ${state.siteSettings.contactAddress}
 
 Horário de atendimento:
-Segunda a Sexta: 8h às 18h
-Sábado: 8h às 12h
+${state.siteSettings.businessHours}
             `);
         }
         
@@ -1821,12 +2236,18 @@ Sábado: 8h às 12h
                 updateSiteInterface();
             }
             
-            // Carrega textos personalizados
-            const savedTexts = localStorage.getItem('textSettings');
-            if (savedTexts) {
-                state.textSettings = JSON.parse(savedTexts);
-                updateTextInterface();
+            // Carrega personalizações
+            const savedCustomization = localStorage.getItem('siteCustomization');
+            if (savedCustomization) {
+                state.customization = JSON.parse(savedCustomization);
+                applyCustomization();
             }
+            
+            // Atualiza os eventos dos inputs de cor
+            document.getElementById('primary-color').addEventListener('input', updateColorPreviews);
+            document.getElementById('secondary-color').addEventListener('input', updateColorPreviews);
+            document.getElementById('accent-color').addEventListener('input', updateColorPreviews);
+            document.getElementById('dark-color').addEventListener('input', updateColorPreviews);
             
             loadCars();
             
