@@ -913,6 +913,19 @@
             cursor: pointer;
         }
         
+        .set-main-image {
+            position: absolute;
+            bottom: 2px;
+            left: 2px;
+            background: rgba(41, 128, 185, 0.8);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            cursor: pointer;
+        }
+        
         .image-input-group {
             display: flex;
             gap: 0.5rem;
@@ -1708,6 +1721,16 @@
             updateImagePreview();
         }
         
+        function setMainImage(index) {
+            if (index > 0) {
+                // Move a imagem selecionada para a primeira posição
+                const selectedImage = state.carImages[index];
+                state.carImages.splice(index, 1);
+                state.carImages.unshift(selectedImage);
+                updateImagePreview();
+            }
+        }
+        
         function updateImagePreview() {
             const previewContainer = document.getElementById('image-preview');
             previewContainer.innerHTML = '';
@@ -1720,6 +1743,7 @@
                     <button type="button" class="remove-image" onclick="removeImage(${index})">
                         <i class="fas fa-times"></i>
                     </button>
+                    ${index > 0 ? `<button type="button" class="set-main-image" onclick="setMainImage(${index})">Principal</button>` : ''}
                 `;
                 previewContainer.appendChild(imageItem);
             });
