@@ -609,6 +609,131 @@
             transform: scale(1.2);
         }
         
+        /* Página de Detalhes do Carro */
+        .car-detail-page {
+            display: none;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+        }
+        
+        .car-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #eee;
+            background-color: #f8f9fa;
+        }
+        
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .back-btn i {
+            margin-right: 8px;
+        }
+        
+        .car-detail-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+        
+        .car-gallery {
+            position: relative;
+        }
+        
+        .main-car-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .car-thumbnails {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+        
+        .car-thumbnail {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+        
+        .car-thumbnail:hover, .car-thumbnail.active {
+            opacity: 1;
+            border: 2px solid var(--secondary);
+        }
+        
+        .car-detail-info {
+            padding: 1rem 0;
+        }
+        
+        .car-detail-title {
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .car-detail-price {
+            font-size: 2rem;
+            color: var(--secondary);
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        
+        .car-detail-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .spec-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+        }
+        
+        .spec-item i {
+            margin-right: 10px;
+            color: var(--accent);
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .car-detail-description {
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .car-detail-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
         /* Footer */
         footer {
             background-color: var(--primary);
@@ -745,6 +870,58 @@
             opacity: 0.5;
         }
         
+        /* Gestão de Imagens */
+        .image-management {
+            margin-top: 1.5rem;
+        }
+        
+        .image-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .image-preview-item {
+            position: relative;
+            width: 100px;
+            height: 80px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .image-preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .remove-image {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: rgba(231, 76, 60, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+        
+        .image-input-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .image-input-group input {
+            flex: 1;
+        }
+        
         /* Responsividade */
         @media (max-width: 1200px) {
             .container {
@@ -817,6 +994,10 @@
             
             .admin-header .btn {
                 width: 100%;
+            }
+            
+            .car-detail-content {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -907,6 +1088,14 @@
             .footer-container {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
+            }
+            
+            .car-detail-specs {
+                grid-template-columns: 1fr;
+            }
+            
+            .car-detail-actions {
+                flex-direction: column;
             }
         }
         
@@ -1094,6 +1283,20 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Página de Detalhes do Carro -->
+        <div id="car-detail-page" class="car-detail-page" style="display: none;">
+            <div class="car-detail-header">
+                <button class="back-btn" id="back-to-home">
+                    <i class="fas fa-arrow-left"></i> Voltar para a Garagem
+                </button>
+                <h2 id="car-detail-page-title">Detalhes do Veículo</h2>
+            </div>
+            
+            <div class="car-detail-content" id="car-detail-content">
+                <!-- Conteúdo será preenchido via JavaScript -->
+            </div>
+        </div>
     </div>
     
     <!-- Modal de Login -->
@@ -1197,6 +1400,18 @@
                     <textarea id="car-description" rows="4" placeholder="Descreva o carro, inclua detalhes, opcionais, estado de conservação..."></textarea>
                 </div>
                 
+                <div class="form-group image-management">
+                    <label for="car-images">Imagens do Carro</label>
+                    <div class="image-preview" id="image-preview">
+                        <!-- As imagens serão adicionadas aqui dinamicamente -->
+                    </div>
+                    <div class="image-input-group">
+                        <input type="text" id="car-image-url" placeholder="Cole a URL da imagem aqui">
+                        <button type="button" class="btn btn-outline" id="add-image-btn">Adicionar</button>
+                    </div>
+                    <small>Adicione a primeira imagem que será usada como imagem principal na vitrine</small>
+                </div>
+                
                 <div class="form-actions">
                     <button type="button" class="btn btn-outline" id="cancel-car-modal">Cancelar</button>
                     <button type="submit" class="btn" id="car-form-submit">Adicionar Carro</button>
@@ -1247,7 +1462,8 @@
         const state = {
             isLoggedIn: false,
             currentUser: null,
-            editingCarId: null
+            editingCarId: null,
+            carImages: []
         };
         
         // Credenciais de acesso
@@ -1281,8 +1497,12 @@
                         kilometers: 15000,
                         fuel: "Gasolina",
                         transmission: "Automático",
-                        description: "Carro esportivo em excelente estado, único dono, com todos os serviços realizados na concessionária.",
-                        image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                        description: "Carro esportivo em excelente estado, único dono, com todos os serviços realizados na concessionária. Equipado com teto solar, bancos em couro, sistema de som premium e rodas de liga leve. Documentação em dia e sem restrições.",
+                        images: [
+                            "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                            "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                            "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                        ],
                         status: "disponível",
                         dateAdded: new Date().toISOString()
                     },
@@ -1296,8 +1516,12 @@
                         kilometers: 8000,
                         fuel: "Flex",
                         transmission: "Automático",
-                        description: "Seminovo, com garantia de fábrica, completo, ar-condicionado digital, multimídia e câmera de ré.",
-                        image: "https://images.unsplash.com/photo-1603587070813-50d1220677b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                        description: "Seminovo, com garantia de fábrica, completo, ar-condicionado digital, multimídia e câmera de ré. Veículo de único dono, sempre garagado e com histórico de manutenção completo na concessionária.",
+                        images: [
+                            "https://images.unsplash.com/photo-1603587070813-50d1220677b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                            "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                            "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                        ],
                         status: "disponível",
                         dateAdded: new Date().toISOString()
                     }
@@ -1347,6 +1571,12 @@
             document.getElementById('save-site-settings').addEventListener('click', saveSiteSettings);
             document.getElementById('reset-site-settings').addEventListener('click', resetSiteSettings);
             
+            // Gestão de imagens
+            document.getElementById('add-image-btn').addEventListener('click', addImageFromUrl);
+            
+            // Página de detalhes
+            document.getElementById('back-to-home').addEventListener('click', () => showPage('home'));
+            
             // Modais
             document.getElementById('close-login-modal').addEventListener('click', closeLoginModal);
             document.getElementById('cancel-login').addEventListener('click', closeLoginModal);
@@ -1359,10 +1589,11 @@
         }
         
         // Navegação entre páginas
-        function showPage(pageId) {
+        function showPage(pageId, carId = null) {
             // Esconde todas as páginas
             document.getElementById('home-page').style.display = 'none';
             document.getElementById('admin-page').style.display = 'none';
+            document.getElementById('car-detail-page').style.display = 'none';
             
             // Mostra a página selecionada
             if (pageId === 'home') {
@@ -1376,6 +1607,9 @@
                 document.getElementById('admin-page').style.display = 'block';
                 loadAdminData();
                 loadSiteSettingsForm();
+            } else if (pageId === 'car-detail' && carId) {
+                document.getElementById('car-detail-page').style.display = 'block';
+                loadCarDetail(carId);
             }
             
             // Atualiza a navegação ativa
@@ -1422,6 +1656,8 @@
             document.getElementById('car-form').reset();
             document.getElementById('car-id').value = '';
             state.editingCarId = null;
+            state.carImages = [];
+            updateImagePreview();
             
             document.getElementById('car-modal').style.display = 'flex';
         }
@@ -1446,12 +1682,47 @@
                 document.getElementById('car-description').value = car.description || '';
                 
                 state.editingCarId = carId;
+                state.carImages = car.images || [];
+                updateImagePreview();
+                
                 document.getElementById('car-modal').style.display = 'flex';
             }
         }
         
         function closeCarModal() {
             document.getElementById('car-modal').style.display = 'none';
+        }
+        
+        // Gestão de Imagens
+        function addImageFromUrl() {
+            const imageUrl = document.getElementById('car-image-url').value.trim();
+            if (imageUrl) {
+                state.carImages.push(imageUrl);
+                updateImagePreview();
+                document.getElementById('car-image-url').value = '';
+            }
+        }
+        
+        function removeImage(index) {
+            state.carImages.splice(index, 1);
+            updateImagePreview();
+        }
+        
+        function updateImagePreview() {
+            const previewContainer = document.getElementById('image-preview');
+            previewContainer.innerHTML = '';
+            
+            state.carImages.forEach((imageUrl, index) => {
+                const imageItem = document.createElement('div');
+                imageItem.className = 'image-preview-item';
+                imageItem.innerHTML = `
+                    <img src="${imageUrl}" alt="Preview ${index + 1}">
+                    <button type="button" class="remove-image" onclick="removeImage(${index})">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                previewContainer.appendChild(imageItem);
+            });
         }
         
         // Login
@@ -1496,6 +1767,7 @@
                 fuel: document.getElementById('car-fuel').value,
                 transmission: document.getElementById('car-transmission').value,
                 description: document.getElementById('car-description').value,
+                images: state.carImages.length > 0 ? state.carImages : ['https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'],
                 status: 'disponível',
                 dateAdded: new Date().toISOString()
             };
@@ -1518,6 +1790,8 @@
             
             // Limpa o formulário
             document.getElementById('car-form').reset();
+            state.carImages = [];
+            updateImagePreview();
             
             // Fecha o modal
             closeCarModal();
@@ -1584,9 +1858,12 @@
                 const currentYear = new Date().getFullYear();
                 const isNew = car.year >= currentYear - 1;
                 
+                // Usar a primeira imagem do array de imagens
+                const mainImage = car.images && car.images.length > 0 ? car.images[0] : 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
+                
                 carCard.innerHTML = `
                     ${isNew ? '<div class="car-badge">Novo</div>' : ''}
-                    <img src="${car.image || 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'}" alt="${car.name}" class="car-image">
+                    <img src="${mainImage}" alt="${car.name}" class="car-image">
                     <div class="car-info">
                         <h3 class="car-title">${car.name}</h3>
                         <p class="car-details"><i class="fas fa-tag"></i> ${car.brand} • ${car.year} ${car.color ? '• ' + car.color : ''}</p>
@@ -1615,7 +1892,7 @@
                             <a href="https://wa.me/5534997727797?text=Olá! Tenho interesse no ${car.name} ${car.brand} ${car.year}" class="btn btn-whatsapp btn-icon" target="_blank">
                                 <i class="fab fa-whatsapp"></i> WhatsApp
                             </a>
-                            <button class="btn btn-outline" onclick="showCarDetails('${car.id}')">Detalhes</button>
+                            <button class="btn btn-outline" onclick="showCarDetailPage('${car.id}')">Detalhes</button>
                         </div>
                     </div>
                 `;
@@ -1677,30 +1954,111 @@
             });
         }
         
-        // Mostrar detalhes do carro
-        function showCarDetails(carId) {
+        // Mostrar página de detalhes do carro
+        function showCarDetailPage(carId) {
+            showPage('car-detail', carId);
+        }
+        
+        // Carregar detalhes do carro
+        function loadCarDetail(carId) {
             const cars = JSON.parse(localStorage.getItem('cars')) || [];
             const car = cars.find(c => c.id === carId);
             
-            if (car) {
-                const details = `
-Modelo: ${car.name}
-Marca: ${car.brand}
-Ano: ${car.year}
-Preço: R$ ${car.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}
-${car.color ? `Cor: ${car.color}` : ''}
-${car.kilometers ? `Quilometragem: ${car.kilometers.toLocaleString('pt-BR')} km` : ''}
-Combustível: ${car.fuel || 'Flex'}
-Câmbio: ${car.transmission || 'Manual'}
-${car.description ? `Descrição: ${car.description}` : ''}
-
-Interessado? Entre em contato conosco!
-Telefone: (34) 99772-7797
-WhatsApp: (34) 99772-7797
-                `.trim();
-                
-                alert(details);
+            if (!car) {
+                document.getElementById('car-detail-content').innerHTML = `
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <i class="fas fa-car"></i>
+                        <h3>Carro não encontrado</h3>
+                        <p>O veículo que você está procurando não está mais disponível.</p>
+                    </div>
+                `;
+                return;
             }
+            
+            // Usar a primeira imagem como principal
+            const mainImage = car.images && car.images.length > 0 ? car.images[0] : 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
+            
+            // Gerar thumbnails
+            let thumbnailsHtml = '';
+            if (car.images && car.images.length > 0) {
+                car.images.forEach((image, index) => {
+                    thumbnailsHtml += `
+                        <img src="${image}" alt="Imagem ${index + 1}" class="car-thumbnail ${index === 0 ? 'active' : ''}" 
+                             onclick="changeMainImage('${image}', this)">
+                    `;
+                });
+            }
+            
+            document.getElementById('car-detail-content').innerHTML = `
+                <div class="car-gallery">
+                    <img src="${mainImage}" alt="${car.name}" class="main-car-image" id="main-car-image">
+                    <div class="car-thumbnails">
+                        ${thumbnailsHtml}
+                    </div>
+                </div>
+                <div class="car-detail-info">
+                    <h1 class="car-detail-title">${car.name}</h1>
+                    <p class="car-detail-price">R$ ${car.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</p>
+                    
+                    <div class="car-detail-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-tag"></i>
+                            <span>Marca: ${car.brand}</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Ano: ${car.year}</span>
+                        </div>
+                        ${car.color ? `
+                        <div class="spec-item">
+                            <i class="fas fa-palette"></i>
+                            <span>Cor: ${car.color}</span>
+                        </div>
+                        ` : ''}
+                        ${car.kilometers ? `
+                        <div class="spec-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Quilometragem: ${car.kilometers.toLocaleString('pt-BR')} km</span>
+                        </div>
+                        ` : ''}
+                        <div class="spec-item">
+                            <i class="fas fa-gas-pump"></i>
+                            <span>Combustível: ${car.fuel || 'Flex'}</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-cogs"></i>
+                            <span>Câmbio: ${car.transmission || 'Manual'}</span>
+                        </div>
+                    </div>
+                    
+                    ${car.description ? `
+                    <div class="car-detail-description">
+                        <h3>Descrição</h3>
+                        <p>${car.description}</p>
+                    </div>
+                    ` : ''}
+                    
+                    <div class="car-detail-actions">
+                        <a href="https://wa.me/5534997727797?text=Olá! Tenho interesse no ${car.name} ${car.brand} ${car.year}" class="btn btn-whatsapp btn-icon" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Entrar em Contato
+                        </a>
+                        <button class="btn" onclick="showPage('home')">
+                            <i class="fas fa-arrow-left"></i> Voltar para Garagem
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Alterar imagem principal na galeria
+        function changeMainImage(imageUrl, element) {
+            document.getElementById('main-car-image').src = imageUrl;
+            
+            // Atualizar thumbnails ativos
+            document.querySelectorAll('.car-thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            element.classList.add('active');
         }
         
         // Configurações do site
