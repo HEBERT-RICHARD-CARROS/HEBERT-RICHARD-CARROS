@@ -270,13 +270,13 @@
         }
         
         .btn-location {
-            background-color: #34a853;
-            box-shadow: 0 4px 10px rgba(52, 168, 83, 0.3);
+            background-color: var(--primary);
+            box-shadow: 0 4px 10px rgba(26, 58, 95, 0.3);
         }
         
         .btn-location:hover {
-            background-color: #2d8c4d;
-            box-shadow: 0 6px 15px rgba(52, 168, 83, 0.4);
+            background-color: #152a45;
+            box-shadow: 0 6px 15px rgba(26, 58, 95, 0.4);
             transform: translateY(-3px);
         }
         
@@ -1056,6 +1056,43 @@
                     </table>
                 </div>
             </div>
+            
+            <!-- Nova seção para editar informações do site -->
+            <div class="admin-panel" id="site-settings-panel">
+                <div class="admin-header">
+                    <h2 class="admin-title">Configurações do Site</h2>
+                </div>
+                
+                <div class="form-group">
+                    <label for="site-title">Título do Site</label>
+                    <input type="text" id="site-title" placeholder="Título que aparece no topo da página">
+                </div>
+                
+                <div class="form-group">
+                    <label for="hero-title">Título Principal (Hero)</label>
+                    <input type="text" id="hero-title-input" placeholder="Título grande na seção principal">
+                </div>
+                
+                <div class="form-group">
+                    <label for="hero-description">Descrição do Hero</label>
+                    <textarea id="hero-description-input" rows="3" placeholder="Descrição abaixo do título principal"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="showcase-title">Título da Vitrine</label>
+                    <input type="text" id="showcase-title-input" placeholder="Título da seção de carros">
+                </div>
+                
+                <div class="form-group">
+                    <label for="footer-about">Texto Sobre Nós (Rodapé)</label>
+                    <textarea id="footer-about-input" rows="3" placeholder="Texto sobre a empresa no rodapé"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="reset-site-settings">Restaurar Padrões</button>
+                    <button type="button" class="btn" id="save-site-settings">Salvar Configurações</button>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -1172,7 +1209,7 @@
         <div class="footer-container">
             <div>
                 <div class="footer-logo">Hebert<span>Richards</span></div>
-                <p class="footer-about">Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.</p>
+                <p class="footer-about" id="footer-about-text">Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/share/1A4EtfM2ij/" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/hebert.richards.3344?igsh=em0xYXhxY2V3ZWg4" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -1223,6 +1260,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Configurar event listeners
             setupEventListeners();
+            
+            // Carregar configurações do site
+            loadSiteSettings();
             
             // Carregar carros
             loadCars();
@@ -1303,6 +1343,10 @@
             document.getElementById('logout-btn').addEventListener('click', logout);
             document.getElementById('add-car-btn').addEventListener('click', openAddCarModal);
             
+            // Configurações do site
+            document.getElementById('save-site-settings').addEventListener('click', saveSiteSettings);
+            document.getElementById('reset-site-settings').addEventListener('click', resetSiteSettings);
+            
             // Modais
             document.getElementById('close-login-modal').addEventListener('click', closeLoginModal);
             document.getElementById('cancel-login').addEventListener('click', closeLoginModal);
@@ -1331,6 +1375,7 @@
                 }
                 document.getElementById('admin-page').style.display = 'block';
                 loadAdminData();
+                loadSiteSettingsForm();
             }
             
             // Atualiza a navegação ativa
@@ -1655,6 +1700,57 @@ WhatsApp: (34) 99772-7797
                 `.trim();
                 
                 alert(details);
+            }
+        }
+        
+        // Configurações do site
+        function loadSiteSettings() {
+            const settings = JSON.parse(localStorage.getItem('siteSettings')) || {};
+            
+            // Aplicar configurações salvas
+            document.getElementById('hero-title').textContent = settings.heroTitle || 'Veículos Selecionados com Qualidade';
+            document.getElementById('hero-description').textContent = settings.heroDescription || 'Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.';
+            document.getElementById('showcase-title').textContent = settings.showcaseTitle || 'Nossa Garagem';
+            document.getElementById('footer-about-text').textContent = settings.footerAbout || 'Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.';
+            
+            if (settings.siteTitle) {
+                document.title = settings.siteTitle + ' - Hebert Richards Veículos Premium';
+            }
+        }
+        
+        function loadSiteSettingsForm() {
+            const settings = JSON.parse(localStorage.getItem('siteSettings')) || {};
+            
+            document.getElementById('site-title').value = settings.siteTitle || '';
+            document.getElementById('hero-title-input').value = settings.heroTitle || 'Veículos Selecionados com Qualidade';
+            document.getElementById('hero-description-input').value = settings.heroDescription || 'Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.';
+            document.getElementById('showcase-title-input').value = settings.showcaseTitle || 'Nossa Garagem';
+            document.getElementById('footer-about-input').value = settings.footerAbout || 'Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.';
+        }
+        
+        function saveSiteSettings() {
+            const settings = {
+                siteTitle: document.getElementById('site-title').value,
+                heroTitle: document.getElementById('hero-title-input').value,
+                heroDescription: document.getElementById('hero-description-input').value,
+                showcaseTitle: document.getElementById('showcase-title-input').value,
+                footerAbout: document.getElementById('footer-about-input').value
+            };
+            
+            localStorage.setItem('siteSettings', JSON.stringify(settings));
+            
+            // Aplicar imediatamente as alterações
+            loadSiteSettings();
+            
+            alert('Configurações do site salvas com sucesso!');
+        }
+        
+        function resetSiteSettings() {
+            if (confirm('Tem certeza que deseja restaurar as configurações padrão do site?')) {
+                localStorage.removeItem('siteSettings');
+                loadSiteSettings();
+                loadSiteSettingsForm();
+                alert('Configurações restauradas para os valores padrão!');
             }
         }
         
