@@ -929,9 +929,10 @@
         .image-input-group {
             display: flex;
             gap: 0.5rem;
+            flex-wrap: wrap;
         }
         
-        .image-input-group input {
+        .image-input-group input[type="text"] {
             flex: 1;
         }
         
@@ -1213,7 +1214,7 @@
             </section>
         </div>
         
-        <!-- Área Administrativa (visível apenas após login) -->
+        <!-- Área Administrativa -->
         <div id="admin-page" class="page" style="display: none;">
             <div class="admin-panel">
                 <div class="admin-header">
@@ -1259,7 +1260,7 @@
                 </div>
             </div>
             
-            <!-- Nova seção para editar informações do site -->
+            <!-- Configurações do Site -->
             <div class="admin-panel" id="site-settings-panel">
                 <div class="admin-header">
                     <h2 class="admin-title">Configurações do Site</h2>
@@ -1369,7 +1370,8 @@
                 
                 <div class="form-group">
                     <label for="car-year">Ano</label>
-                    <input type="number" id="car-year" min="1990" max="2024" required>
+                    <!-- max será ajustado via JS -->
+                    <input type="number" id="car-year" min="1990" max="2099" required>
                 </div>
                 
                 <div class="form-group">
@@ -1415,14 +1417,28 @@
                 
                 <div class="form-group image-management">
                     <label for="car-images">Imagens do Carro</label>
+                    
                     <div class="image-preview" id="image-preview">
-                        <!-- As imagens serão adicionadas aqui dinamicamente -->
+                        <!-- previews -->
                     </div>
+
+                    <!-- Selecionar da GALERIA / arquivos -->
                     <div class="image-input-group">
-                        <input type="text" id="car-image-url" placeholder="Cole a URL da imagem aqui">
+                        <input 
+                            type="file" 
+                            id="car-image-file" 
+                            accept="image/*" 
+                            multiple
+                        >
+                    </div>
+
+                    <!-- Opcional: também permitir URL -->
+                    <div class="image-input-group" style="margin-top: 0.5rem;">
+                        <input type="text" id="car-image-url" placeholder="Ou cole a URL da imagem aqui">
                         <button type="button" class="btn btn-outline" id="add-image-btn">Adicionar</button>
                     </div>
-                    <small>Adicione a primeira imagem que será usada como imagem principal na vitrine</small>
+                    
+                    <small>A primeira imagem será usada como principal na vitrine.</small>
                 </div>
                 
                 <div class="form-actions">
@@ -1487,6 +1503,12 @@
         
         // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
+            // Ajusta o max do ano dinamicamente (ano atual + 1)
+            const yearInput = document.getElementById('car-year');
+            if (yearInput) {
+                yearInput.max = new Date().getFullYear() + 1;
+            }
+
             // Configurar event listeners
             setupEventListeners();
             
@@ -1511,11 +1533,7 @@
                         fuel: "Gasolina",
                         transmission: "Automático",
                         description: "Carro esportivo em excelente estado, único dono, com todos os serviços realizados na concessionária. Equipado com teto solar, bancos em couro, sistema de som premium e rodas de liga leve. Documentação em dia e sem restrições.",
-                        images: [
-                            "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-                            "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-                            "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
-                        ],
+                        images: [],
                         status: "disponível",
                         dateAdded: new Date().toISOString()
                     },
@@ -1530,11 +1548,7 @@
                         fuel: "Flex",
                         transmission: "Automático",
                         description: "Seminovo, com garantia de fábrica, completo, ar-condicionado digital, multimídia e câmera de ré. Veículo de único dono, sempre garagado e com histórico de manutenção completo na concessionária.",
-                        images: [
-                            "https://images.unsplash.com/photo-1603587070813-50d1220677b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-                            "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-                            "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
-                        ],
+                        images: [],
                         status: "disponível",
                         dateAdded: new Date().toISOString()
                     }
@@ -1584,8 +1598,17 @@
             document.getElementById('save-site-settings').addEventListener('click', saveSiteSettings);
             document.getElementById('reset-site-settings').addEventListener('click', resetSiteSettings);
             
-            // Gestão de imagens
-            document.getElementById('add-image-btn').addEventListener('click', addImageFromUrl);
+            // Gestão de imagens por URL
+            const addImageBtn = document.getElementById('add-image-btn');
+            if (addImageBtn) {
+                addImageBtn.addEventListener('click', addImageFromUrl);
+            }
+
+            // Gestão de imagens por arquivo/galeria
+            const imageFileInput = document.getElementById('car-image-file');
+            if (imageFileInput) {
+                imageFileInput.addEventListener('change', handleImageFiles);
+            }
             
             // Página de detalhes
             document.getElementById('back-to-home').addEventListener('click', () => showPage('home'));
@@ -1608,7 +1631,6 @@
             document.getElementById('admin-page').style.display = 'none';
             document.getElementById('car-detail-page').style.display = 'none';
             
-            // Mostra a página selecionada
             if (pageId === 'home') {
                 document.getElementById('home-page').style.display = 'block';
                 loadCars();
@@ -1625,17 +1647,12 @@
                 loadCarDetail(carId);
             }
             
-            // Atualiza a navegação ativa
             updateActiveNav(pageId);
         }
         
-        // Atualiza a navegação ativa
         function updateActiveNav(pageId) {
             const navLinks = document.querySelectorAll('.desktop-nav a, .footer-links a, .mobile-nav a');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            
+            navLinks.forEach(link => link.classList.remove('active'));
             if (pageId === 'home') {
                 document.getElementById('home-link').classList.add('active');
                 document.getElementById('footer-home-link').classList.add('active');
@@ -1643,26 +1660,23 @@
             }
         }
         
-        // Menu Mobile
         function toggleMobileNav() {
             document.getElementById('mobile-nav').classList.toggle('active');
         }
-        
         function closeMobileNav() {
             document.getElementById('mobile-nav').classList.remove('active');
         }
         
-        // Modal de Login
+        // Modal Login
         function openLoginModal() {
             document.getElementById('login-modal').style.display = 'flex';
         }
-        
         function closeLoginModal() {
             document.getElementById('login-modal').style.display = 'none';
             document.getElementById('login-form').reset();
         }
         
-        // Modal de Carro
+        // Modal Carro
         function openAddCarModal() {
             document.getElementById('car-modal-title').textContent = 'Adicionar Novo Carro';
             document.getElementById('car-form-submit').textContent = 'Adicionar Carro';
@@ -1671,35 +1685,31 @@
             state.editingCarId = null;
             state.carImages = [];
             updateImagePreview();
-            
             document.getElementById('car-modal').style.display = 'flex';
         }
         
         function openEditCarModal(carId) {
             const cars = JSON.parse(localStorage.getItem('cars')) || [];
             const car = cars.find(c => c.id === carId);
+            if (!car) return;
+
+            document.getElementById('car-modal-title').textContent = 'Editar Carro';
+            document.getElementById('car-form-submit').textContent = 'Atualizar Carro';
+            document.getElementById('car-id').value = car.id;
+            document.getElementById('car-name').value = car.name;
+            document.getElementById('car-brand').value = car.brand;
+            document.getElementById('car-year').value = car.year;
+            document.getElementById('car-price').value = car.price;
+            document.getElementById('car-color').value = car.color || '';
+            document.getElementById('car-kilometers').value = car.kilometers || '';
+            document.getElementById('car-fuel').value = car.fuel || 'Gasolina';
+            document.getElementById('car-transmission').value = car.transmission || 'Manual';
+            document.getElementById('car-description').value = car.description || '';
             
-            if (car) {
-                document.getElementById('car-modal-title').textContent = 'Editar Carro';
-                document.getElementById('car-form-submit').textContent = 'Atualizar Carro';
-                
-                document.getElementById('car-id').value = car.id;
-                document.getElementById('car-name').value = car.name;
-                document.getElementById('car-brand').value = car.brand;
-                document.getElementById('car-year').value = car.year;
-                document.getElementById('car-price').value = car.price;
-                document.getElementById('car-color').value = car.color || '';
-                document.getElementById('car-kilometers').value = car.kilometers || '';
-                document.getElementById('car-fuel').value = car.fuel || 'Gasolina';
-                document.getElementById('car-transmission').value = car.transmission || 'Manual';
-                document.getElementById('car-description').value = car.description || '';
-                
-                state.editingCarId = carId;
-                state.carImages = car.images || [];
-                updateImagePreview();
-                
-                document.getElementById('car-modal').style.display = 'flex';
-            }
+            state.editingCarId = carId;
+            state.carImages = car.images || [];
+            updateImagePreview();
+            document.getElementById('car-modal').style.display = 'flex';
         }
         
         function closeCarModal() {
@@ -1707,12 +1717,32 @@
         }
         
         // Gestão de Imagens
+        
+        // Arquivos / galeria
+        function handleImageFiles(event) {
+            const files = Array.from(event.target.files || []);
+            if (!files.length) return;
+            files.forEach(file => {
+                if (!file.type.startsWith('image/')) return;
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    state.carImages.push(e.target.result);
+                    updateImagePreview();
+                };
+                reader.readAsDataURL(file);
+            });
+            event.target.value = '';
+        }
+
+        // URL manual
         function addImageFromUrl() {
-            const imageUrl = document.getElementById('car-image-url').value.trim();
+            const urlInput = document.getElementById('car-image-url');
+            if (!urlInput) return;
+            const imageUrl = urlInput.value.trim();
             if (imageUrl) {
                 state.carImages.push(imageUrl);
                 updateImagePreview();
-                document.getElementById('car-image-url').value = '';
+                urlInput.value = '';
             }
         }
         
@@ -1723,7 +1753,6 @@
         
         function setMainImage(index) {
             if (index > 0) {
-                // Move a imagem selecionada para a primeira posição
                 const selectedImage = state.carImages[index];
                 state.carImages.splice(index, 1);
                 state.carImages.unshift(selectedImage);
@@ -1733,8 +1762,8 @@
         
         function updateImagePreview() {
             const previewContainer = document.getElementById('image-preview');
+            if (!previewContainer) return;
             previewContainer.innerHTML = '';
-            
             state.carImages.forEach((imageUrl, index) => {
                 const imageItem = document.createElement('div');
                 imageItem.className = 'image-preview-item';
@@ -1752,10 +1781,8 @@
         // Login
         function handleLogin(e) {
             e.preventDefault();
-            
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            
             if (username === validCredentials.username && password === validCredentials.password) {
                 state.isLoggedIn = true;
                 state.currentUser = username;
@@ -1767,7 +1794,6 @@
             }
         }
         
-        // Logout
         function logout() {
             state.isLoggedIn = false;
             state.currentUser = null;
@@ -1780,6 +1806,11 @@
             e.preventDefault();
             
             const carId = document.getElementById('car-id').value || generateId();
+            const cars = JSON.parse(localStorage.getItem('cars')) || [];
+            const existingCar = cars.find(c => c.id === carId);
+
+            const defaultImage = 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
+            
             const car = {
                 id: carId,
                 name: document.getElementById('car-name').value,
@@ -1791,62 +1822,47 @@
                 fuel: document.getElementById('car-fuel').value,
                 transmission: document.getElementById('car-transmission').value,
                 description: document.getElementById('car-description').value,
-                images: state.carImages.length > 0 ? state.carImages : ['https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'],
-                status: 'disponível',
-                dateAdded: new Date().toISOString()
+                images: state.carImages.length > 0 
+                    ? state.carImages 
+                    : (existingCar && existingCar.images && existingCar.images.length > 0
+                        ? existingCar.images
+                        : [defaultImage]),
+                status: existingCar ? existingCar.status : 'disponível',
+                dateAdded: existingCar ? existingCar.dateAdded : new Date().toISOString()
             };
             
-            // Salva no localStorage
-            const cars = JSON.parse(localStorage.getItem('cars')) || [];
-            
-            if (state.editingCarId) {
-                // Atualiza carro existente
-                const index = cars.findIndex(c => c.id === state.editingCarId);
-                if (index !== -1) {
-                    cars[index] = car;
-                }
+            if (existingCar) {
+                const index = cars.findIndex(c => c.id === carId);
+                if (index !== -1) cars[index] = car;
             } else {
-                // Adiciona novo carro
                 cars.push(car);
             }
             
             localStorage.setItem('cars', JSON.stringify(cars));
             
-            // Limpa o formulário
             document.getElementById('car-form').reset();
             state.carImages = [];
             updateImagePreview();
-            
-            // Fecha o modal
             closeCarModal();
-            
-            // Recarrega os dados
             loadAdminData();
             loadCars();
-            
-            // Mostra mensagem de sucesso
-            alert(state.editingCarId ? 'Carro atualizado com sucesso!' : 'Carro adicionado com sucesso!');
+            alert(existingCar ? 'Carro atualizado com sucesso!' : 'Carro adicionado com sucesso!');
         }
         
-        // Excluir carro
         function deleteCar(carId) {
             if (confirm('Tem certeza que deseja excluir este carro?')) {
                 const cars = JSON.parse(localStorage.getItem('cars')) || [];
                 const updatedCars = cars.filter(car => car.id !== carId);
                 localStorage.setItem('cars', JSON.stringify(updatedCars));
-                
                 loadAdminData();
                 loadCars();
-                
                 alert('Carro excluído com sucesso!');
             }
         }
         
-        // Carrega os carros do localStorage
         function loadCars() {
             const carsContainer = document.getElementById('cars-container');
             carsContainer.innerHTML = '';
-            
             const cars = JSON.parse(localStorage.getItem('cars')) || [];
             
             if (cars.length === 0) {
@@ -1860,9 +1876,7 @@
                 return;
             }
             
-            // Mostrar apenas carros ativos
             const activeCars = cars.filter(car => car.status !== 'vendido');
-            
             if (activeCars.length === 0) {
                 carsContainer.innerHTML = `
                     <div class="empty-state" style="grid-column: 1 / -1;">
@@ -1877,12 +1891,8 @@
             activeCars.forEach((car) => {
                 const carCard = document.createElement('div');
                 carCard.className = 'car-card';
-                
-                // Gerar badge se for novo
                 const currentYear = new Date().getFullYear();
                 const isNew = car.year >= currentYear - 1;
-                
-                // Usar a primeira imagem do array de imagens
                 const mainImage = car.images && car.images.length > 0 ? car.images[0] : 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
                 
                 carCard.innerHTML = `
@@ -1892,9 +1902,7 @@
                         <h3 class="car-title">${car.name}</h3>
                         <p class="car-details"><i class="fas fa-tag"></i> ${car.brand} • ${car.year} ${car.color ? '• ' + car.color : ''}</p>
                         <p class="car-price">R$ ${car.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</p>
-                        
                         ${car.kilometers ? `<p class="car-details"><i class="fas fa-tachometer-alt"></i> ${car.kilometers.toLocaleString('pt-BR')} km</p>` : ''}
-                        
                         <div class="car-features">
                             <div class="feature">
                                 <i class="fas fa-gas-pump"></i>
@@ -1909,9 +1917,7 @@
                                 <span>5 lugares</span>
                             </div>
                         </div>
-                        
                         ${car.description ? `<p class="car-description">${car.description.length > 100 ? car.description.substring(0, 100) + '...' : car.description}</p>` : ''}
-                        
                         <div class="car-actions">
                             <a href="https://wa.me/5534997727797?text=Olá! Tenho interesse no ${car.name} ${car.brand} ${car.year}" class="btn btn-whatsapp btn-icon" target="_blank">
                                 <i class="fab fa-whatsapp"></i> WhatsApp
@@ -1924,22 +1930,17 @@
             });
         }
         
-        // Carrega dados administrativos
         function loadAdminData() {
             const cars = JSON.parse(localStorage.getItem('cars')) || [];
             const adminCarsList = document.getElementById('admin-cars-list');
             adminCarsList.innerHTML = '';
-            
-            // Atualiza estatísticas
             const totalCars = cars.length;
             const totalValue = cars.reduce((sum, car) => sum + car.price, 0);
             const avgPrice = totalCars > 0 ? totalValue / totalCars : 0;
-            
             document.getElementById('total-cars').textContent = totalCars;
             document.getElementById('total-value').textContent = `R$ ${totalValue.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
             document.getElementById('avg-price').textContent = `R$ ${avgPrice.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
             
-            // Preenche a tabela
             if (cars.length === 0) {
                 adminCarsList.innerHTML = `
                     <tr>
@@ -1978,18 +1979,17 @@
             });
         }
         
-        // Mostrar página de detalhes do carro
         function showCarDetailPage(carId) {
             showPage('car-detail', carId);
         }
         
-        // Carregar detalhes do carro
         function loadCarDetail(carId) {
             const cars = JSON.parse(localStorage.getItem('cars')) || [];
             const car = cars.find(c => c.id === carId);
+            const detailContainer = document.getElementById('car-detail-content');
             
             if (!car) {
-                document.getElementById('car-detail-content').innerHTML = `
+                detailContainer.innerHTML = `
                     <div class="empty-state" style="grid-column: 1 / -1;">
                         <i class="fas fa-car"></i>
                         <h3>Carro não encontrado</h3>
@@ -1999,10 +1999,7 @@
                 return;
             }
             
-            // Usar a primeira imagem como principal
             const mainImage = car.images && car.images.length > 0 ? car.images[0] : 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
-            
-            // Gerar thumbnails
             let thumbnailsHtml = '';
             if (car.images && car.images.length > 0) {
                 car.images.forEach((image, index) => {
@@ -2013,7 +2010,7 @@
                 });
             }
             
-            document.getElementById('car-detail-content').innerHTML = `
+            detailContainer.innerHTML = `
                 <div class="car-gallery">
                     <img src="${mainImage}" alt="${car.name}" class="main-car-image" id="main-car-image">
                     <div class="car-thumbnails">
@@ -2037,14 +2034,12 @@
                         <div class="spec-item">
                             <i class="fas fa-palette"></i>
                             <span>Cor: ${car.color}</span>
-                        </div>
-                        ` : ''}
+                        </div>` : ''}
                         ${car.kilometers ? `
                         <div class="spec-item">
                             <i class="fas fa-tachometer-alt"></i>
                             <span>Quilometragem: ${car.kilometers.toLocaleString('pt-BR')} km</span>
-                        </div>
-                        ` : ''}
+                        </div>` : ''}
                         <div class="spec-item">
                             <i class="fas fa-gas-pump"></i>
                             <span>Combustível: ${car.fuel || 'Flex'}</span>
@@ -2059,8 +2054,7 @@
                     <div class="car-detail-description">
                         <h3>Descrição</h3>
                         <p>${car.description}</p>
-                    </div>
-                    ` : ''}
+                    </div>` : ''}
                     
                     <div class="car-detail-actions">
                         <a href="https://wa.me/5534997727797?text=Olá! Tenho interesse no ${car.name} ${car.brand} ${car.year}" class="btn btn-whatsapp btn-icon" target="_blank">
@@ -2074,27 +2068,19 @@
             `;
         }
         
-        // Alterar imagem principal na galeria
         function changeMainImage(imageUrl, element) {
             document.getElementById('main-car-image').src = imageUrl;
-            
-            // Atualizar thumbnails ativos
-            document.querySelectorAll('.car-thumbnail').forEach(thumb => {
-                thumb.classList.remove('active');
-            });
+            document.querySelectorAll('.car-thumbnail').forEach(thumb => thumb.classList.remove('active'));
             element.classList.add('active');
         }
         
         // Configurações do site
         function loadSiteSettings() {
             const settings = JSON.parse(localStorage.getItem('siteSettings')) || {};
-            
-            // Aplicar configurações salvas
             document.getElementById('hero-title').textContent = settings.heroTitle || 'Veículos Selecionados com Qualidade';
             document.getElementById('hero-description').textContent = settings.heroDescription || 'Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.';
             document.getElementById('showcase-title').textContent = settings.showcaseTitle || 'Nossa Garagem';
             document.getElementById('footer-about-text').textContent = settings.footerAbout || 'Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.';
-            
             if (settings.siteTitle) {
                 document.title = settings.siteTitle + ' - Hebert Richards Veículos Premium';
             }
@@ -2102,7 +2088,6 @@
         
         function loadSiteSettingsForm() {
             const settings = JSON.parse(localStorage.getItem('siteSettings')) || {};
-            
             document.getElementById('site-title').value = settings.siteTitle || '';
             document.getElementById('hero-title-input').value = settings.heroTitle || 'Veículos Selecionados com Qualidade';
             document.getElementById('hero-description-input').value = settings.heroDescription || 'Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.';
@@ -2118,12 +2103,8 @@
                 showcaseTitle: document.getElementById('showcase-title-input').value,
                 footerAbout: document.getElementById('footer-about-input').value
             };
-            
             localStorage.setItem('siteSettings', JSON.stringify(settings));
-            
-            // Aplicar imediatamente as alterações
             loadSiteSettings();
-            
             alert('Configurações do site salvas com sucesso!');
         }
         
@@ -2136,7 +2117,6 @@
             }
         }
         
-        // Gerar ID único
         function generateId() {
             return 'car_' + Math.random().toString(36).substr(2, 9);
         }
