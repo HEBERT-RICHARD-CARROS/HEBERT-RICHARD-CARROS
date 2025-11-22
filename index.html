@@ -70,7 +70,6 @@
             color: var(--secondary);
         }
         
-        /* Menu */
         .desktop-nav ul {
             display: flex;
             list-style: none;
@@ -121,7 +120,6 @@
             background-color: #e67e22;
         }
         
-        /* Menu Mobile */
         .mobile-toggle {
             display: none;
             background: none;
@@ -184,7 +182,6 @@
             cursor: pointer;
         }
         
-        /* Container Principal */
         .container {
             max-width: 1400px;
             margin: 2rem auto;
@@ -192,7 +189,6 @@
             min-height: 60vh;
         }
         
-        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(26, 58, 95, 0.85), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
@@ -287,7 +283,6 @@
             flex-wrap: wrap;
         }
         
-        /* Seção de Destaques */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -313,7 +308,6 @@
             border-radius: 2px;
         }
         
-        /* Vitrine de Carros */
         .cars-showcase {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -438,7 +432,6 @@
             margin-right: 8px;
         }
         
-        /* Modal de Login */
         .modal {
             display: none;
             position: fixed;
@@ -517,7 +510,6 @@
             margin-top: 2rem;
         }
         
-        /* Área Administrativa */
         .admin-panel {
             background-color: white;
             border-radius: 12px;
@@ -609,7 +601,6 @@
             transform: scale(1.2);
         }
         
-        /* Página de Detalhes do Carro */
         .car-detail-page {
             display: none;
             background-color: white;
@@ -734,7 +725,6 @@
             gap: 1rem;
         }
         
-        /* Footer */
         footer {
             background-color: var(--primary);
             color: white;
@@ -857,7 +847,6 @@
             color: rgba(255, 255, 255, 0.7);
         }
         
-        /* Estilo para quando não há carros */
         .empty-state {
             text-align: center;
             padding: 3rem;
@@ -870,7 +859,6 @@
             opacity: 0.5;
         }
         
-        /* Gestão de Imagens */
         .image-management {
             margin-top: 1.5rem;
         }
@@ -936,20 +924,16 @@
             flex: 1;
         }
         
-        /* Responsividade */
         @media (max-width: 1200px) {
             .container {
                 padding: 0 1rem;
             }
-            
             .header-container {
                 padding: 1rem 1.5rem;
             }
-            
             .hero {
                 padding: 4rem 2rem;
             }
-            
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -959,57 +943,45 @@
             .desktop-nav {
                 display: none;
             }
-            
             .mobile-toggle {
                 display: block;
             }
-            
             .admin-btn span {
                 display: none;
             }
-            
             .admin-btn i {
                 margin-right: 0;
             }
-            
             .hero {
                 padding: 3rem 1.5rem;
             }
-            
             .hero h1 {
                 font-size: 2.2rem;
             }
-            
             .hero p {
                 font-size: 1.1rem;
             }
-            
             .cars-showcase {
                 grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
                 gap: 2rem;
             }
-            
             .admin-panel {
                 padding: 2rem;
             }
-            
             .admin-header {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 1rem;
             }
-            
             .admin-header div {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
                 gap: 0.5rem;
             }
-            
             .admin-header .btn {
                 width: 100%;
             }
-            
             .car-detail-content {
                 grid-template-columns: 1fr;
             }
@@ -1019,95 +991,75 @@
             .header-container {
                 padding: 0.8rem 1rem;
             }
-            
             .logo {
                 font-size: 1.5rem;
             }
-            
             .hero {
                 padding: 2.5rem 1rem;
                 margin-bottom: 2rem;
             }
-            
             .hero h1 {
                 font-size: 2rem;
             }
-            
             .hero p {
                 font-size: 1rem;
                 margin-bottom: 2rem;
             }
-            
             .btn {
                 padding: 0.8rem 1.5rem;
                 font-size: 1rem;
             }
-            
             .social-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
             .social-buttons a {
                 width: 100%;
                 max-width: 250px;
                 text-align: center;
             }
-            
             .section-title {
                 font-size: 1.7rem;
             }
-            
             .cars-showcase {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
-            
             .car-info {
                 padding: 1.5rem;
             }
-            
             .car-actions {
                 flex-direction: column;
                 gap: 0.8rem;
             }
-            
             .car-actions .btn {
                 width: 100%;
                 text-align: center;
             }
-            
             .modal-content {
                 padding: 2rem;
             }
-            
             .form-actions {
                 flex-direction: column;
                 gap: 0.8rem;
             }
-            
             .form-actions button {
                 width: 100%;
             }
-            
             .admin-panel {
                 padding: 1.5rem;
             }
-            
             .admin-table {
                 display: block;
                 overflow-x: auto;
             }
-            
             .footer-container {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
             }
-            
             .car-detail-specs {
                 grid-template-columns: 1fr;
             }
-            
             .car-detail-actions {
                 flex-direction: column;
             }
@@ -1117,25 +1069,20 @@
             .hero {
                 padding: 2rem 1rem;
             }
-            
             .hero h1 {
                 font-size: 1.8rem;
             }
-            
             .stats-cards {
                 grid-template-columns: 1fr;
             }
-            
             .car-features {
                 flex-direction: column;
                 gap: 1rem;
             }
-            
             .modal-content {
                 padding: 1.5rem;
                 width: 95%;
             }
-            
             .admin-title {
                 font-size: 1.5rem;
             }
@@ -1143,983 +1090,892 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <i class="fas fa-car"></i>
-                Hebert<span>Richards</span>
-            </div>
-            
-            <nav class="desktop-nav">
-                <ul>
-                    <li><a href="#" class="active" id="home-link"><i class="fas fa-home"></i> Início</a></li>
-                    <li><a href="#" id="about-link"><i class="fas fa-info-circle"></i> Sobre</a></li>
-                    <li><a href="#" id="contact-link"><i class="fas fa-envelope"></i> Contato</a></li>
-                </ul>
-            </nav>
-            
-            <button class="mobile-toggle" id="mobile-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <button class="admin-btn" id="admin-btn">
-                <i class="fas fa-user-shield"></i> <span>Área do Proprietário</span>
-            </button>
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <i class="fas fa-car"></i>
+            Hebert<span>Richards</span>
         </div>
         
-        <!-- Menu Mobile -->
-        <nav class="mobile-nav" id="mobile-nav">
-            <button class="close-mobile-nav" id="close-mobile-nav">
-                <i class="fas fa-times"></i>
-            </button>
+        <nav class="desktop-nav">
             <ul>
-                <li><a href="#" class="active" id="mobile-home-link"><i class="fas fa-home"></i> Início</a></li>
-                <li><a href="#" id="mobile-about-link"><i class="fas fa-info-circle"></i> Sobre</a></li>
-                <li><a href="#" id="mobile-contact-link"><i class="fas fa-envelope"></i> Contato</a></li>
-                <li><a href="#" id="mobile-admin-link"><i class="fas fa-user-shield"></i> Área do Proprietário</a></li>
+                <li><a href="#" class="active" id="home-link"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="#" id="about-link"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                <li><a href="#" id="contact-link"><i class="fas fa-envelope"></i> Contato</a></li>
             </ul>
         </nav>
-    </header>
-    
-    <div class="container">
-        <!-- Página inicial -->
-        <div id="home-page" class="page">
-            <section class="hero">
-                <h1 id="hero-title">Veículos Selecionados com Qualidade</h1>
-                <p id="hero-description">Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.</p>
-                <div class="social-buttons">
-                    <a href="https://wa.me/5534997727797" class="btn btn-whatsapp btn-icon" target="_blank">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
-                    <a href="https://www.instagram.com/hebert.richards.3344?igsh=em0xYXhxY2V3ZWg4" class="btn btn-instagram btn-icon" target="_blank">
-                        <i class="fab fa-instagram"></i> Instagram
-                    </a>
-                    <a href="https://www.facebook.com/share/1A4EtfM2ij/" class="btn btn-facebook btn-icon" target="_blank">
-                        <i class="fab fa-facebook-f"></i> Facebook
-                    </a>
-                    <a href="https://share.google/eQggN4cvJ6CQb6Ppa" class="btn btn-location btn-icon" target="_blank">
-                        <i class="fas fa-map-marker-alt"></i> Localização
-                    </a>
-                </div>
-            </section>
-            
-            <section>
-                <div class="section-header">
-                    <h2 class="section-title" id="showcase-title">Nossa Garagem</h2>
-                </div>
-                
-                <div id="cars-container" class="cars-showcase">
-                    <!-- Os carros serão carregados aqui via JavaScript -->
-                </div>
-            </section>
-        </div>
         
-        <!-- Área Administrativa -->
-        <div id="admin-page" class="page" style="display: none;">
-            <div class="admin-panel">
-                <div class="admin-header">
-                    <h2 class="admin-title">Painel de Controle - Hebert Richards</h2>
-                    <div>
-                        <button class="btn" id="add-car-btn"><i class="fas fa-plus"></i> Adicionar Carro</button>
-                        <button class="btn reset-btn" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Sair</button>
-                    </div>
-                </div>
-                
-                <div class="stats-cards">
-                    <div class="stat-card">
-                        <div class="stat-number" id="total-cars">0</div>
-                        <div class="stat-label">Carros Cadastrados</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number" id="total-value">R$ 0</div>
-                        <div class="stat-label">Valor em Estoque</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number" id="avg-price">R$ 0</div>
-                        <div class="stat-label">Preço Médio</div>
-                    </div>
-                </div>
-                
-                <h3 style="margin-bottom: 1rem;">Carros Cadastrados</h3>
-                <div class="table-responsive">
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>Modelo</th>
-                                <th>Marca</th>
-                                <th>Ano</th>
-                                <th>Preço</th>
-                                <th>Status</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody id="admin-cars-list">
-                            <!-- Lista de carros para administração -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
-            <!-- Configurações do Site -->
-            <div class="admin-panel" id="site-settings-panel">
-                <div class="admin-header">
-                    <h2 class="admin-title">Configurações do Site</h2>
-                </div>
-                
-                <div class="form-group">
-                    <label for="site-title">Título do Site</label>
-                    <input type="text" id="site-title" placeholder="Título que aparece no topo da página">
-                </div>
-                
-                <div class="form-group">
-                    <label for="hero-title">Título Principal (Hero)</label>
-                    <input type="text" id="hero-title-input" placeholder="Título grande na seção principal">
-                </div>
-                
-                <div class="form-group">
-                    <label for="hero-description">Descrição do Hero</label>
-                    <textarea id="hero-description-input" rows="3" placeholder="Descrição abaixo do título principal"></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="showcase-title">Título da Vitrine</label>
-                    <input type="text" id="showcase-title-input" placeholder="Título da seção de carros">
-                </div>
-                
-                <div class="form-group">
-                    <label for="footer-about">Texto Sobre Nós (Rodapé)</label>
-                    <textarea id="footer-about-input" rows="3" placeholder="Texto sobre a empresa no rodapé"></textarea>
-                </div>
-                
-                <div class="form-actions">
-                    <button type="button" class="btn btn-outline" id="reset-site-settings">Restaurar Padrões</button>
-                    <button type="button" class="btn" id="save-site-settings">Salvar Configurações</button>
-                </div>
-            </div>
-        </div>
+        <button class="mobile-toggle" id="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
         
-        <!-- Página de Detalhes do Carro -->
-        <div id="car-detail-page" class="car-detail-page" style="display: none;">
-            <div class="car-detail-header">
-                <button class="back-btn" id="back-to-home">
-                    <i class="fas fa-arrow-left"></i> Voltar para a Garagem
-                </button>
-                <h2 id="car-detail-page-title">Detalhes do Veículo</h2>
-            </div>
-            
-            <div class="car-detail-content" id="car-detail-content">
-                <!-- Conteúdo será preenchido via JavaScript -->
-            </div>
-        </div>
+        <button class="admin-btn" id="admin-btn">
+            <i class="fas fa-user-shield"></i> <span>Área do Proprietário</span>
+        </button>
     </div>
     
-    <!-- Modal de Login -->
-    <div id="login-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" id="close-login-modal">&times;</span>
-            <h2 class="modal-title">Acesso Restrito</h2>
-            <form id="login-form">
-                <div class="form-group">
-                    <label for="username">Usuário</label>
-                    <input type="text" id="username" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input type="password" id="password" required>
-                </div>
-                
-                <div class="form-actions">
-                    <button type="button" class="btn btn-outline" id="cancel-login">Cancelar</button>
-                    <button type="submit" class="btn">Entrar</button>
-                </div>
-            </form>
-        </div>
+    <nav class="mobile-nav" id="mobile-nav">
+        <button class="close-mobile-nav" id="close-mobile-nav">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="#" class="active" id="mobile-home-link"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="#" id="mobile-about-link"><i class="fas fa-info-circle"></i> Sobre</a></li>
+            <li><a href="#" id="mobile-contact-link"><i class="fas fa-envelope"></i> Contato</a></li>
+            <li><a href="#" id="mobile-admin-link"><i class="fas fa-user-shield"></i> Área do Proprietário</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <div id="home-page" class="page">
+        <section class="hero">
+            <h1 id="hero-title">Veículos Selecionados com Qualidade</h1>
+            <p id="hero-description">Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.</p>
+            <div class="social-buttons">
+                <a href="https://wa.me/5534997727797" class="btn btn-whatsapp btn-icon" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://www.instagram.com/hebert.richards.3344?igsh=em0xYXhxY2V3ZWg4" class="btn btn-instagram btn-icon" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://www.facebook.com/share/1A4EtfM2ij/" class="btn btn-facebook btn-icon" target="_blank">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://share.google/eQggN4cvJ6CQb6Ppa" class="btn btn-location btn-icon" target="_blank">
+                    <i class="fas fa-map-marker-alt"></i> Localização
+                </a>
+            </div>
+        </section>
+        
+        <section>
+            <div class="section-header">
+                <h2 class="section-title" id="showcase-title">Nossa Garagem</h2>
+            </div>
+            <div id="cars-container" class="cars-showcase"></div>
+        </section>
     </div>
     
-    <!-- Modal para Adicionar/Editar Carro -->
-    <div id="car-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" id="close-car-modal">&times;</span>
-            <h2 class="modal-title" id="car-modal-title">Adicionar Novo Carro</h2>
-            <form id="car-form">
-                <input type="hidden" id="car-id">
-                
-                <div class="form-group">
-                    <label for="car-name">Modelo do Carro</label>
-                    <input type="text" id="car-name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="car-brand">Marca</label>
-                    <select id="car-brand" required>
-                        <option value="">Selecione a marca</option>
-                        <option value="Volkswagen">Volkswagen</option>
-                        <option value="Ford">Ford</option>
-                        <option value="Chevrolet">Chevrolet</option>
-                        <option value="Fiat">Fiat</option>
-                        <option value="Toyota">Toyota</option>
-                        <option value="Honda">Honda</option>
-                        <option value="BMW">BMW</option>
-                        <option value="Mercedes-Benz">Mercedes-Benz</option>
-                        <option value="Audi">Audi</option>
-                        <option value="Jeep">Jeep</option>
-                        <option value="Outra">Outra</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="car-year">Ano</label>
-                    <!-- max será ajustado via JS -->
-                    <input type="number" id="car-year" min="1990" max="2099" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="car-price">Preço (R$)</label>
-                    <input type="number" id="car-price" min="0" step="0.01" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="car-color">Cor</label>
-                    <input type="text" id="car-color">
-                </div>
-                
-                <div class="form-group">
-                    <label for="car-kilometers">Quilometragem</label>
-                    <input type="number" id="car-kilometers" min="0">
-                </div>
-                
-                <div class="form-group">
-                    <label for="car-fuel">Combustível</label>
-                    <select id="car-fuel">
-                        <option value="Gasolina">Gasolina</option>
-                        <option value="Álcool">Álcool</option>
-                        <option value="Flex">Flex</option>
-                        <option value="Diesel">Diesel</option>
-                        <option value="Elétrico">Elétrico</option>
-                        <option value="Híbrido">Híbrido</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="car-transmission">Câmbio</label>
-                    <select id="car-transmission">
-                        <option value="Manual">Manual</option>
-                        <option value="Automático">Automático</option>
-                        <option value="Automático Sequencial">Automático Sequencial</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="car-description">Descrição</label>
-                    <textarea id="car-description" rows="4" placeholder="Descreva o carro, inclua detalhes, opcionais, estado de conservação..."></textarea>
-                </div>
-                
-                <div class="form-group image-management">
-                    <label for="car-images">Imagens do Carro</label>
-                    
-                    <div class="image-preview" id="image-preview">
-                        <!-- previews -->
-                    </div>
-
-                    <!-- Selecionar da GALERIA / arquivos -->
-                    <div class="image-input-group">
-                        <input 
-                            type="file" 
-                            id="car-image-file" 
-                            accept="image/*" 
-                            multiple
-                        >
-                    </div>
-
-                    <!-- Opcional: também permitir URL -->
-                    <div class="image-input-group" style="margin-top: 0.5rem;">
-                        <input type="text" id="car-image-url" placeholder="Ou cole a URL da imagem aqui">
-                        <button type="button" class="btn btn-outline" id="add-image-btn">Adicionar</button>
-                    </div>
-                    
-                    <small>A primeira imagem será usada como principal na vitrine.</small>
-                </div>
-                
-                <div class="form-actions">
-                    <button type="button" class="btn btn-outline" id="cancel-car-modal">Cancelar</button>
-                    <button type="submit" class="btn" id="car-form-submit">Adicionar Carro</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    
-    <footer>
-        <div class="footer-container">
-            <div>
-                <div class="footer-logo">Hebert<span>Richards</span></div>
-                <p class="footer-about" id="footer-about-text">Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.</p>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/share/1A4EtfM2ij/" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/hebert.richards.3344?igsh=em0xYXhxY2V3ZWg4" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/5534997727797" title="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://share.google/eQggN4cvJ6CQb6Ppa" title="Localização" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+    <div id="admin-page" class="page" style="display:none;">
+        <div class="admin-panel">
+            <div class="admin-header">
+                <h2 class="admin-title">Painel de Controle - Hebert Richards</h2>
+                <div>
+                    <button class="btn" id="add-car-btn"><i class="fas fa-plus"></i> Adicionar Carro</button>
+                    <button class="btn reset-btn" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Sair</button>
                 </div>
             </div>
             
-            <div class="footer-links">
-                <h3>Links Rápidos</h3>
-                <ul>
-                    <li><a href="#" id="footer-home-link"><i class="fas fa-home"></i> Início</a></li>
-                    <li><a href="#" id="footer-about-link"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
-                    <li><a href="#" id="footer-contact-link"><i class="fas fa-envelope"></i> Contato</a></li>
-                </ul>
+            <div class="stats-cards">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-cars">0</div>
+                    <div class="stat-label">Carros Cadastrados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="total-value">R$ 0</div>
+                    <div class="stat-label">Valor em Estoque</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="avg-price">R$ 0</div>
+                    <div class="stat-label">Preço Médio</div>
+                </div>
             </div>
             
-            <div class="footer-contact">
-                <h3>Contato</h3>
-                <p><i class="fas fa-phone"></i> (34) 99772-7797</p>
-                <p><i class="fas fa-whatsapp"></i> (34) 99772-7797</p>
-                <p><i class="fas fa-envelope"></i> ebertttmineiro@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> <a href="https://share.google/eQggN4cvJ6CQb6Ppa" style="color: #ecf0f1; text-decoration: none;" target="_blank">Ver no Google Maps</a></p>
-                <p><i class="fas fa-clock"></i> Seg-Sex: 8h às 18h | Sáb: 8h às 12h</p>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            &copy; 2023 Hebert Richards. Todos os direitos reservados.
-        </div>
-    </footer>
-
-    <script>
-        // Estado da aplicação
-        const state = {
-            isLoggedIn: false,
-            currentUser: null,
-            editingCarId: null,
-            carImages: []
-        };
-        
-        // Credenciais de acesso
-        const validCredentials = {
-            username: "11771651636",
-            password: "Iverenides4615"
-        };
-        
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', function() {
-            // Ajusta o max do ano dinamicamente (ano atual + 1)
-            const yearInput = document.getElementById('car-year');
-            if (yearInput) {
-                yearInput.max = new Date().getFullYear() + 1;
-            }
-
-            // Configurar event listeners
-            setupEventListeners();
-            
-            // Carregar configurações do site
-            loadSiteSettings();
-            
-            // Carregar carros
-            loadCars();
-            
-            // Adicionar carros de exemplo se não houver nenhum
-            const cars = JSON.parse(localStorage.getItem('cars')) || [];
-            if (cars.length === 0) {
-                const sampleCars = [
-                    {
-                        id: generateId(),
-                        name: "Golf GTI",
-                        brand: "Volkswagen",
-                        year: 2022,
-                        price: 189900,
-                        color: "Vermelho",
-                        kilometers: 15000,
-                        fuel: "Gasolina",
-                        transmission: "Automático",
-                        description: "Carro esportivo em excelente estado, único dono, com todos os serviços realizados na concessionária. Equipado com teto solar, bancos em couro, sistema de som premium e rodas de liga leve. Documentação em dia e sem restrições.",
-                        images: [],
-                        status: "disponível",
-                        dateAdded: new Date().toISOString()
-                    },
-                    {
-                        id: generateId(),
-                        name: "Corolla XEi",
-                        brand: "Toyota",
-                        year: 2023,
-                        price: 159990,
-                        color: "Prata",
-                        kilometers: 8000,
-                        fuel: "Flex",
-                        transmission: "Automático",
-                        description: "Seminovo, com garantia de fábrica, completo, ar-condicionado digital, multimídia e câmera de ré. Veículo de único dono, sempre garagado e com histórico de manutenção completo na concessionária.",
-                        images: [],
-                        status: "disponível",
-                        dateAdded: new Date().toISOString()
-                    }
-                ];
-                
-                localStorage.setItem('cars', JSON.stringify(sampleCars));
-                loadCars();
-            }
-        });
-        
-        // Configurar todos os event listeners
-        function setupEventListeners() {
-            // Navegação
-            document.getElementById('home-link').addEventListener('click', () => showPage('home'));
-            document.getElementById('about-link').addEventListener('click', () => showPage('home'));
-            document.getElementById('contact-link').addEventListener('click', () => showPage('home'));
-            document.getElementById('footer-home-link').addEventListener('click', () => showPage('home'));
-            document.getElementById('footer-about-link').addEventListener('click', () => showPage('home'));
-            document.getElementById('footer-contact-link').addEventListener('click', () => showPage('home'));
-            
-            // Navegação mobile
-            document.getElementById('mobile-toggle').addEventListener('click', toggleMobileNav);
-            document.getElementById('close-mobile-nav').addEventListener('click', closeMobileNav);
-            document.getElementById('mobile-home-link').addEventListener('click', () => {
-                showPage('home');
-                closeMobileNav();
-            });
-            document.getElementById('mobile-about-link').addEventListener('click', () => {
-                showPage('home');
-                closeMobileNav();
-            });
-            document.getElementById('mobile-contact-link').addEventListener('click', () => {
-                showPage('home');
-                closeMobileNav();
-            });
-            document.getElementById('mobile-admin-link').addEventListener('click', () => {
-                openLoginModal();
-                closeMobileNav();
-            });
-            
-            // Área administrativa
-            document.getElementById('admin-btn').addEventListener('click', openLoginModal);
-            document.getElementById('logout-btn').addEventListener('click', logout);
-            document.getElementById('add-car-btn').addEventListener('click', openAddCarModal);
-            
-            // Configurações do site
-            document.getElementById('save-site-settings').addEventListener('click', saveSiteSettings);
-            document.getElementById('reset-site-settings').addEventListener('click', resetSiteSettings);
-            
-            // Gestão de imagens por URL
-            const addImageBtn = document.getElementById('add-image-btn');
-            if (addImageBtn) {
-                addImageBtn.addEventListener('click', addImageFromUrl);
-            }
-
-            // Gestão de imagens por arquivo/galeria
-            const imageFileInput = document.getElementById('car-image-file');
-            if (imageFileInput) {
-                imageFileInput.addEventListener('change', handleImageFiles);
-            }
-            
-            // Página de detalhes
-            document.getElementById('back-to-home').addEventListener('click', () => showPage('home'));
-            
-            // Modais
-            document.getElementById('close-login-modal').addEventListener('click', closeLoginModal);
-            document.getElementById('cancel-login').addEventListener('click', closeLoginModal);
-            document.getElementById('close-car-modal').addEventListener('click', closeCarModal);
-            document.getElementById('cancel-car-modal').addEventListener('click', closeCarModal);
-            
-            // Formulários
-            document.getElementById('login-form').addEventListener('submit', handleLogin);
-            document.getElementById('car-form').addEventListener('submit', handleCarFormSubmit);
-        }
-        
-        // Navegação entre páginas
-        function showPage(pageId, carId = null) {
-            // Esconde todas as páginas
-            document.getElementById('home-page').style.display = 'none';
-            document.getElementById('admin-page').style.display = 'none';
-            document.getElementById('car-detail-page').style.display = 'none';
-            
-            if (pageId === 'home') {
-                document.getElementById('home-page').style.display = 'block';
-                loadCars();
-            } else if (pageId === 'admin-page') {
-                if (!state.isLoggedIn) {
-                    openLoginModal();
-                    return;
-                }
-                document.getElementById('admin-page').style.display = 'block';
-                loadAdminData();
-                loadSiteSettingsForm();
-            } else if (pageId === 'car-detail' && carId) {
-                document.getElementById('car-detail-page').style.display = 'block';
-                loadCarDetail(carId);
-            }
-            
-            updateActiveNav(pageId);
-        }
-        
-        function updateActiveNav(pageId) {
-            const navLinks = document.querySelectorAll('.desktop-nav a, .footer-links a, .mobile-nav a');
-            navLinks.forEach(link => link.classList.remove('active'));
-            if (pageId === 'home') {
-                document.getElementById('home-link').classList.add('active');
-                document.getElementById('footer-home-link').classList.add('active');
-                document.getElementById('mobile-home-link').classList.add('active');
-            }
-        }
-        
-        function toggleMobileNav() {
-            document.getElementById('mobile-nav').classList.toggle('active');
-        }
-        function closeMobileNav() {
-            document.getElementById('mobile-nav').classList.remove('active');
-        }
-        
-        // Modal Login
-        function openLoginModal() {
-            document.getElementById('login-modal').style.display = 'flex';
-        }
-        function closeLoginModal() {
-            document.getElementById('login-modal').style.display = 'none';
-            document.getElementById('login-form').reset();
-        }
-        
-        // Modal Carro
-        function openAddCarModal() {
-            document.getElementById('car-modal-title').textContent = 'Adicionar Novo Carro';
-            document.getElementById('car-form-submit').textContent = 'Adicionar Carro';
-            document.getElementById('car-form').reset();
-            document.getElementById('car-id').value = '';
-            state.editingCarId = null;
-            state.carImages = [];
-            updateImagePreview();
-            document.getElementById('car-modal').style.display = 'flex';
-        }
-        
-        function openEditCarModal(carId) {
-            const cars = JSON.parse(localStorage.getItem('cars')) || [];
-            const car = cars.find(c => c.id === carId);
-            if (!car) return;
-
-            document.getElementById('car-modal-title').textContent = 'Editar Carro';
-            document.getElementById('car-form-submit').textContent = 'Atualizar Carro';
-            document.getElementById('car-id').value = car.id;
-            document.getElementById('car-name').value = car.name;
-            document.getElementById('car-brand').value = car.brand;
-            document.getElementById('car-year').value = car.year;
-            document.getElementById('car-price').value = car.price;
-            document.getElementById('car-color').value = car.color || '';
-            document.getElementById('car-kilometers').value = car.kilometers || '';
-            document.getElementById('car-fuel').value = car.fuel || 'Gasolina';
-            document.getElementById('car-transmission').value = car.transmission || 'Manual';
-            document.getElementById('car-description').value = car.description || '';
-            
-            state.editingCarId = carId;
-            state.carImages = car.images || [];
-            updateImagePreview();
-            document.getElementById('car-modal').style.display = 'flex';
-        }
-        
-        function closeCarModal() {
-            document.getElementById('car-modal').style.display = 'none';
-        }
-        
-        // Gestão de Imagens
-        
-        // Arquivos / galeria
-        function handleImageFiles(event) {
-            const files = Array.from(event.target.files || []);
-            if (!files.length) return;
-            files.forEach(file => {
-                if (!file.type.startsWith('image/')) return;
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    state.carImages.push(e.target.result);
-                    updateImagePreview();
-                };
-                reader.readAsDataURL(file);
-            });
-            event.target.value = '';
-        }
-
-        // URL manual
-        function addImageFromUrl() {
-            const urlInput = document.getElementById('car-image-url');
-            if (!urlInput) return;
-            const imageUrl = urlInput.value.trim();
-            if (imageUrl) {
-                state.carImages.push(imageUrl);
-                updateImagePreview();
-                urlInput.value = '';
-            }
-        }
-        
-        function removeImage(index) {
-            state.carImages.splice(index, 1);
-            updateImagePreview();
-        }
-        
-        function setMainImage(index) {
-            if (index > 0) {
-                const selectedImage = state.carImages[index];
-                state.carImages.splice(index, 1);
-                state.carImages.unshift(selectedImage);
-                updateImagePreview();
-            }
-        }
-        
-        function updateImagePreview() {
-            const previewContainer = document.getElementById('image-preview');
-            if (!previewContainer) return;
-            previewContainer.innerHTML = '';
-            state.carImages.forEach((imageUrl, index) => {
-                const imageItem = document.createElement('div');
-                imageItem.className = 'image-preview-item';
-                imageItem.innerHTML = `
-                    <img src="${imageUrl}" alt="Preview ${index + 1}">
-                    <button type="button" class="remove-image" onclick="removeImage(${index})">
-                        <i class="fas fa-times"></i>
-                    </button>
-                    ${index > 0 ? `<button type="button" class="set-main-image" onclick="setMainImage(${index})">Principal</button>` : ''}
-                `;
-                previewContainer.appendChild(imageItem);
-            });
-        }
-        
-        // Login
-        function handleLogin(e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            if (username === validCredentials.username && password === validCredentials.password) {
-                state.isLoggedIn = true;
-                state.currentUser = username;
-                closeLoginModal();
-                showPage('admin-page');
-                alert('Login realizado com sucesso!');
-            } else {
-                alert('Usuário ou senha incorretos!');
-            }
-        }
-        
-        function logout() {
-            state.isLoggedIn = false;
-            state.currentUser = null;
-            showPage('home');
-            alert('Logout realizado com sucesso!');
-        }
-        
-        // Adicionar/Editar Carro
-        function handleCarFormSubmit(e) {
-            e.preventDefault();
-            
-            const carId = document.getElementById('car-id').value || generateId();
-            const cars = JSON.parse(localStorage.getItem('cars')) || [];
-            const existingCar = cars.find(c => c.id === carId);
-
-            const defaultImage = 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
-            
-            const car = {
-                id: carId,
-                name: document.getElementById('car-name').value,
-                brand: document.getElementById('car-brand').value,
-                year: parseInt(document.getElementById('car-year').value),
-                price: parseFloat(document.getElementById('car-price').value),
-                color: document.getElementById('car-color').value,
-                kilometers: document.getElementById('car-kilometers').value ? parseInt(document.getElementById('car-kilometers').value) : null,
-                fuel: document.getElementById('car-fuel').value,
-                transmission: document.getElementById('car-transmission').value,
-                description: document.getElementById('car-description').value,
-                images: state.carImages.length > 0 
-                    ? state.carImages 
-                    : (existingCar && existingCar.images && existingCar.images.length > 0
-                        ? existingCar.images
-                        : [defaultImage]),
-                status: existingCar ? existingCar.status : 'disponível',
-                dateAdded: existingCar ? existingCar.dateAdded : new Date().toISOString()
-            };
-            
-            if (existingCar) {
-                const index = cars.findIndex(c => c.id === carId);
-                if (index !== -1) cars[index] = car;
-            } else {
-                cars.push(car);
-            }
-            
-            localStorage.setItem('cars', JSON.stringify(cars));
-            
-            document.getElementById('car-form').reset();
-            state.carImages = [];
-            updateImagePreview();
-            closeCarModal();
-            loadAdminData();
-            loadCars();
-            alert(existingCar ? 'Carro atualizado com sucesso!' : 'Carro adicionado com sucesso!');
-        }
-        
-        function deleteCar(carId) {
-            if (confirm('Tem certeza que deseja excluir este carro?')) {
-                const cars = JSON.parse(localStorage.getItem('cars')) || [];
-                const updatedCars = cars.filter(car => car.id !== carId);
-                localStorage.setItem('cars', JSON.stringify(updatedCars));
-                loadAdminData();
-                loadCars();
-                alert('Carro excluído com sucesso!');
-            }
-        }
-        
-        function loadCars() {
-            const carsContainer = document.getElementById('cars-container');
-            carsContainer.innerHTML = '';
-            const cars = JSON.parse(localStorage.getItem('cars')) || [];
-            
-            if (cars.length === 0) {
-                carsContainer.innerHTML = `
-                    <div class="empty-state" style="grid-column: 1 / -1;">
-                        <i class="fas fa-car"></i>
-                        <h3>Nenhum carro disponível no momento</h3>
-                        <p>Entre em contato para saber sobre nossos próximos veículos.</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            const activeCars = cars.filter(car => car.status !== 'vendido');
-            if (activeCars.length === 0) {
-                carsContainer.innerHTML = `
-                    <div class="empty-state" style="grid-column: 1 / -1;">
-                        <i class="fas fa-car"></i>
-                        <h3>Todos os veículos foram vendidos!</h3>
-                        <p>Em breve teremos novidades em nossa garagem.</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            activeCars.forEach((car) => {
-                const carCard = document.createElement('div');
-                carCard.className = 'car-card';
-                const currentYear = new Date().getFullYear();
-                const isNew = car.year >= currentYear - 1;
-                const mainImage = car.images && car.images.length > 0 ? car.images[0] : 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
-                
-                carCard.innerHTML = `
-                    ${isNew ? '<div class="car-badge">Novo</div>' : ''}
-                    <img src="${mainImage}" alt="${car.name}" class="car-image">
-                    <div class="car-info">
-                        <h3 class="car-title">${car.name}</h3>
-                        <p class="car-details"><i class="fas fa-tag"></i> ${car.brand} • ${car.year} ${car.color ? '• ' + car.color : ''}</p>
-                        <p class="car-price">R$ ${car.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</p>
-                        ${car.kilometers ? `<p class="car-details"><i class="fas fa-tachometer-alt"></i> ${car.kilometers.toLocaleString('pt-BR')} km</p>` : ''}
-                        <div class="car-features">
-                            <div class="feature">
-                                <i class="fas fa-gas-pump"></i>
-                                <span>${car.fuel || 'Flex'}</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-cogs"></i>
-                                <span>${car.transmission || 'Manual'}</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-user-friends"></i>
-                                <span>5 lugares</span>
-                            </div>
-                        </div>
-                        ${car.description ? `<p class="car-description">${car.description.length > 100 ? car.description.substring(0, 100) + '...' : car.description}</p>` : ''}
-                        <div class="car-actions">
-                            <a href="https://wa.me/5534997727797?text=Olá! Tenho interesse no ${car.name} ${car.brand} ${car.year}" class="btn btn-whatsapp btn-icon" target="_blank">
-                                <i class="fab fa-whatsapp"></i> WhatsApp
-                            </a>
-                            <button class="btn btn-outline" onclick="showCarDetailPage('${car.id}')">Detalhes</button>
-                        </div>
-                    </div>
-                `;
-                carsContainer.appendChild(carCard);
-            });
-        }
-        
-        function loadAdminData() {
-            const cars = JSON.parse(localStorage.getItem('cars')) || [];
-            const adminCarsList = document.getElementById('admin-cars-list');
-            adminCarsList.innerHTML = '';
-            const totalCars = cars.length;
-            const totalValue = cars.reduce((sum, car) => sum + car.price, 0);
-            const avgPrice = totalCars > 0 ? totalValue / totalCars : 0;
-            document.getElementById('total-cars').textContent = totalCars;
-            document.getElementById('total-value').textContent = `R$ ${totalValue.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
-            document.getElementById('avg-price').textContent = `R$ ${avgPrice.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
-            
-            if (cars.length === 0) {
-                adminCarsList.innerHTML = `
+            <h3 style="margin-bottom: 1rem;">Carros Cadastrados</h3>
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
                     <tr>
-                        <td colspan="6" class="empty-state">
-                            <i class="fas fa-car"></i>
-                            <p>Nenhum carro cadastrado</p>
-                        </td>
+                        <th>Modelo</th>
+                        <th>Marca</th>
+                        <th>Ano</th>
+                        <th>Preço</th>
+                        <th>Status</th>
+                        <th>Ações</th>
                     </tr>
-                `;
-                return;
-            }
-            
-            cars.forEach((car) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${car.name}</td>
-                    <td>${car.brand}</td>
-                    <td>${car.year}</td>
-                    <td>R$ ${car.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</td>
-                    <td>
-                        <span style="padding: 0.3rem 0.6rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; 
-                        background-color: ${car.status === 'vendido' ? '#e74c3c' : '#27ae60'}; color: white;">
-                            ${car.status === 'vendido' ? 'Vendido' : 'Disponível'}
-                        </span>
-                    </td>
-                    <td>
-                        <button class="action-btn edit-btn" onclick="openEditCarModal('${car.id}')" title="Editar">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button class="action-btn delete-btn" onclick="deleteCar('${car.id}')" title="Excluir">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </td>
-                `;
-                adminCarsList.appendChild(row);
-            });
-        }
+                    </thead>
+                    <tbody id="admin-cars-list"></tbody>
+                </table>
+            </div>
+        </div>
         
-        function showCarDetailPage(carId) {
-            showPage('car-detail', carId);
-        }
+        <div class="admin-panel" id="site-settings-panel">
+            <div class="admin-header">
+                <h2 class="admin-title">Configurações do Site</h2>
+            </div>
+            
+            <div class="form-group">
+                <label for="site-title">Título do Site</label>
+                <input type="text" id="site-title">
+            </div>
+            
+            <div class="form-group">
+                <label for="hero-title-input">Título Principal (Hero)</label>
+                <input type="text" id="hero-title-input">
+            </div>
+            
+            <div class="form-group">
+                <label for="hero-description-input">Descrição do Hero</label>
+                <textarea id="hero-description-input" rows="3"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="showcase-title-input">Título da Vitrine</label>
+                <input type="text" id="showcase-title-input">
+            </div>
+            
+            <div class="form-group">
+                <label for="footer-about-input">Texto Sobre Nós (Rodapé)</label>
+                <textarea id="footer-about-input" rows="3"></textarea>
+            </div>
+            
+            <div class="form-actions">
+                <button type="button" class="btn btn-outline" id="reset-site-settings">Restaurar Padrões</button>
+                <button type="button" class="btn" id="save-site-settings">Salvar Configurações</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="car-detail-page" class="car-detail-page" style="display:none;">
+        <div class="car-detail-header">
+            <button class="back-btn" id="back-to-home">
+                <i class="fas fa-arrow-left"></i> Voltar para a Garagem
+            </button>
+            <h2 id="car-detail-page-title">Detalhes do Veículo</h2>
+        </div>
         
-        function loadCarDetail(carId) {
-            const cars = JSON.parse(localStorage.getItem('cars')) || [];
-            const car = cars.find(c => c.id === carId);
-            const detailContainer = document.getElementById('car-detail-content');
+        <div class="car-detail-content" id="car-detail-content"></div>
+    </div>
+</div>
+
+<div id="login-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" id="close-login-modal">&times;</span>
+        <h2 class="modal-title">Acesso Restrito</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" required>
+            </div>
             
-            if (!car) {
-                detailContainer.innerHTML = `
-                    <div class="empty-state" style="grid-column: 1 / -1;">
-                        <i class="fas fa-car"></i>
-                        <h3>Carro não encontrado</h3>
-                        <p>O veículo que você está procurando não está mais disponível.</p>
-                    </div>
-                `;
-                return;
-            }
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" required>
+            </div>
             
-            const mainImage = car.images && car.images.length > 0 ? car.images[0] : 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
-            let thumbnailsHtml = '';
-            if (car.images && car.images.length > 0) {
-                car.images.forEach((image, index) => {
-                    thumbnailsHtml += `
-                        <img src="${image}" alt="Imagem ${index + 1}" class="car-thumbnail ${index === 0 ? 'active' : ''}" 
-                             onclick="changeMainImage('${image}', this)">
-                    `;
-                });
-            }
+            <div class="form-actions">
+                <button type="button" class="btn btn-outline" id="cancel-login">Cancelar</button>
+                <button type="submit" class="btn">Entrar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="car-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" id="close-car-modal">&times;</span>
+        <h2 class="modal-title" id="car-modal-title">Adicionar Novo Carro</h2>
+        <form id="car-form">
+            <input type="hidden" id="car-id">
             
-            detailContainer.innerHTML = `
-                <div class="car-gallery">
-                    <img src="${mainImage}" alt="${car.name}" class="main-car-image" id="main-car-image">
-                    <div class="car-thumbnails">
-                        ${thumbnailsHtml}
-                    </div>
+            <div class="form-group">
+                <label for="car-name">Modelo do Carro</label>
+                <input type="text" id="car-name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="car-brand">Marca</label>
+                <select id="car-brand" required>
+                    <option value="">Selecione a marca</option>
+                    <option value="Volkswagen">Volkswagen</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                    <option value="Fiat">Fiat</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Honda">Honda</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                    <option value="Audi">Audi</option>
+                    <option value="Jeep">Jeep</option>
+                    <option value="Outra">Outra</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="car-year">Ano</label>
+                <input type="number" id="car-year" min="1990" max="2099" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="car-price">Preço (R$)</label>
+                <input type="number" id="car-price" min="0" step="0.01" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="car-color">Cor</label>
+                <input type="text" id="car-color">
+            </div>
+            
+            <div class="form-group">
+                <label for="car-kilometers">Quilometragem</label>
+                <input type="number" id="car-kilometers" min="0">
+            </div>
+            
+            <div class="form-group">
+                <label for="car-fuel">Combustível</label>
+                <select id="car-fuel">
+                    <option value="Gasolina">Gasolina</option>
+                    <option value="Álcool">Álcool</option>
+                    <option value="Flex">Flex</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Elétrico">Elétrico</option>
+                    <option value="Híbrido">Híbrido</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="car-transmission">Câmbio</label>
+                <select id="car-transmission">
+                    <option value="Manual">Manual</option>
+                    <option value="Automático">Automático</option>
+                    <option value="Automático Sequencial">Automático Sequencial</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="car-description">Descrição</label>
+                <textarea id="car-description" rows="4"></textarea>
+            </div>
+            
+            <div class="form-group image-management">
+                <label>Imagens do Carro</label>
+                <div class="image-preview" id="image-preview"></div>
+                <div class="image-input-group">
+                    <input type="file" id="car-image-file" accept="image/*" multiple>
                 </div>
-                <div class="car-detail-info">
-                    <h1 class="car-detail-title">${car.name}</h1>
-                    <p class="car-detail-price">R$ ${car.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</p>
-                    
-                    <div class="car-detail-specs">
-                        <div class="spec-item">
-                            <i class="fas fa-tag"></i>
-                            <span>Marca: ${car.brand}</span>
-                        </div>
-                        <div class="spec-item">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Ano: ${car.year}</span>
-                        </div>
-                        ${car.color ? `
-                        <div class="spec-item">
-                            <i class="fas fa-palette"></i>
-                            <span>Cor: ${car.color}</span>
-                        </div>` : ''}
-                        ${car.kilometers ? `
-                        <div class="spec-item">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <span>Quilometragem: ${car.kilometers.toLocaleString('pt-BR')} km</span>
-                        </div>` : ''}
-                        <div class="spec-item">
-                            <i class="fas fa-gas-pump"></i>
-                            <span>Combustível: ${car.fuel || 'Flex'}</span>
-                        </div>
-                        <div class="spec-item">
-                            <i class="fas fa-cogs"></i>
-                            <span>Câmbio: ${car.transmission || 'Manual'}</span>
-                        </div>
-                    </div>
-                    
-                    ${car.description ? `
-                    <div class="car-detail-description">
-                        <h3>Descrição</h3>
-                        <p>${car.description}</p>
-                    </div>` : ''}
-                    
-                    <div class="car-detail-actions">
-                        <a href="https://wa.me/5534997727797?text=Olá! Tenho interesse no ${car.name} ${car.brand} ${car.year}" class="btn btn-whatsapp btn-icon" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Entrar em Contato
-                        </a>
-                        <button class="btn" onclick="showPage('home')">
-                            <i class="fas fa-arrow-left"></i> Voltar para Garagem
-                        </button>
-                    </div>
+                <div class="image-input-group" style="margin-top:0.5rem;">
+                    <input type="text" id="car-image-url" placeholder="Ou cole a URL da imagem aqui">
+                    <button type="button" class="btn btn-outline" id="add-image-btn">Adicionar</button>
                 </div>
-            `;
-        }
+                <small>A primeira imagem será usada como principal na vitrine.</small>
+            </div>
+            
+            <div class="form-actions">
+                <button type="button" class="btn btn-outline" id="cancel-car-modal">Cancelar</button>
+                <button type="submit" class="btn" id="car-form-submit">Adicionar Carro</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div>
+            <div class="footer-logo">Hebert<span>Richards</span></div>
+            <p class="footer-about" id="footer-about-text">Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1A4EtfM2ij/" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/hebert.richards.3344?igsh=em0xYXhxY2V3ZWg4" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/5534997727797" title="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://share.google/eQggN4cvJ6CQb6Ppa" title="Localização" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+            </div>
+        </div>
         
-        function changeMainImage(imageUrl, element) {
-            document.getElementById('main-car-image').src = imageUrl;
-            document.querySelectorAll('.car-thumbnail').forEach(thumb => thumb.classList.remove('active'));
-            element.classList.add('active');
-        }
+        <div class="footer-links">
+            <h3>Links Rápidos</h3>
+            <ul>
+                <li><a href="#" id="footer-home-link"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="#" id="footer-about-link"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
+                <li><a href="#" id="footer-contact-link"><i class="fas fa-envelope"></i> Contato</a></li>
+            </ul>
+        </div>
         
-        // Configurações do site
-        function loadSiteSettings() {
-            const settings = JSON.parse(localStorage.getItem('siteSettings')) || {};
-            document.getElementById('hero-title').textContent = settings.heroTitle || 'Veículos Selecionados com Qualidade';
-            document.getElementById('hero-description').textContent = settings.heroDescription || 'Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.';
-            document.getElementById('showcase-title').textContent = settings.showcaseTitle || 'Nossa Garagem';
-            document.getElementById('footer-about-text').textContent = settings.footerAbout || 'Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.';
-            if (settings.siteTitle) {
-                document.title = settings.siteTitle + ' - Hebert Richards Veículos Premium';
+        <div class="footer-contact">
+            <h3>Contato</h3>
+            <p><i class="fas fa-phone"></i> (34) 99772-7797</p>
+            <p><i class="fas fa-whatsapp"></i> (34) 99772-7797</p>
+            <p><i class="fas fa-envelope"></i> ebertttmineiro@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> <a href="https://share.google/eQggN4cvJ6CQb6Ppa" style="color:#ecf0f1;text-decoration:none;" target="_blank">Ver no Google Maps</a></p>
+            <p><i class="fas fa-clock"></i> Seg-Sex: 8h às 18h | Sáb: 8h às 12h</p>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        &copy; 2023 Hebert Richards. Todos os direitos reservados.
+    </div>
+</footer>
+
+<script>
+const state = {
+    isLoggedIn: false,
+    editingCarId: null,
+    carImages: []
+};
+
+const validCredentials = {
+    username: "11771651636",
+    password: "Iverenides4615"
+};
+
+function getCars() {
+    try {
+        return JSON.parse(localStorage.getItem('cars')) || [];
+    } catch(e) {
+        return [];
+    }
+}
+
+function saveCars(cars) {
+    localStorage.setItem('cars', JSON.stringify(cars));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const yearInput = document.getElementById('car-year');
+    if (yearInput) yearInput.max = new Date().getFullYear() + 1;
+
+    setupEventListeners();
+    loadSiteSettings();
+    ensureSampleCars();
+    renderAll();
+});
+
+function ensureSampleCars() {
+    const cars = getCars();
+    if (cars.length === 0) {
+        const sampleCars = [
+            {
+                id: generateId(),
+                name: "Golf GTI",
+                brand: "Volkswagen",
+                year: 2022,
+                price: 189900,
+                color: "Vermelho",
+                kilometers: 15000,
+                fuel: "Gasolina",
+                transmission: "Automático",
+                description: "Carro esportivo em excelente estado, único dono, revisões em concessionária.",
+                images: [],
+                status: "disponível",
+                dateAdded: new Date().toISOString()
+            },
+            {
+                id: generateId(),
+                name: "Corolla XEi",
+                brand: "Toyota",
+                year: 2023,
+                price: 159990,
+                color: "Prata",
+                kilometers: 8000,
+                fuel: "Flex",
+                transmission: "Automático",
+                description: "Seminovo com garantia de fábrica, completo, histórico na concessionária.",
+                images: [],
+                status: "disponível",
+                dateAdded: new Date().toISOString()
             }
+        ];
+        saveCars(sampleCars);
+    }
+}
+
+function setupEventListeners() {
+    document.getElementById('home-link').onclick = () => showPage('home');
+    document.getElementById('about-link').onclick = () => showPage('home');
+    document.getElementById('contact-link').onclick = () => showPage('home');
+    document.getElementById('footer-home-link').onclick = () => showPage('home');
+    document.getElementById('footer-about-link').onclick = () => showPage('home');
+    document.getElementById('footer-contact-link').onclick = () => showPage('home');
+
+    document.getElementById('mobile-toggle').onclick = toggleMobileNav;
+    document.getElementById('close-mobile-nav').onclick = closeMobileNav;
+    document.getElementById('mobile-home-link').onclick = () => { showPage('home'); closeMobileNav(); };
+    document.getElementById('mobile-about-link').onclick = () => { showPage('home'); closeMobileNav(); };
+    document.getElementById('mobile-contact-link').onclick = () => { showPage('home'); closeMobileNav(); };
+    document.getElementById('mobile-admin-link').onclick = () => { openLoginModal(); closeMobileNav(); };
+
+    document.getElementById('admin-btn').onclick = openLoginModal;
+    document.getElementById('logout-btn').onclick = logout;
+
+    document.getElementById('back-to-home').onclick = () => showPage('home');
+
+    document.getElementById('close-login-modal').onclick = closeLoginModal;
+    document.getElementById('cancel-login').onclick = closeLoginModal;
+    document.getElementById('login-form').onsubmit = handleLogin;
+
+    document.getElementById('add-car-btn').onclick = openAddCarModal;
+    document.getElementById('close-car-modal').onclick = closeCarModal;
+    document.getElementById('cancel-car-modal').onclick = closeCarModal;
+    document.getElementById('car-form').onsubmit = handleCarFormSubmit;
+
+    const addImageBtn = document.getElementById('add-image-btn');
+    if (addImageBtn) addImageBtn.onclick = addImageFromUrl;
+
+    const fileInput = document.getElementById('car-image-file');
+    if (fileInput) fileInput.addEventListener('change', handleImageFiles);
+
+    document.getElementById('save-site-settings').onclick = saveSiteSettings;
+    document.getElementById('reset-site-settings').onclick = resetSiteSettings;
+
+    document.getElementById('admin-cars-list').addEventListener('click', (e) => {
+        const editBtn = e.target.closest('.edit-btn');
+        const delBtn = e.target.closest('.delete-btn');
+        if (editBtn) {
+            const id = editBtn.dataset.id;
+            openEditCarModal(id);
         }
-        
-        function loadSiteSettingsForm() {
-            const settings = JSON.parse(localStorage.getItem('siteSettings')) || {};
-            document.getElementById('site-title').value = settings.siteTitle || '';
-            document.getElementById('hero-title-input').value = settings.heroTitle || 'Veículos Selecionados com Qualidade';
-            document.getElementById('hero-description-input').value = settings.heroDescription || 'Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.';
-            document.getElementById('showcase-title-input').value = settings.showcaseTitle || 'Nossa Garagem';
-            document.getElementById('footer-about-input').value = settings.footerAbout || 'Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.';
+        if (delBtn) {
+            const id = delBtn.dataset.id;
+            deleteCar(id);
         }
-        
-        function saveSiteSettings() {
-            const settings = {
-                siteTitle: document.getElementById('site-title').value,
-                heroTitle: document.getElementById('hero-title-input').value,
-                heroDescription: document.getElementById('hero-description-input').value,
-                showcaseTitle: document.getElementById('showcase-title-input').value,
-                footerAbout: document.getElementById('footer-about-input').value
-            };
-            localStorage.setItem('siteSettings', JSON.stringify(settings));
-            loadSiteSettings();
-            alert('Configurações do site salvas com sucesso!');
+    });
+
+    document.getElementById('cars-container').addEventListener('click', (e) => {
+        const detailBtn = e.target.closest('.btn-detail');
+        if (detailBtn) {
+            const id = detailBtn.dataset.id;
+            showCarDetailPage(id);
         }
-        
-        function resetSiteSettings() {
-            if (confirm('Tem certeza que deseja restaurar as configurações padrão do site?')) {
-                localStorage.removeItem('siteSettings');
-                loadSiteSettings();
-                loadSiteSettingsForm();
-                alert('Configurações restauradas para os valores padrão!');
-            }
+    });
+}
+
+function showPage(page, carId = null) {
+    document.getElementById('home-page').style.display = 'none';
+    document.getElementById('admin-page').style.display = 'none';
+    document.getElementById('car-detail-page').style.display = 'none';
+
+    if (page === 'home') {
+        document.getElementById('home-page').style.display = 'block';
+    } else if (page === 'admin') {
+        if (!state.isLoggedIn) {
+            openLoginModal();
+            return;
         }
-        
-        function generateId() {
-            return 'car_' + Math.random().toString(36).substr(2, 9);
+        document.getElementById('admin-page').style.display = 'block';
+    } else if (page === 'detail' && carId) {
+        document.getElementById('car-detail-page').style.display = 'block';
+        loadCarDetail(carId);
+    }
+
+    const links = document.querySelectorAll('.desktop-nav a, .footer-links a, .mobile-nav a');
+    links.forEach(l => l.classList.remove('active'));
+    if (page === 'home') {
+        document.getElementById('home-link').classList.add('active');
+        document.getElementById('footer-home-link').classList.add('active');
+        document.getElementById('mobile-home-link').classList.add('active');
+    }
+}
+
+function toggleMobileNav() {
+    document.getElementById('mobile-nav').classList.toggle('active');
+}
+function closeMobileNav() {
+    document.getElementById('mobile-nav').classList.remove('active');
+}
+
+function openLoginModal() {
+    document.getElementById('login-modal').style.display = 'flex';
+}
+function closeLoginModal() {
+    document.getElementById('login-modal').style.display = 'none';
+    document.getElementById('login-form').reset();
+}
+
+function handleLogin(e) {
+    e.preventDefault();
+    const u = document.getElementById('username').value;
+    const p = document.getElementById('password').value;
+    if (u === validCredentials.username && p === validCredentials.password) {
+        state.isLoggedIn = true;
+        closeLoginModal();
+        showPage('admin');
+        alert('Login realizado com sucesso!');
+    } else {
+        alert('Usuário ou senha incorretos!');
+    }
+}
+
+function logout() {
+    state.isLoggedIn = false;
+    showPage('home');
+    alert('Logout realizado com sucesso!');
+}
+
+function openAddCarModal() {
+    state.editingCarId = null;
+    state.carImages = [];
+    updateImagePreview();
+    document.getElementById('car-form').reset();
+    document.getElementById('car-modal-title').innerText = 'Adicionar Novo Carro';
+    document.getElementById('car-form-submit').innerText = 'Adicionar Carro';
+    document.getElementById('car-modal').style.display = 'flex';
+}
+
+function openEditCarModal(id) {
+    const cars = getCars();
+    const car = cars.find(c => c.id === id);
+    if (!car) return;
+
+    state.editingCarId = id;
+    state.carImages = car.images || [];
+    updateImagePreview();
+
+    document.getElementById('car-name').value = car.name;
+    document.getElementById('car-brand').value = car.brand;
+    document.getElementById('car-year').value = car.year;
+    document.getElementById('car-price').value = car.price;
+    document.getElementById('car-color').value = car.color || '';
+    document.getElementById('car-kilometers').value = car.kilometers || '';
+    document.getElementById('car-fuel').value = car.fuel || 'Gasolina';
+    document.getElementById('car-transmission').value = car.transmission || 'Manual';
+    document.getElementById('car-description').value = car.description || '';
+
+    document.getElementById('car-modal-title').innerText = 'Editar Carro';
+    document.getElementById('car-form-submit').innerText = 'Salvar Alterações';
+    document.getElementById('car-modal').style.display = 'flex';
+}
+
+function closeCarModal() {
+    document.getElementById('car-modal').style.display = 'none';
+}
+
+function handleImageFiles(e) {
+    const files = Array.from(e.target.files || []);
+    files.forEach(file => {
+        if (!file.type.startsWith('image/')) return;
+        const reader = new FileReader();
+        reader.onload = evt => {
+            state.carImages.push(evt.target.result);
+            updateImagePreview();
+        };
+        reader.readAsDataURL(file);
+    });
+    e.target.value = '';
+}
+
+function addImageFromUrl() {
+    const input = document.getElementById('car-image-url');
+    if (!input) return;
+    const url = input.value.trim();
+    if (!url) return;
+    state.carImages.push(url);
+    input.value = '';
+    updateImagePreview();
+}
+
+function updateImagePreview() {
+    const container = document.getElementById('image-preview');
+    if (!container) return;
+    container.innerHTML = '';
+    state.carImages.forEach((img, idx) => {
+        const div = document.createElement('div');
+        div.className = 'image-preview-item';
+        div.innerHTML = `
+            <img src="${img}">
+            <button type="button" class="remove-image" data-index="${idx}">
+                <i class="fas fa-times"></i>
+            </button>
+            ${idx > 0 ? '<button type="button" class="set-main-image" data-index="' + idx + '">Principal</button>' : ''}
+        `;
+        container.appendChild(div);
+    });
+
+    container.querySelectorAll('.remove-image').forEach(btn => {
+        btn.onclick = () => {
+            const i = parseInt(btn.dataset.index);
+            state.carImages.splice(i, 1);
+            updateImagePreview();
+        };
+    });
+
+    container.querySelectorAll('.set-main-image').forEach(btn => {
+        btn.onclick = () => {
+            const i = parseInt(btn.dataset.index);
+            const img = state.carImages[i];
+            state.carImages.splice(i, 1);
+            state.carImages.unshift(img);
+            updateImagePreview();
+        };
+    });
+}
+
+function handleCarFormSubmit(e) {
+    e.preventDefault();
+    const cars = getCars();
+    const isEditing = !!state.editingCarId;
+    const id = isEditing ? state.editingCarId : generateId();
+    const existing = cars.find(c => c.id === id);
+
+    const defaultImage = 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
+
+    const car = {
+        id,
+        name: document.getElementById('car-name').value,
+        brand: document.getElementById('car-brand').value,
+        year: parseInt(document.getElementById('car-year').value),
+        price: parseFloat(document.getElementById('car-price').value),
+        color: document.getElementById('car-color').value,
+        kilometers: document.getElementById('car-kilometers').value ? parseInt(document.getElementById('car-kilometers').value) : null,
+        fuel: document.getElementById('car-fuel').value,
+        transmission: document.getElementById('car-transmission').value,
+        description: document.getElementById('car-description').value,
+        images: state.carImages.length ? state.carImages.slice() : (existing && existing.images && existing.images.length ? existing.images : [defaultImage]),
+        status: existing ? existing.status : 'disponível',
+        dateAdded: existing ? existing.dateAdded : new Date().toISOString()
+    };
+
+    if (isEditing) {
+        const idx = cars.findIndex(c => c.id === id);
+        if (idx !== -1) cars[idx] = car;
+    } else {
+        cars.push(car);
+    }
+
+    saveCars(cars);
+    state.editingCarId = null;
+    state.carImages = [];
+    updateImagePreview();
+    closeCarModal();
+    renderAll();
+    alert(isEditing ? 'Carro atualizado com sucesso!' : 'Carro adicionado com sucesso!');
+}
+
+function deleteCar(id) {
+    if (!confirm('Tem certeza que deseja excluir este carro?')) return;
+    let cars = getCars();
+    cars = cars.filter(c => c.id !== id);
+    saveCars(cars);
+    renderAll();
+    alert('Carro excluído com sucesso!');
+}
+
+function loadCars() {
+    const container = document.getElementById('cars-container');
+    container.innerHTML = '';
+    const cars = getCars();
+    if (!cars.length) {
+        container.innerHTML = `
+            <div class="empty-state" style="grid-column:1/-1;">
+                <i class="fas fa-car"></i>
+                <h3>Nenhum carro disponível no momento</h3>
+                <p>Entre em contato para saber sobre nossos próximos veículos.</p>
+            </div>
+        `;
+        return;
+    }
+
+    const currentYear = new Date().getFullYear();
+
+    cars.forEach(car => {
+        if (car.status === 'vendido') return;
+        const mainImage = (car.images && car.images.length ? car.images[0] : 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');
+        const isNew = car.year >= currentYear - 1;
+        const card = document.createElement('div');
+        card.className = 'car-card';
+        let kmHtml = '';
+        if (car.kilometers) {
+            kmHtml = '<p class="car-details"><i class="fas fa-tachometer-alt"></i> ' + car.kilometers.toLocaleString('pt-BR') + ' km</p>';
         }
-    </script>
+        let descHtml = '';
+        if (car.description) {
+            const short = car.description.length > 100 ? car.description.substring(0, 100) + '...' : car.description;
+            descHtml = '<p class="car-description">' + short + '</p>';
+        }
+        card.innerHTML =
+            (isNew ? '<div class="car-badge">Novo</div>' : '') +
+            '<img src="' + mainImage + '" alt="' + car.name + '" class="car-image">' +
+            '<div class="car-info">' +
+                '<h3 class="car-title">' + car.name + '</h3>' +
+                '<p class="car-details"><i class="fas fa-tag"></i> ' + car.brand + ' • ' + car.year + (car.color ? ' • ' + car.color : '') + '</p>' +
+                '<p class="car-price">R$ ' + car.price.toLocaleString('pt-BR', {minimumFractionDigits:2}) + '</p>' +
+                kmHtml +
+                '<div class="car-features">' +
+                    '<div class="feature"><i class="fas fa-gas-pump"></i><span>' + (car.fuel || 'Flex') + '</span></div>' +
+                    '<div class="feature"><i class="fas fa-cogs"></i><span>' + (car.transmission || 'Manual') + '</span></div>' +
+                    '<div class="feature"><i class="fas fa-user-friends"></i><span>5 lugares</span></div>' +
+                '</div>' +
+                descHtml +
+                '<div class="car-actions">' +
+                    '<a href="https://wa.me/5534997727797?text=Olá! Tenho interesse no ' + car.name + ' ' + car.brand + ' ' + car.year + '" class="btn btn-whatsapp btn-icon" target="_blank">' +
+                        '<i class="fab fa-whatsapp"></i> WhatsApp' +
+                    '</a>' +
+                    '<button class="btn btn-outline btn-detail" data-id="' + car.id + '">Detalhes</button>' +
+                '</div>' +
+            '</div>';
+        container.appendChild(card);
+    });
+}
+
+function loadAdminData() {
+    const tbody = document.getElementById('admin-cars-list');
+    tbody.innerHTML = '';
+    const cars = getCars();
+    const totalCars = cars.length;
+    const totalValue = cars.reduce((sum, c) => sum + (c.price || 0), 0);
+    const avgPrice = totalCars ? totalValue / totalCars : 0;
+
+    document.getElementById('total-cars').innerText = totalCars;
+    document.getElementById('total-value').innerText = 'R$ ' + totalValue.toLocaleString('pt-BR', {minimumFractionDigits:2});
+    document.getElementById('avg-price').innerText = 'R$ ' + avgPrice.toLocaleString('pt-BR', {minimumFractionDigits:2});
+
+    if (!cars.length) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="6" class="empty-state">
+                    <i class="fas fa-car"></i>
+                    <p>Nenhum carro cadastrado</p>
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    cars.forEach(car => {
+        const tr = document.createElement('tr');
+        tr.innerHTML =
+            '<td>' + car.name + '</td>' +
+            '<td>' + car.brand + '</td>' +
+            '<td>' + car.year + '</td>' +
+            '<td>R$ ' + car.price.toLocaleString('pt-BR', {minimumFractionDigits:2}) + '</td>' +
+            '<td>' +
+                '<span style="padding:0.3rem 0.6rem;border-radius:20px;font-size:0.8rem;font-weight:600;background-color:' + (car.status === "vendido" ? '#e74c3c' : '#27ae60') + ';color:white;">' +
+                (car.status === "vendido" ? 'Vendido' : 'Disponível') +
+                '</span>' +
+            '</td>' +
+            '<td>' +
+                '<button class="action-btn edit-btn" data-id="' + car.id + '" title="Editar"><i class="fas fa-edit"></i></button>' +
+                '<button class="action-btn delete-btn" data-id="' + car.id + '" title="Excluir"><i class="fas fa-trash"></i></button>' +
+            '</td>';
+        tbody.appendChild(tr);
+    });
+}
+
+function showCarDetailPage(id) {
+    showPage('detail', id);
+}
+
+function loadCarDetail(id) {
+    const cars = getCars();
+    const car = cars.find(c => c.id === id);
+    const container = document.getElementById('car-detail-content');
+    if (!car) {
+        container.innerHTML = `
+            <div class="empty-state" style="grid-column:1/-1;">
+                <i class="fas fa-car"></i>
+                <h3>Carro não encontrado</h3>
+                <p>O veículo que você está procurando não está mais disponível.</p>
+            </div>
+        `;
+        return;
+    }
+    const mainImage = car.images && car.images.length ? car.images[0] : 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
+    let thumbs = '';
+    if (car.images && car.images.length) {
+        car.images.forEach((img, idx) => {
+            thumbs += '<img src="' + img + '" class="car-thumbnail' + (idx === 0 ? ' active' : '') + '" data-img="' + img + '">';
+        });
+    }
+    let colorHtml = car.color ? '<div class="spec-item"><i class="fas fa-palette"></i><span>Cor: ' + car.color + '</span></div>' : '';
+    let kmHtml = car.kilometers ? '<div class="spec-item"><i class="fas fa-tachometer-alt"></i><span>Quilometragem: ' + car.kilometers.toLocaleString('pt-BR') + ' km</span></div>' : '';
+    let descHtml = car.description ? '<div class="car-detail-description"><h3>Descrição</h3><p>' + car.description + '</p></div>' : '';
+
+    container.innerHTML =
+        '<div class="car-gallery">' +
+            '<img src="' + mainImage + '" class="main-car-image" id="main-car-image">' +
+            '<div class="car-thumbnails">' + thumbs + '</div>' +
+        '</div>' +
+        '<div class="car-detail-info">' +
+            '<h1 class="car-detail-title">' + car.name + '</h1>' +
+            '<p class="car-detail-price">R$ ' + car.price.toLocaleString('pt-BR', {minimumFractionDigits:2}) + '</p>' +
+            '<div class="car-detail-specs">' +
+                '<div class="spec-item"><i class="fas fa-tag"></i><span>Marca: ' + car.brand + '</span></div>' +
+                '<div class="spec-item"><i class="fas fa-calendar-alt"></i><span>Ano: ' + car.year + '</span></div>' +
+                colorHtml +
+                kmHtml +
+                '<div class="spec-item"><i class="fas fa-gas-pump"></i><span>Combustível: ' + (car.fuel || 'Flex') + '</span></div>' +
+                '<div class="spec-item"><i class="fas fa-cogs"></i><span>Câmbio: ' + (car.transmission || 'Manual') + '</span></div>' +
+            '</div>' +
+            descHtml +
+            '<div class="car-detail-actions">' +
+                '<a href="https://wa.me/5534997727797?text=Olá! Tenho interesse no ' + car.name + ' ' + car.brand + ' ' + car.year + '" class="btn btn-whatsapp btn-icon" target="_blank">' +
+                    '<i class="fab fa-whatsapp"></i> Entrar em Contato' +
+                '</a>' +
+                '<button class="btn" id="back-to-garage-btn"><i class="fas fa-arrow-left"></i> Voltar para Garagem</button>' +
+            '</div>' +
+        '</div>';
+
+    const mainImgEl = document.getElementById('main-car-image');
+    container.querySelectorAll('.car-thumbnail').forEach(thumb => {
+        thumb.onclick = () => {
+            mainImgEl.src = thumb.dataset.img;
+            container.querySelectorAll('.car-thumbnail').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+        };
+    });
+
+    const backBtn = document.getElementById('back-to-garage-btn');
+    backBtn.onclick = () => showPage('home');
+}
+
+function loadSiteSettings() {
+    let settings = {};
+    try {
+        settings = JSON.parse(localStorage.getItem('siteSettings')) || {};
+    } catch(e) {
+        settings = {};
+    }
+    document.getElementById('hero-title').innerText = settings.heroTitle || 'Veículos Selecionados com Qualidade';
+    document.getElementById('hero-description').innerText = settings.heroDescription || 'Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.';
+    document.getElementById('showcase-title').innerText = settings.showcaseTitle || 'Nossa Garagem';
+    document.getElementById('footer-about-text').innerText = settings.footerAbout || 'Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.';
+    if (settings.siteTitle) {
+        document.title = settings.siteTitle + ' - Hebert Richards Veículos Premium';
+    }
+}
+
+function loadSiteSettingsForm() {
+    let settings = {};
+    try {
+        settings = JSON.parse(localStorage.getItem('siteSettings')) || {};
+    } catch(e) {
+        settings = {};
+    }
+    document.getElementById('site-title').value = settings.siteTitle || '';
+    document.getElementById('hero-title-input').value = settings.heroTitle || 'Veículos Selecionados com Qualidade';
+    document.getElementById('hero-description-input').value = settings.heroDescription || 'Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.';
+    document.getElementById('showcase-title-input').value = settings.showcaseTitle || 'Nossa Garagem';
+    document.getElementById('footer-about-input').value = settings.footerAbout || 'Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.';
+}
+
+function saveSiteSettings() {
+    const settings = {
+        siteTitle: document.getElementById('site-title').value,
+        heroTitle: document.getElementById('hero-title-input').value,
+        heroDescription: document.getElementById('hero-description-input').value,
+        showcaseTitle: document.getElementById('showcase-title-input').value,
+        footerAbout: document.getElementById('footer-about-input').value
+    };
+    localStorage.setItem('siteSettings', JSON.stringify(settings));
+    loadSiteSettings();
+    alert('Configurações do site salvas com sucesso!');
+}
+
+function resetSiteSettings() {
+    if (!confirm('Tem certeza que deseja restaurar as configurações padrão do site?')) return;
+    localStorage.removeItem('siteSettings');
+    loadSiteSettings();
+    loadSiteSettingsForm();
+    alert('Configurações restauradas para os valores padrão!');
+}
+
+function generateId() {
+    return 'car_' + Math.random().toString(36).substr(2, 9);
+}
+
+function renderAll() {
+    loadCars();
+    loadAdminData();
+    loadSiteSettingsForm();
+}
+</script>
 </body>
 </html>
