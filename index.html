@@ -34,7 +34,6 @@
             overflow-x: hidden;
         }
         
-        /* Header */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, #2c3e50 100%);
             color: white;
@@ -1405,7 +1404,93 @@
     </div>
 </footer>
 
+<!-- Biblioteca Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+
 <script>
+// === INTEGRAÇÃO COM SUPABASE ===
+const SUPABASE_URL = 'https://xxcywpifzygexakokbji.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh4Y3l3cGlmenlnZXhha3hrYmppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM4Njc4OTcsImV4cCI6MjA3OTQ0Mzg5N30._BHhKKm_X8jXotpCGwhg2-lDDAC6z1FJSLaITHhxerc';
+
+const supa = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let carsCache = [];
+
+async function refreshCars() {
+    try {
+        const { data, error } = await supa
+            .from('cars')
+            .select('*')
+            .order('created_at', { ascending: false });
+        if (error) {
+            console.error('Erro ao carregar carros do Supabase:', error);
+            carsCache = [];
+            return;
+        }
+        carsCache = data || [];
+    } catch (err) {
+        console.error('Erro inesperado ao carregar carros:', err);
+        carsCache = [];
+    }
+}
+
+async function initCars() {
+    try {
+        const { data, error } = await supa.from('cars').select('id').limit(1);
+        if (error) {
+            console.error('Erro ao verificar carros:', error);
+            carsCache = [];
+            return;
+        }
+
+        if (!data || data.length === 0) {
+            const sampleCars = [
+                {
+                    name: "Golf GTI",
+                    brand: "Volkswagen",
+                    year: 2022,
+                    price: 189900,
+                    color: "Vermelho",
+                    kilometers: 15000,
+                    fuel: "Gasolina",
+                    transmission: "Automático",
+                    description: "Carro esportivo em excelente estado, único dono, revisões na concessionária.",
+                    images: [
+                        "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    name: "Corolla XEi",
+                    brand: "Toyota",
+                    year: 2023,
+                    price: 159990,
+                    color: "Prata",
+                    kilometers: 8000,
+                    fuel: "Flex",
+                    transmission: "Automático",
+                    description: "Seminovo com garantia de fábrica, completo, histórico na concessionária.",
+                    images: [
+                        "https://images.unsplash.com/photo-1603587070813-50d1220677b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    ]
+                }
+            ];
+            const { error: insertError } = await supa.from('cars').insert(sampleCars);
+            if (insertError) {
+                console.error('Erro ao criar carros de exemplo:', insertError);
+            }
+        }
+
+        await refreshCars();
+    } catch (err) {
+        console.error('Erro inesperado ao iniciar carros:', err);
+        carsCache = [];
+    }
+}
+
+function getCars() {
+    return carsCache;
+}
+// === FIM INTEGRAÇÃO COM SUPABASE ===
+
 const state = {
     isLoggedIn: false,
     editingCarId: null,
@@ -1417,66 +1502,15 @@ const validCredentials = {
     password: "Iverenides4615"
 };
 
-function getCars() {
-    try {
-        return JSON.parse(localStorage.getItem('cars')) || [];
-    } catch(e) {
-        return [];
-    }
-}
-
-function saveCars(cars) {
-    localStorage.setItem('cars', JSON.stringify(cars));
-}
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const yearInput = document.getElementById('car-year');
     if (yearInput) yearInput.max = new Date().getFullYear() + 1;
 
     setupEventListeners();
     loadSiteSettings();
-    ensureSampleCars();
+    await initCars();
     renderAll();
 });
-
-function ensureSampleCars() {
-    const cars = getCars();
-    if (cars.length === 0) {
-        const sampleCars = [
-            {
-                id: generateId(),
-                name: "Golf GTI",
-                brand: "Volkswagen",
-                year: 2022,
-                price: 189900,
-                color: "Vermelho",
-                kilometers: 15000,
-                fuel: "Gasolina",
-                transmission: "Automático",
-                description: "Carro esportivo em excelente estado, único dono, revisões em concessionária.",
-                images: [],
-                status: "disponível",
-                dateAdded: new Date().toISOString()
-            },
-            {
-                id: generateId(),
-                name: "Corolla XEi",
-                brand: "Toyota",
-                year: 2023,
-                price: 159990,
-                color: "Prata",
-                kilometers: 8000,
-                fuel: "Flex",
-                transmission: "Automático",
-                description: "Seminovo com garantia de fábrica, completo, histórico na concessionária.",
-                images: [],
-                status: "disponível",
-                dateAdded: new Date().toISOString()
-            }
-        ];
-        saveCars(sampleCars);
-    }
-}
 
 function setupEventListeners() {
     document.getElementById('home-link').onclick = () => showPage('home');
@@ -1610,28 +1644,36 @@ function openAddCarModal() {
     document.getElementById('car-modal').style.display = 'flex';
 }
 
-function openEditCarModal(id) {
-    const cars = getCars();
-    const car = cars.find(c => c.id === id);
-    if (!car) return;
+async function openEditCarModal(id) {
+    try {
+        const { data: car, error } = await supa.from('cars').select('*').eq('id', id).single();
+        if (error || !car) {
+            console.error('Erro ao carregar carro para edição:', error);
+            alert('Não foi possível carregar os dados do carro.');
+            return;
+        }
 
-    state.editingCarId = id;
-    state.carImages = car.images || [];
-    updateImagePreview();
+        state.editingCarId = id;
+        state.carImages = Array.isArray(car.images) ? car.images.slice() : [];
+        updateImagePreview();
 
-    document.getElementById('car-name').value = car.name;
-    document.getElementById('car-brand').value = car.brand;
-    document.getElementById('car-year').value = car.year;
-    document.getElementById('car-price').value = car.price;
-    document.getElementById('car-color').value = car.color || '';
-    document.getElementById('car-kilometers').value = car.kilometers || '';
-    document.getElementById('car-fuel').value = car.fuel || 'Gasolina';
-    document.getElementById('car-transmission').value = car.transmission || 'Manual';
-    document.getElementById('car-description').value = car.description || '';
+        document.getElementById('car-name').value = car.name || '';
+        document.getElementById('car-brand').value = car.brand || '';
+        document.getElementById('car-year').value = car.year || '';
+        document.getElementById('car-price').value = car.price || '';
+        document.getElementById('car-color').value = car.color || '';
+        document.getElementById('car-kilometers').value = car.kilometers || '';
+        document.getElementById('car-fuel').value = car.fuel || 'Gasolina';
+        document.getElementById('car-transmission').value = car.transmission || 'Manual';
+        document.getElementById('car-description').value = car.description || '';
 
-    document.getElementById('car-modal-title').innerText = 'Editar Carro';
-    document.getElementById('car-form-submit').innerText = 'Salvar Alterações';
-    document.getElementById('car-modal').style.display = 'flex';
+        document.getElementById('car-modal-title').innerText = 'Editar Carro';
+        document.getElementById('car-form-submit').innerText = 'Salvar Alterações';
+        document.getElementById('car-modal').style.display = 'flex';
+    } catch (err) {
+        console.error('Erro inesperado ao editar carro:', err);
+        alert('Erro inesperado ao carregar o carro.');
+    }
 }
 
 function closeCarModal() {
@@ -1698,54 +1740,87 @@ function updateImagePreview() {
     });
 }
 
-function handleCarFormSubmit(e) {
+async function handleCarFormSubmit(e) {
     e.preventDefault();
-    const cars = getCars();
     const isEditing = !!state.editingCarId;
-    const id = isEditing ? state.editingCarId : generateId();
-    const existing = cars.find(c => c.id === id);
-
     const defaultImage = 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
 
-    const car = {
-        id,
-        name: document.getElementById('car-name').value,
-        brand: document.getElementById('car-brand').value,
-        year: parseInt(document.getElementById('car-year').value),
-        price: parseFloat(document.getElementById('car-price').value),
-        color: document.getElementById('car-color').value,
-        kilometers: document.getElementById('car-kilometers').value ? parseInt(document.getElementById('car-kilometers').value) : null,
-        fuel: document.getElementById('car-fuel').value,
-        transmission: document.getElementById('car-transmission').value,
-        description: document.getElementById('car-description').value,
-        images: state.carImages.length ? state.carImages.slice() : (existing && existing.images && existing.images.length ? existing.images : [defaultImage]),
-        status: existing ? existing.status : 'disponível',
-        dateAdded: existing ? existing.dateAdded : new Date().toISOString()
-    };
+    let images = state.carImages && state.carImages.length ? state.carImages.slice() : [defaultImage];
 
-    if (isEditing) {
-        const idx = cars.findIndex(c => c.id === id);
-        if (idx !== -1) cars[idx] = car;
-    } else {
-        cars.push(car);
+    if (isEditing && (!state.carImages || state.carImages.length === 0)) {
+        try {
+            const { data: existing, error: existingError } = await supa
+                .from('cars')
+                .select('images')
+                .eq('id', state.editingCarId)
+                .single();
+            if (!existingError && existing && Array.isArray(existing.images) && existing.images.length) {
+                images = existing.images;
+            }
+        } catch (err) {
+            console.error('Erro ao carregar imagens existentes:', err);
+        }
     }
 
-    saveCars(cars);
-    state.editingCarId = null;
-    state.carImages = [];
-    updateImagePreview();
-    closeCarModal();
-    renderAll();
-    alert(isEditing ? 'Carro atualizado com sucesso!' : 'Carro adicionado com sucesso!');
+    const payload = {
+        name: document.getElementById('car-name').value,
+        brand: document.getElementById('car-brand').value,
+        year: parseInt(document.getElementById('car-year').value, 10),
+        price: parseFloat(document.getElementById('car-price').value),
+        color: document.getElementById('car-color').value || null,
+        kilometers: document.getElementById('car-kilometers').value ? parseInt(document.getElementById('car-kilometers').value, 10) : null,
+        fuel: document.getElementById('car-fuel').value,
+        transmission: document.getElementById('car-transmission').value,
+        description: document.getElementById('car-description').value || null,
+        images
+    };
+
+    try {
+        if (isEditing) {
+            const { error } = await supa.from('cars').update(payload).eq('id', state.editingCarId);
+            if (error) {
+                console.error('Erro ao atualizar carro:', error);
+                alert('Erro ao atualizar carro. Tente novamente.');
+                return;
+            }
+        } else {
+            const { error } = await supa.from('cars').insert(payload);
+            if (error) {
+                console.error('Erro ao adicionar carro:', error);
+                alert('Erro ao adicionar carro. Tente novamente.');
+                return;
+            }
+        }
+
+        state.editingCarId = null;
+        state.carImages = [];
+        updateImagePreview();
+        closeCarModal();
+        await refreshCars();
+        renderAll();
+        alert(isEditing ? 'Carro atualizado com sucesso!' : 'Carro adicionado com sucesso!');
+    } catch (err) {
+        console.error('Erro inesperado ao salvar carro:', err);
+        alert('Erro inesperado ao salvar o carro.');
+    }
 }
 
-function deleteCar(id) {
+async function deleteCar(id) {
     if (!confirm('Tem certeza que deseja excluir este carro?')) return;
-    let cars = getCars();
-    cars = cars.filter(c => c.id !== id);
-    saveCars(cars);
-    renderAll();
-    alert('Carro excluído com sucesso!');
+    try {
+        const { error } = await supa.from('cars').delete().eq('id', id);
+        if (error) {
+            console.error('Erro ao excluir carro:', error);
+            alert('Erro ao excluir carro. Tente novamente.');
+            return;
+        }
+        await refreshCars();
+        renderAll();
+        alert('Carro excluído com sucesso!');
+    } catch (err) {
+        console.error('Erro inesperado ao excluir carro:', err);
+        alert('Erro inesperado ao excluir o carro.');
+    }
 }
 
 function loadCars() {
@@ -1853,67 +1928,79 @@ function showCarDetailPage(id) {
     showPage('detail', id);
 }
 
-function loadCarDetail(id) {
-    const cars = getCars();
-    const car = cars.find(c => c.id === id);
+async function loadCarDetail(id) {
     const container = document.getElementById('car-detail-content');
-    if (!car) {
+    try {
+        const { data: car, error } = await supa.from('cars').select('*').eq('id', id).single();
+        if (error || !car) {
+            console.error('Carro não encontrado:', error);
+            container.innerHTML = `
+                <div class="empty-state" style="grid-column:1/-1;">
+                    <i class="fas fa-car"></i>
+                    <h3>Carro não encontrado</h3>
+                    <p>O veículo que você está procurando não está mais disponível.</p>
+                </div>
+            `;
+            return;
+        }
+
+        const mainImage = car.images && car.images.length ? car.images[0] : 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
+        let thumbs = '';
+        if (car.images && car.images.length) {
+            car.images.forEach((img, idx) => {
+                thumbs += '<img src="' + img + '" class="car-thumbnail' + (idx === 0 ? ' active' : '') + '" data-img="' + img + '">';
+            });
+        }
+        let colorHtml = car.color ? '<div class="spec-item"><i class="fas fa-palette"></i><span>Cor: ' + car.color + '</span></div>' : '';
+        let kmHtml = car.kilometers ? '<div class="spec-item"><i class="fas fa-tachometer-alt"></i><span>Quilometragem: ' + car.kilometers.toLocaleString('pt-BR') + ' km</span></div>' : '';
+        let descHtml = car.description ? '<div class="car-detail-description"><h3>Descrição</h3><p>' + car.description + '</p></div>' : '';
+
+        container.innerHTML =
+            '<div class="car-gallery">' +
+                '<img src="' + mainImage + '" class="main-car-image" id="main-car-image">' +
+                '<div class="car-thumbnails">' + thumbs + '</div>' +
+            '</div>' +
+            '<div class="car-detail-info">' +
+                '<h1 class="car-detail-title">' + car.name + '</h1>' +
+                '<p class="car-detail-price">R$ ' + car.price.toLocaleString('pt-BR', {minimumFractionDigits:2}) + '</p>' +
+                '<div class="car-detail-specs">' +
+                    '<div class="spec-item"><i class="fas fa-tag"></i><span>Marca: ' + car.brand + '</span></div>' +
+                    '<div class="spec-item"><i class="fas fa-calendar-alt"></i><span>Ano: ' + car.year + '</span></div>' +
+                    colorHtml +
+                    kmHtml +
+                    '<div class="spec-item"><i class="fas fa-gas-pump"></i><span>Combustível: ' + (car.fuel || 'Flex') + '</span></div>' +
+                    '<div class="spec-item"><i class="fas fa-cogs"></i><span>Câmbio: ' + (car.transmission || 'Manual') + '</span></div>' +
+                '</div>' +
+                descHtml +
+                '<div class="car-detail-actions">' +
+                    '<a href="https://wa.me/5534997727797?text=Olá! Tenho interesse no ' + car.name + ' ' + car.brand + ' ' + car.year + '" class="btn btn-whatsapp btn-icon" target="_blank">' +
+                        '<i class="fab fa-whatsapp"></i> Entrar em Contato' +
+                    '</a>' +
+                    '<button class="btn" id="back-to-garage-btn"><i class="fas fa-arrow-left"></i> Voltar para Garagem</button>' +
+                '</div>' +
+            '</div>';
+
+        const mainImgEl = document.getElementById('main-car-image');
+        container.querySelectorAll('.car-thumbnail').forEach(thumb => {
+            thumb.onclick = () => {
+                mainImgEl.src = thumb.dataset.img;
+                container.querySelectorAll('.car-thumbnail').forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+            };
+        });
+
+        const backBtn = document.getElementById('back-to-garage-btn');
+        backBtn.onclick = () => showPage('home');
+    } catch (err) {
+        console.error('Erro inesperado ao carregar detalhes do carro:', err);
         container.innerHTML = `
             <div class="empty-state" style="grid-column:1/-1;">
                 <i class="fas fa-car"></i>
-                <h3>Carro não encontrado</h3>
-                <p>O veículo que você está procurando não está mais disponível.</p>
+                <h3>Erro ao carregar o carro</h3>
+                <p>Tente novamente mais tarde.</p>
             </div>
         `;
-        return;
     }
-    const mainImage = car.images && car.images.length ? car.images[0] : 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
-    let thumbs = '';
-    if (car.images && car.images.length) {
-        car.images.forEach((img, idx) => {
-            thumbs += '<img src="' + img + '" class="car-thumbnail' + (idx === 0 ? ' active' : '') + '" data-img="' + img + '">';
-        });
-    }
-    let colorHtml = car.color ? '<div class="spec-item"><i class="fas fa-palette"></i><span>Cor: ' + car.color + '</span></div>' : '';
-    let kmHtml = car.kilometers ? '<div class="spec-item"><i class="fas fa-tachometer-alt"></i><span>Quilometragem: ' + car.kilometers.toLocaleString('pt-BR') + ' km</span></div>' : '';
-    let descHtml = car.description ? '<div class="car-detail-description"><h3>Descrição</h3><p>' + car.description + '</p></div>' : '';
-
-    container.innerHTML =
-        '<div class="car-gallery">' +
-            '<img src="' + mainImage + '" class="main-car-image" id="main-car-image">' +
-            '<div class="car-thumbnails">' + thumbs + '</div>' +
-        '</div>' +
-        '<div class="car-detail-info">' +
-            '<h1 class="car-detail-title">' + car.name + '</h1>' +
-            '<p class="car-detail-price">R$ ' + car.price.toLocaleString('pt-BR', {minimumFractionDigits:2}) + '</p>' +
-            '<div class="car-detail-specs">' +
-                '<div class="spec-item"><i class="fas fa-tag"></i><span>Marca: ' + car.brand + '</span></div>' +
-                '<div class="spec-item"><i class="fas fa-calendar-alt"></i><span>Ano: ' + car.year + '</span></div>' +
-                colorHtml +
-                kmHtml +
-                '<div class="spec-item"><i class="fas fa-gas-pump"></i><span>Combustível: ' + (car.fuel || 'Flex') + '</span></div>' +
-                '<div class="spec-item"><i class="fas fa-cogs"></i><span>Câmbio: ' + (car.transmission || 'Manual') + '</span></div>' +
-            '</div>' +
-            descHtml +
-            '<div class="car-detail-actions">' +
-                '<a href="https://wa.me/5534997727797?text=Olá! Tenho interesse no ' + car.name + ' ' + car.brand + ' ' + car.year + '" class="btn btn-whatsapp btn-icon" target="_blank">' +
-                    '<i class="fab fa-whatsapp"></i> Entrar em Contato' +
-                '</a>' +
-                '<button class="btn" id="back-to-garage-btn"><i class="fas fa-arrow-left"></i> Voltar para Garagem</button>' +
-            '</div>' +
-        '</div>';
-
-    const mainImgEl = document.getElementById('main-car-image');
-    container.querySelectorAll('.car-thumbnail').forEach(thumb => {
-        thumb.onclick = () => {
-            mainImgEl.src = thumb.dataset.img;
-            container.querySelectorAll('.car-thumbnail').forEach(t => t.classList.remove('active'));
-            thumb.classList.add('active');
-        };
-    });
-
-    const backBtn = document.getElementById('back-to-garage-btn');
-    backBtn.onclick = () => showPage('home');
 }
 
 function loadSiteSettings() {
@@ -1965,10 +2052,6 @@ function resetSiteSettings() {
     loadSiteSettings();
     loadSiteSettingsForm();
     alert('Configurações restauradas para os valores padrão!');
-}
-
-function generateId() {
-    return 'car_' + Math.random().toString(36).substr(2, 9);
 }
 
 function renderAll() {
