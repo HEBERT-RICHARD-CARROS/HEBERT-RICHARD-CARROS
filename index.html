@@ -17,9 +17,8 @@
             --success: #27ae60;
             --warning: #f39c12;
             --danger: #e74c3c;
-            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
-            --card-radius: 8px;
         }
 
         * {
@@ -41,7 +40,7 @@
             background: linear-gradient(135deg, var(--primary) 0%, #2c3e50 100%);
             color: white;
             padding: 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -57,10 +56,14 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             display: flex;
             align-items: center;
+        }
+
+        .logo span {
+            color: var(--secondary);
         }
 
         .logo i {
@@ -182,8 +185,8 @@
 
         .container {
             max-width: 1400px;
-            margin: 1.5rem auto;
-            padding: 0 1rem;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
             min-height: 60vh;
         }
 
@@ -192,46 +195,49 @@
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 3rem 2rem;
+            padding: 5rem 3rem;
             text-align: center;
             border-radius: 12px;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             box-shadow: var(--shadow);
         }
 
         .hero h1 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             max-width: 700px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 2.5rem;
         }
 
         .btn {
             display: inline-block;
             background-color: var(--secondary);
             color: white;
-            padding: 0.7rem 1.5rem;
-            border-radius: 4px;
+            padding: 0.9rem 2rem;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
             border: none;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(211, 84, 0, 0.3);
         }
 
         .btn:hover {
             background-color: #e67e22;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(211, 84, 0, 0.4);
         }
 
         .btn-whatsapp {
             background-color: #25D366;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
         }
 
         .btn-whatsapp:hover {
@@ -252,7 +258,7 @@
 
         .social-buttons {
             display: flex;
-            gap: 0.8rem;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -261,50 +267,58 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
-            padding: 0 0.5rem;
+            margin-bottom: 2rem;
         }
 
         .section-title {
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: var(--dark);
-            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
         }
 
-        /* Showcase - Estilo Marketplace Facebook */
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        /* Showcase */
         .cars-showcase {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
         }
 
         .car-card {
             background-color: white;
-            border-radius: var(--card-radius);
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
         }
 
         .car-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
         .car-badge {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 15px;
+            right: 15px;
             background-color: var(--secondary);
             color: white;
-            padding: 0.2rem 0.6rem;
-            border-radius: 12px;
-            font-size: 0.7rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 600;
             z-index: 2;
         }
@@ -312,13 +326,13 @@
         .car-image-wrapper {
             position: relative;
             overflow: hidden;
-            aspect-ratio: 4/3;
         }
 
         .car-image {
             width: 100%;
-            height: 100%;
+            height: 250px;
             object-fit: cover;
+            border-bottom: 3px solid var(--secondary);
             transition: transform 0.4s ease;
         }
 
@@ -326,84 +340,89 @@
             transform: scale(1.05);
         }
 
-        .car-info {
-            padding: 1rem;
+        .car-thumbs-mini {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
             display: flex;
-            flex-direction: column;
-            flex-grow: 1;
+            gap: 4px;
+            flex-direction: row-reverse;
+        }
+
+        .car-thumbs-mini img {
+            width: 40px;
+            height: 30px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,.7);
+            box-shadow: 0 0 4px rgba(0,0,0,.4);
+        }
+
+        .car-info {
+            padding: 1.8rem;
         }
 
         .car-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
             color: var(--dark);
-            line-height: 1.3;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+        }
+
+        .car-details {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .car-details i {
+            margin-right: 5px;
+            color: var(--accent);
         }
 
         .car-price {
             font-weight: bold;
             color: var(--secondary);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.6rem;
+            margin: 0.8rem 0;
         }
 
-        .car-location {
-            color: var(--gray);
-            font-size: 0.85rem;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .car-location i {
-            margin-right: 5px;
-            font-size: 0.8rem;
-        }
-
-        .car-details {
+        .car-features {
             display: flex;
             justify-content: space-between;
-            color: var(--gray);
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
-            padding-top: 0.8rem;
+            margin: 1.2rem 0;
+            padding-top: 1.2rem;
             border-top: 1px solid #eee;
         }
 
-        .car-detail-item {
+        .feature {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
         }
 
-        .car-detail-item i {
-            margin-bottom: 3px;
+        .feature i {
+            font-size: 1.2rem;
             color: var(--accent);
-            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .feature span {
+            font-size: 0.8rem;
+            color: var(--gray);
         }
 
         .car-actions {
             display: flex;
-            gap: 0.5rem;
-            margin-top: auto;
-        }
-
-        .car-actions .btn {
-            flex: 1;
-            text-align: center;
-            padding: 0.6rem 0.5rem;
-            font-size: 0.8rem;
+            justify-content: space-between;
+            margin-top: 1.5rem;
         }
 
         .btn-outline {
             background-color: transparent;
-            border: 1px solid var(--accent);
+            border: 2px solid var(--accent);
             color: var(--accent);
         }
 
@@ -419,10 +438,10 @@
         }
 
         .btn-icon i {
-            margin-right: 5px;
+            margin-right: 8px;
         }
 
-        /* MODAIS - Mantidos os estilos anteriores */
+        /* MODAL - FIXED SCROLL */
         .modal {
             display: none;
             position: fixed;
@@ -513,66 +532,64 @@
             margin-top: 2rem;
         }
 
-        /* Admin Panel - Mantido */
         .admin-panel {
             background-color: white;
             border-radius: 12px;
-            padding: 2rem;
+            padding: 2.5rem;
             box-shadow: var(--shadow);
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .admin-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid #eee;
         }
 
         .admin-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--dark);
         }
 
         .stats-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .stat-card {
             background: linear-gradient(135deg, var(--primary) 0%, #2c3e50 100%);
             color: white;
-            padding: 1.2rem;
+            padding: 1.5rem;
             border-radius: 8px;
             text-align: center;
         }
 
         .stat-number {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
         }
 
         .stat-label {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             opacity: 0.9;
         }
 
         .admin-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .admin-table th, .admin-table td {
-            padding: 0.8rem;
+            padding: 1rem;
             text-align: left;
             border-bottom: 1px solid #eee;
-            font-size: 0.9rem;
         }
 
         .admin-table th {
@@ -589,8 +606,8 @@
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 1rem;
-            margin: 0 3px;
+            font-size: 1.1rem;
+            margin: 0 5px;
             transition: var(--transition);
         }
 
@@ -606,21 +623,21 @@
             transform: scale(1.2);
         }
 
-        /* Página de detalhes - Mantida */
+        /* Página de detalhes */
         .car-detail-page {
             display: none;
             background-color: white;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .car-detail-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 1.5rem;
+            padding: 1.5rem 2rem;
             border-bottom: 1px solid #eee;
             background-color: #f8f9fa;
         }
@@ -629,7 +646,7 @@
             background: none;
             border: none;
             color: var(--accent);
-            font-size: 0.9rem;
+            font-size: 1rem;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -637,14 +654,14 @@
         }
 
         .back-btn i {
-            margin-right: 6px;
+            margin-right: 8px;
         }
 
         .car-detail-content {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
-            gap: 1.5rem;
-            padding: 1.5rem;
+            gap: 2rem;
+            padding: 2rem;
         }
 
         .car-gallery {
@@ -653,11 +670,11 @@
 
         .main-car-image {
             width: 100%;
-            height: 400px;
+            height: 450px;
             object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 0.8rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,.1);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,.15);
             cursor: pointer;
             transition: var(--transition);
         }
@@ -674,10 +691,10 @@
         }
 
         .car-thumbnail {
-            width: 70px;
-            height: 50px;
+            width: 80px;
+            height: 60px;
             object-fit: cover;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             opacity: 0.7;
             transition: var(--transition);
@@ -692,60 +709,59 @@
         }
 
         .car-detail-info {
-            padding: 0.5rem 0;
+            padding: 1rem 0;
         }
 
         .car-detail-title {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             color: var(--dark);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
             font-weight: 700;
         }
 
         .car-detail-price {
-            font-size: 1.6rem;
+            font-size: 2rem;
             color: var(--secondary);
             font-weight: bold;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
         }
 
         .car-detail-specs {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
 
         .spec-item {
             display: flex;
             align-items: center;
-            padding: 0.6rem;
+            padding: 0.8rem;
             background-color: #f8f9fa;
-            border-radius: 4px;
-            font-size: 0.9rem;
+            border-radius: 6px;
         }
 
         .spec-item i {
-            margin-right: 8px;
+            margin-right: 10px;
             color: var(--accent);
-            font-size: 1rem;
-            width: 20px;
+            font-size: 1.2rem;
+            width: 24px;
             text-align: center;
         }
 
         .car-detail-description {
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-size: 1.1rem;
             color: var(--dark);
         }
 
         .car-detail-actions {
             display: flex;
-            gap: 0.8rem;
+            gap: 1rem;
         }
 
-        /* Galeria Modal - Mantida */
+        /* Galeria Modal */
         .gallery-modal {
             display: none;
             position: fixed;
@@ -762,8 +778,8 @@
         .gallery-modal-content {
             position: relative;
             width: 90%;
-            max-width: 900px;
-            height: 85vh;
+            max-width: 1000px;
+            height: 90vh;
             display: flex;
             flex-direction: column;
         }
@@ -789,9 +805,9 @@
             background: rgba(255, 255, 255, 0.2);
             border: none;
             color: white;
-            font-size: 1.5rem;
-            width: 40px;
-            height: 40px;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -805,24 +821,24 @@
         }
 
         .gallery-prev {
-            left: 15px;
+            left: 20px;
         }
 
         .gallery-next {
-            right: 15px;
+            right: 20px;
         }
 
         .gallery-thumbs {
             display: flex;
-            gap: 8px;
-            padding: 10px;
+            gap: 10px;
+            padding: 15px;
             overflow-x: auto;
             background: rgba(0, 0, 0, 0.5);
         }
 
         .gallery-thumb {
-            width: 60px;
-            height: 45px;
+            width: 80px;
+            height: 60px;
             object-fit: cover;
             border-radius: 4px;
             cursor: pointer;
@@ -839,12 +855,12 @@
 
         .close-gallery {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 20px;
+            right: 20px;
             background: none;
             border: none;
             color: white;
-            font-size: 1.5rem;
+            font-size: 2rem;
             cursor: pointer;
             z-index: 10;
         }
@@ -852,8 +868,8 @@
         footer {
             background-color: var(--primary);
             color: white;
-            padding: 3rem 0 1.5rem;
-            margin-top: 3rem;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
         }
 
         .footer-container {
@@ -861,28 +877,31 @@
             margin: 0 auto;
             padding: 0 1.5rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
         }
 
         .footer-logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo span {
+            color: var(--secondary);
         }
 
         .footer-about {
-            line-height: 1.6;
+            line-height: 1.7;
             color: #ecf0f1;
-            font-size: 0.9rem;
         }
 
         .footer-links h3,
         .footer-contact h3 {
-            margin-bottom: 1.2rem;
-            font-size: 1.1rem;
+            margin-bottom: 1.8rem;
+            font-size: 1.3rem;
             position: relative;
-            padding-bottom: 8px;
+            padding-bottom: 10px;
         }
 
         .footer-links h3:after,
@@ -891,8 +910,8 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 30px;
-            height: 2px;
+            width: 40px;
+            height: 3px;
             background-color: var(--secondary);
         }
 
@@ -901,7 +920,7 @@
         }
 
         .footer-links ul li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
 
         .footer-links ul li a {
@@ -910,12 +929,11 @@
             transition: var(--transition);
             display: flex;
             align-items: center;
-            font-size: 0.9rem;
         }
 
         .footer-links ul li a i {
-            margin-right: 8px;
-            width: 16px;
+            margin-right: 10px;
+            width: 20px;
             text-align: center;
         }
 
@@ -925,32 +943,31 @@
         }
 
         .footer-contact p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             display: flex;
             align-items: center;
             color: #ecf0f1;
-            font-size: 0.9rem;
         }
 
         .footer-contact i {
-            margin-right: 10px;
+            margin-right: 12px;
             color: var(--secondary);
-            width: 16px;
+            width: 20px;
             text-align: center;
         }
 
         .social-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 1.2rem;
+            margin-top: 2rem;
         }
 
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
@@ -960,26 +977,26 @@
 
         .social-links a:hover {
             background-color: var(--secondary);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         .copyright {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 1.5rem;
+            margin-top: 4rem;
+            padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
         }
 
         .empty-state {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem;
             color: var(--gray);
         }
 
         .empty-state i {
-            font-size: 3rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
             opacity: 0.5;
         }
@@ -997,8 +1014,8 @@
 
         .image-preview-item {
             position: relative;
-            width: 80px;
-            height: 60px;
+            width: 100px;
+            height: 80px;
             border-radius: 4px;
             overflow: hidden;
         }
@@ -1017,12 +1034,12 @@
             color: white;
             border: none;
             border-radius: 50%;
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             cursor: pointer;
         }
 
@@ -1034,8 +1051,8 @@
             color: white;
             border: none;
             border-radius: 4px;
-            padding: 2px 5px;
-            font-size: 0.6rem;
+            padding: 2px 6px;
+            font-size: 0.7rem;
             cursor: pointer;
         }
 
@@ -1052,9 +1069,9 @@
         /* Loading */
         .loading {
             display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255,255,255,.3);
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
             border-radius: 50%;
             border-top-color: #fff;
             animation: spin 1s ease-in-out infinite;
@@ -1073,13 +1090,10 @@
                 padding: 1rem 1.5rem;
             }
             .hero {
-                padding: 2.5rem 1.5rem;
+                padding: 4rem 2rem;
             }
             .hero h1 {
-                font-size: 2rem;
-            }
-            .cars-showcase {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                font-size: 2.5rem;
             }
         }
 
@@ -1097,20 +1111,20 @@
                 margin-right: 0;
             }
             .hero {
-                padding: 2rem 1rem;
+                padding: 3rem 1.5rem;
             }
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
             }
             .hero p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             .cars-showcase {
-                grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-                gap: 1.2rem;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 2rem;
             }
             .admin-panel {
-                padding: 1.5rem;
+                padding: 2rem;
             }
             .admin-header {
                 flex-direction: column;
@@ -1129,6 +1143,9 @@
             .car-detail-content {
                 grid-template-columns: 1fr;
             }
+            .car-thumbs-mini {
+                flex-direction: row;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1136,22 +1153,22 @@
                 padding: 0.8rem 1rem;
             }
             .logo {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
             .hero {
-                padding: 1.5rem 1rem;
-                margin-bottom: 1.5rem;
+                padding: 2.5rem 1rem;
+                margin-bottom: 2rem;
             }
             .hero h1 {
-                font-size: 1.6rem;
+                font-size: 2rem;
             }
             .hero p {
-                font-size: 0.9rem;
-                margin-bottom: 1.5rem;
+                font-size: 1rem;
+                margin-bottom: 2rem;
             }
             .btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.85rem;
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
             }
             .social-buttons {
                 flex-direction: column;
@@ -1159,22 +1176,22 @@
             }
             .social-buttons a {
                 width: 100%;
-                max-width: 220px;
+                max-width: 250px;
                 text-align: center;
             }
             .section-title {
-                font-size: 1.3rem;
+                font-size: 1.7rem;
             }
             .cars-showcase {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 1rem;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
             .car-info {
-                padding: 0.8rem;
+                padding: 1.5rem;
             }
             .car-actions {
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 0.8rem;
             }
             .car-actions .btn {
                 width: 100%;
@@ -1192,7 +1209,7 @@
                 width: 100%;
             }
             .admin-panel {
-                padding: 1.2rem;
+                padding: 1.5rem;
             }
             .admin-table {
                 display: block;
@@ -1200,7 +1217,7 @@
             }
             .footer-container {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 2.5rem;
             }
             .car-detail-specs {
                 grid-template-columns: 1fr;
@@ -1209,9 +1226,9 @@
                 flex-direction: column;
             }
             .gallery-nav {
-                width: 35px;
-                height: 35px;
-                font-size: 1.2rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
             }
             .gallery-prev {
                 left: 10px;
@@ -1221,50 +1238,29 @@
             }
         }
 
-        @media (max-width: 576px) {
-            .cars-showcase {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 0.8rem;
-            }
-            .car-title {
-                font-size: 1rem;
-            }
-            .car-price {
-                font-size: 1.1rem;
-            }
-            .car-details {
-                font-size: 0.75rem;
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2rem 1rem;
             }
             .hero h1 {
-                font-size: 1.4rem;
+                font-size: 1.8rem;
             }
             .stats-cards {
                 grid-template-columns: 1fr;
+            }
+            .car-features {
+                flex-direction: column;
+                gap: 1rem;
             }
             .modal-content {
                 padding: 1rem;
                 width: 95%;
             }
             .admin-title {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
-        }
-
-        @media (max-width: 480px) {
-            .cars-showcase {
-                grid-template-columns: 1fr 1fr;
-            }
-            .car-details {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            .car-detail-item {
-                flex-direction: row;
-                justify-content: flex-start;
-            }
-            .car-detail-item i {
-                margin-right: 5px;
-                margin-bottom: 0;
+            .car-image {
+                height: 200px;
             }
         }
     </style>
@@ -1331,16 +1327,774 @@
             </section>
         </div>
 
-        <!-- Restante do código permanece igual (admin page, modais, etc.) -->
-        <!-- Para economizar espaço, mantive apenas a parte alterada -->
-        
+        <div id="admin-page" class="page" style="display:none;">
+            <div class="admin-panel">
+                <div class="admin-header">
+                    <h2 class="admin-title">Painel de Controle - Hebert Richards</h2>
+                    <div>
+                        <button class="btn" id="add-car-btn"><i class="fas fa-plus"></i> Adicionar Carro</button>
+                        <button class="btn btn-outline" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Sair</button>
+                    </div>
+                </div>
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-cars">0</div>
+                        <div class="stat-label">Carros Cadastrados</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-value">R$ 0</div>
+                        <div class="stat-label">Valor em Estoque</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="avg-price">R$ 0</div>
+                        <div class="stat-label">Preço Médio</div>
+                    </div>
+                </div>
+                <h3 style="margin-bottom: 1rem;">Carros Cadastrados</h3>
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Modelo</th>
+                                <th>Marca</th>
+                                <th>Ano</th>
+                                <th>Preço</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-cars-list"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="admin-panel" id="site-settings-panel">
+                <div class="admin-header">
+                    <h2 class="admin-title">Configurações do Site</h2>
+                </div>
+                <div class="form-group">
+                    <label for="site-title">Título do Site</label>
+                    <input type="text" id="site-title">
+                </div>
+                <div class="form-group">
+                    <label for="hero-title-input">Título Principal (Herói)</label>
+                    <input type="text" id="hero-title-input">
+                </div>
+                <div class="form-group">
+                    <label for="hero-description-input">Descrição do Herói</label>
+                    <textarea id="hero-description-input" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="showcase-title-input">Título da Vitrine</label>
+                    <input type="text" id="showcase-title-input">
+                </div>
+                <div class="form-group">
+                    <label for="footer-about-input">Texto Sobre Nós (Rodapé)</label>
+                    <textarea id="footer-about-input" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="reset-site-settings">Restaurar Padrões</button>
+                    <button type="button" class="btn" id="save-site-settings">Salvar Configurações</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="car-detail-page" class="car-detail-page" style="display:none;">
+            <div class="car-detail-header">
+                <button class="back-btn" id="back-to-home">
+                    <i class="fas fa-arrow-left"></i> Voltar para a Garagem
+                </button>
+                <h2 id="car-detail-page-title">Detalhes do Veículo</h2>
+            </div>
+            <div class="car-detail-content" id="car-detail-content"></div>
+        </div>
     </div>
 
+    <!-- Modal da Galeria -->
+    <div id="gallery-modal" class="gallery-modal">
+        <div class="gallery-modal-content">
+            <button class="close-gallery" id="close-gallery">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="gallery-main">
+                <img id="gallery-main-img" src="" alt="" class="gallery-main-img">
+                <button class="gallery-nav gallery-prev" id="gallery-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="gallery-nav gallery-next" id="gallery-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="gallery-thumbs" id="gallery-thumbs"></div>
+        </div>
+    </div>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-login-modal">×</span>
+            <h2 class="modal-title">Acesso Restrito</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="cancel-login">Cancelar</button>
+                    <button type="submit" class="btn" id="login-submit-btn">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="car-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-car-modal">×</span>
+            <h2 class="modal-title" id="car-modal-title">Adicionar Novo Carro</h2>
+            <form id="car-form" enctype="multipart/form-data">
+                <input type="hidden" id="car-id">
+                <div class="form-group">
+                    <label for="car-name">Modelo do Carro</label>
+                    <input type="text" id="car-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="car-brand">Marca</label>
+                    <select id="car-brand" required>
+                        <option value="">Selecione a marca</option>
+                        <option value="Volkswagen">Volkswagen</option>
+                        <option value="Ford">Ford</option>
+                        <option value="Chevrolet">Chevrolet</option>
+                        <option value="Fiat">Fiat</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Honda">Honda</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Mercedes-Benz">Mercedes-Benz</option>
+                        <option value="Audi">Audi</option>
+                        <option value="Jeep">Jeep</option>
+                        <option value="Outra">Outra</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="car-year">Ano</label>
+                    <input type="number" id="car-year" min="1990" max="2099" required>
+                </div>
+                <div class="form-group">
+                    <label for="car-price">Preço (R$)</label>
+                    <input type="number" id="car-price" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="car-color">Cor</label>
+                    <input type="text" id="car-color">
+                </div>
+                <div class="form-group">
+                    <label for="car-kilometers">Quilometragem</label>
+                    <input type="number" id="car-kilometers" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="car-fuel">Combustível</label>
+                    <select id="car-fuel">
+                        <option value="Gasolina">Gasolina</option>
+                        <option value="Álcool">Álcool</option>
+                        <option value="Flex">Flex</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Elétrico">Elétrico</option>
+                        <option value="Híbrido">Híbrido</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="car-transmission">Câmbio</label>
+                    <select id="car-transmission">
+                        <option value="Manual">Manual</option>
+                        <option value="Automático">Automático</option>
+                        <option value="Automático Sequencial">Automático Sequencial</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="car-description">Descrição</label>
+                    <textarea id="car-description" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="car-status">Status</label>
+                    <select id="car-status">
+                        <option value="available">Disponível</option>
+                        <option value="sold">Vendido</option>
+                    </select>
+                </div>
+                <div class="form-group image-management">
+                    <label>Imagens do Carro</label>
+                    <div class="image-preview" id="image-preview"></div>
+                    <div class="image-input-group">
+                        <input type="file" id="car-image-file" accept="image/*" multiple>
+                    </div>
+                    <div class="image-input-group" style="margin-top:0.5rem;">
+                        <input type="text" id="car-image-url" placeholder="Ou cole a URL da imagem aqui">
+                        <button type="button" class="btn btn-outline" id="add-image-btn">Adicionar</button>
+                    </div>
+                    <small>A primeira imagem será usada como principal na vitrine.</small>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="cancel-car-modal">Cancelar</button>
+                    <button type="submit" class="btn" id="car-form-submit">Adicionar Carro</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <div class="footer-logo">Hebert Richards</div>
+                <p class="footer-about" id="footer-about-text">A Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1A4EtfM2ij/" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/hebert.richards.3344?igsh=em0xYXhxY2V3ZWg4" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/5534997727797" title="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://share.google/eQggN4cvJ6CQb6Ppa" title="Localização" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#" id="footer-home-link"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="#" id="footer-about-link"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
+                    <li><a href="#" id="footer-contact-link"><i class="fas fa-envelope"></i> Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contato</h3>
+                <p><i class="fas fa-phone"></i> (34) 99772-7797</p>
+                <p><i class="fas fa-whatsapp"></i> (34) 99772-7797</p>
+                <p><i class="fas fa-envelope"></i> ebertttmineiro@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> <a href="https://share.google/eQggN4cvJ6CQb6Ppa" style="color:#ecf0f1;text-decoration:none;" target="_blank">Ver no Google Maps</a></p>
+                <p><i class="fas fa-clock"></i> Seg-Sex: 8h às 18h | Sáb: 8h às 12h</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Hebert Richards. Todos os direitos reservados.
+        </div>
+    </footer>
+
     <script>
-        // Configuração do Supabase e scripts JavaScript
-        // (Mantido igual ao código anterior, apenas o CSS foi alterado)
-        
-        // Apenas a função loadCars foi atualizada para o novo layout
+        // Configuração do Supabase
+        const SUPABASE_URL = 'https://xxcywpifzygexakxkbji.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh4Y3l3cGlmenlnZXhha3hrYmppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM4Njc4OTcsImV4cCI6MjA3OTQ0Mzg5N30._BHhKKm_X8jXotpCGwhg2-lDDAC6z1FJSLaITHhxerc';
+
+        // Inicializar Supabase
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Variáveis globais
+        const state = {
+            isLoggedIn: false,
+            editingCarId: null,
+            carImages: [],
+            isSubmitting: false,
+            currentGalleryImages: [],
+            currentGalleryIndex: 0
+        };
+
+        const validCredentials = {
+            username: "11771651636",
+            password: "Iverenides4615"
+        };
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', init);
+
+        // Função de inicialização
+        async function init() {
+            const yearInput = document.getElementById('car-year');
+            if (yearInput) yearInput.max = new Date().getFullYear() + 1;
+            
+            setupEventListeners();
+            loadSiteSettings();
+            await renderEverything();
+        }
+
+        function setupEventListeners() {
+            // Navegação
+            document.getElementById('home-link').onclick = () => showPage('home');
+            document.getElementById('about-link').onclick = () => showPage('home');
+            document.getElementById('contact-link').onclick = () => showPage('home');
+            document.getElementById('footer-home-link').onclick = () => showPage('home');
+            document.getElementById('footer-about-link').onclick = () => showPage('home');
+            document.getElementById('footer-contact-link').onclick = () => showPage('home');
+            
+            // Navegação mobile
+            document.getElementById('mobile-toggle').onclick = toggleMobileNav;
+            document.getElementById('close-mobile-nav').onclick = closeMobileNav;
+            document.getElementById('mobile-home-link').onclick = () => { showPage('home'); closeMobileNav(); };
+            document.getElementById('mobile-about-link').onclick = () => { showPage('home'); closeMobileNav(); };
+            document.getElementById('mobile-contact-link').onclick = () => { showPage('home'); closeMobileNav(); };
+            document.getElementById('mobile-admin-link').onclick = () => { openLoginModal(); closeMobileNav(); };
+            
+            // Admin
+            document.getElementById('admin-btn').onclick = openLoginModal;
+            document.getElementById('logout-btn').onclick = logout;
+            document.getElementById('add-car-btn').onclick = openAddCarModal;
+            document.getElementById('back-to-home').onclick = () => showPage('home');
+            
+            // Login
+            document.getElementById('close-login-modal').onclick = closeLoginModal;
+            document.getElementById('cancel-login').onclick = closeLoginModal;
+            document.getElementById('login-form').onsubmit = handleLogin;
+            
+            // Car modal
+            document.getElementById('close-car-modal').onclick = closeCarModal;
+            document.getElementById('cancel-car-modal').onclick = closeCarModal;
+            document.getElementById('car-form').onsubmit = handleCarFormSubmit;
+            
+            // Imagens
+            document.getElementById('add-image-btn').onclick = addImageFromUrl;
+            document.getElementById('car-image-file').addEventListener('change', handleImageFiles);
+            
+            // Configurações do site
+            document.getElementById('save-site-settings').onclick = saveSiteSettings;
+            document.getElementById('reset-site-settings').onclick = resetSiteSettings;
+            
+            // Galeria
+            document.getElementById('close-gallery').onclick = closeGallery;
+            document.getElementById('gallery-prev').onclick = galleryPrev;
+            document.getElementById('gallery-next').onclick = galleryNext;
+            
+            // Event delegation para botões de ação
+            document.getElementById('admin-cars-list').addEventListener('click', (e) => {
+                const editBtn = e.target.closest('.edit-btn');
+                const deleteBtn = e.target.closest('.delete-btn');
+                
+                if (editBtn) {
+                    const id = editBtn.dataset.id;
+                    openEditCarModal(id);
+                }
+                if (deleteBtn) {
+                    const id = deleteBtn.dataset.id;
+                    deleteCar(id);
+                }
+            });
+            
+            document.getElementById('cars-container').addEventListener('click', (e) => {
+                const detailBtn = e.target.closest('.btn-detail');
+                if (detailBtn) {
+                    const id = detailBtn.dataset.id;
+                    showCarDetailPage(id);
+                }
+            });
+
+            // Swipe para galeria
+            setupGallerySwipe();
+        }
+
+        // Funções de navegação
+        function showPage(page, carId = null) {
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('admin-page').style.display = 'none';
+            document.getElementById('car-detail-page').style.display = 'none';
+            
+            if (page === 'home') {
+                document.getElementById('home-page').style.display = 'block';
+            } else if (page === 'admin') {
+                if (!state.isLoggedIn) {
+                    openLoginModal();
+                    return;
+                }
+                document.getElementById('admin-page').style.display = 'block';
+            } else if (page === 'detail' && carId) {
+                document.getElementById('car-detail-page').style.display = 'block';
+                loadCarDetail(carId);
+            }
+            
+            // Atualizar links ativos
+            const links = document.querySelectorAll('.desktop-nav a, .footer-links a, .mobile-nav a');
+            links.forEach(l => l.classList.remove('active'));
+            
+            if (page === 'home') {
+                document.getElementById('home-link').classList.add('active');
+                document.getElementById('footer-home-link').classList.add('active');
+                document.getElementById('mobile-home-link').classList.add('active');
+            }
+        }
+
+        function toggleMobileNav() {
+            document.getElementById('mobile-nav').classList.toggle('active');
+        }
+
+        function closeMobileNav() {
+            document.getElementById('mobile-nav').classList.remove('active');
+        }
+
+        // Funções de autenticação
+        function openLoginModal() {
+            document.getElementById('login-modal').style.display = 'flex';
+            // Limpar campos
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('login-modal').style.display = 'none';
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === validCredentials.username && password === validCredentials.password) {
+                state.isLoggedIn = true;
+                closeLoginModal();
+                showPage('admin');
+                alert('Login realizado com sucesso!');
+            } else {
+                alert('Usuário ou senha incorretos! Tente novamente.');
+            }
+        }
+
+        function logout() {
+            state.isLoggedIn = false;
+            showPage('home');
+            alert('Logout realizado com sucesso!');
+        }
+
+        // Funções do Supabase - Carros
+        async function loadCarsFromSupabase() {
+            try {
+                const { data, error } = await supabase
+                    .from('cars')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+                return data || [];
+            } catch (error) {
+                console.error('Erro ao carregar carros:', error);
+                return [];
+            }
+        }
+
+        async function saveCarToSupabase(car) {
+            try {
+                let savedCar;
+                
+                if (car.id) {
+                    // Atualizar carro existente
+                    const { data, error } = await supabase
+                        .from('cars')
+                        .update(car)
+                        .eq('id', car.id)
+                        .select();
+
+                    if (error) throw error;
+                    savedCar = data[0];
+                } else {
+                    // Inserir novo carro
+                    const { data, error } = await supabase
+                        .from('cars')
+                        .insert([car])
+                        .select();
+
+                    if (error) throw error;
+                    savedCar = data[0];
+                }
+                
+                return savedCar;
+            } catch (error) {
+                console.error('Erro ao salvar carro:', error);
+                throw error;
+            }
+        }
+
+        async function deleteCarFromSupabase(id) {
+            try {
+                const { error } = await supabase
+                    .from('cars')
+                    .delete()
+                    .eq('id', id);
+
+                if (error) throw error;
+                return true;
+            } catch (error) {
+                console.error('Erro ao excluir carro:', error);
+                throw error;
+            }
+        }
+
+        // Upload de imagens para o Supabase Storage
+        async function uploadCarImages(imageFiles) {
+            const imageUrls = [];
+            
+            for (const imageFile of imageFiles) {
+                // Gerar nome único para evitar conflitos
+                const fileExtension = imageFile.name.split('.').pop();
+                const fileName = `${Date.now()}_${Math.random().toString(36).substring(2)}.${fileExtension}`;
+                const filePath = `car-images/${fileName}`;
+
+                try {
+                    console.log('Fazendo upload do arquivo:', fileName);
+                    
+                    const { data, error } = await supabase.storage
+                        .from('car-images')
+                        .upload(filePath, imageFile);
+
+                    if (error) {
+                        console.error('Erro no upload:', error);
+                        throw error;
+                    }
+
+                    // Obter URL pública da imagem
+                    const { data: { publicUrl } } = supabase.storage
+                        .from('car-images')
+                        .getPublicUrl(filePath);
+
+                    console.log('Upload bem-sucedido, URL:', publicUrl);
+                    imageUrls.push(publicUrl);
+                    
+                } catch (error) {
+                    console.error('Erro no upload da imagem:', error);
+                    throw error;
+                }
+            }
+            
+            return imageUrls;
+        }
+
+        // Manipulação do formulário de carro - CORRIGIDA
+        async function handleCarFormSubmit(e) {
+            e.preventDefault();
+
+            // Prevenir duplicação
+            if (state.isSubmitting) {
+                console.log('Formulário já está sendo enviado...');
+                return;
+            }
+
+            state.isSubmitting = true;
+            
+            // Desabilitar botão de submit
+            const submitBtn = document.getElementById('car-form-submit');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<div class="loading"></div> Salvando...';
+            submitBtn.disabled = true;
+
+            try {
+                // Coletar dados do formulário primeiro
+                const formData = {
+                    name: document.getElementById('car-name').value,
+                    brand: document.getElementById('car-brand').value,
+                    year: parseInt(document.getElementById('car-year').value),
+                    price: parseFloat(document.getElementById('car-price').value),
+                    color: document.getElementById('car-color').value,
+                    kilometers: parseInt(document.getElementById('car-kilometers').value) || 0,
+                    fuel: document.getElementById('car-fuel').value,
+                    transmission: document.getElementById('car-transmission').value,
+                    description: document.getElementById('car-description').value,
+                    status: document.getElementById('car-status').value,
+                };
+
+                console.log('Dados do formulário:', formData);
+
+                // Processar imagens
+                const imageFiles = state.carImages.filter(img => img instanceof File);
+                const manualImageUrls = state.carImages.filter(img => typeof img === 'string');
+                
+                let uploadedImageUrls = [];
+                
+                // Fazer upload apenas se houver arquivos
+                if (imageFiles.length > 0) {
+                    uploadedImageUrls = await uploadCarImages(imageFiles);
+                }
+                
+                // Combinar todas as URLs de imagem
+                const allImageUrls = [...uploadedImageUrls, ...manualImageUrls];
+                
+                // Se não houver imagens, usar uma padrão
+                if (allImageUrls.length === 0) {
+                    allImageUrls.push('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');
+                }
+
+                // Adicionar as imagens ao objeto do carro
+                formData.images = allImageUrls;
+
+                // Se está editando, adicionar o ID
+                if (state.editingCarId) {
+                    formData.id = state.editingCarId;
+                }
+
+                const savedCar = await saveCarToSupabase(formData);
+
+                if (savedCar) {
+                    document.getElementById('car-form').reset();
+                    state.editingCarId = null;
+                    state.carImages = [];
+                    updateImagePreview();
+                    closeCarModal();
+                    await renderEverything();
+                    alert(state.editingCarId ? 'Carro atualizado com sucesso!' : 'Carro adicionado com sucesso!');
+                }
+            } catch (error) {
+                console.error('Erro ao salvar carro:', error);
+                alert('Erro ao salvar carro. Tente novamente.');
+            } finally {
+                // Reabilitar botão
+                state.isSubmitting = false;
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+
+        // Modal de carro
+        function openAddCarModal() {
+            state.editingCarId = null;
+            state.carImages = [];
+            updateImagePreview();
+            document.getElementById('car-form').reset();
+            document.getElementById('car-status').value = 'available';
+            document.getElementById('car-modal-title').innerText = 'Adicionar Novo Carro';
+            document.getElementById('car-form-submit').innerText = 'Adicionar Carro';
+            document.getElementById('car-modal').style.display = 'flex';
+            
+            // Focar no primeiro campo
+            setTimeout(() => {
+                document.getElementById('car-name').focus();
+            }, 100);
+        }
+
+        async function openEditCarModal(id) {
+            try {
+                const cars = await loadCarsFromSupabase();
+                const car = cars.find(c => c.id === id);
+                
+                if (!car) {
+                    alert('Carro não encontrado!');
+                    return;
+                }
+
+                state.editingCarId = id;
+                state.carImages = car.images || [];
+                updateImagePreview();
+
+                document.getElementById('car-name').value = car.name;
+                document.getElementById('car-brand').value = car.brand;
+                document.getElementById('car-year').value = car.year;
+                document.getElementById('car-price').value = car.price;
+                document.getElementById('car-color').value = car.color || '';
+                document.getElementById('car-kilometers').value = car.kilometers || '';
+                document.getElementById('car-fuel').value = car.fuel || 'Gasolina';
+                document.getElementById('car-transmission').value = car.transmission || 'Manual';
+                document.getElementById('car-description').value = car.description || '';
+                document.getElementById('car-status').value = car.status || 'available';
+
+                document.getElementById('car-modal-title').innerText = 'Editar Carro';
+                document.getElementById('car-form-submit').innerText = 'Salvar Alterações';
+                document.getElementById('car-modal').style.display = 'flex';
+                
+                // Focar no primeiro campo
+                setTimeout(() => {
+                    document.getElementById('car-name').focus();
+                }, 100);
+            } catch (error) {
+                console.error('Erro ao abrir edição:', error);
+                alert('Erro ao carregar dados do carro.');
+            }
+        }
+
+        function closeCarModal() {
+            document.getElementById('car-modal').style.display = 'none';
+        }
+
+        // Gerenciamento de imagens
+        function handleImageFiles(e) {
+            const files = Array.from(e.target.files || []);
+            files.forEach(file => {
+                if (!file.type.startsWith('image/')) return;
+                state.carImages.push(file);
+            });
+            updateImagePreview();
+            e.target.value = '';
+        }
+
+        function addImageFromUrl() {
+            const input = document.getElementById('car-image-url');
+            if (!input) return;
+            const url = input.value.trim();
+            if (!url) return;
+            
+            // Validar URL
+            if (!url.startsWith('http')) {
+                alert('Por favor, insira uma URL válida começando com http ou https');
+                return;
+            }
+            
+            state.carImages.push(url);
+            input.value = '';
+            updateImagePreview();
+        }
+
+        function updateImagePreview() {
+            const container = document.getElementById('image-preview');
+            if (!container) return;
+            container.innerHTML = '';
+            
+            state.carImages.forEach((img, idx) => {
+                const div = document.createElement('div');
+                div.className = 'image-preview-item';
+                
+                let imgSrc;
+                if (typeof img === 'string') {
+                    imgSrc = img;
+                } else {
+                    imgSrc = URL.createObjectURL(img);
+                }
+                
+                div.innerHTML = `
+                    <img src="${imgSrc}" alt="Preview ${idx + 1}">
+                    <button type="button" class="remove-image" data-index="${idx}">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    ${idx > 0 ? `<button type="button" class="set-main-image" data-index="${idx}">Principal</button>` : ''}
+                `;
+                container.appendChild(div);
+            });
+
+            // Event listeners para remover imagens
+            container.querySelectorAll('.remove-image').forEach(btn => {
+                btn.onclick = () => {
+                    const index = parseInt(btn.dataset.index);
+                    state.carImages.splice(index, 1);
+                    updateImagePreview();
+                };
+            });
+
+            // Event listeners para definir imagem principal
+            container.querySelectorAll('.set-main-image').forEach(btn => {
+                btn.onclick = () => {
+                    const index = parseInt(btn.dataset.index);
+                    const img = state.carImages[index];
+                    state.carImages.splice(index, 1);
+                    state.carImages.unshift(img);
+                    updateImagePreview();
+                };
+            });
+        }
+
+        // Excluir carro
+        async function deleteCar(id) {
+            if (!confirm('Tem certeza que deseja excluir este carro?')) return;
+            
+            try {
+                const success = await deleteCarFromSupabase(id);
+                if (success) {
+                    await renderEverything();
+                    alert('Carro excluído com sucesso!');
+                }
+            } catch (error) {
+                console.error('Erro ao excluir carro:', error);
+                alert('Erro ao excluir carro. Tente novamente.');
+            }
+        }
+
+        // Renderização dos carros
         async function loadCars() {
             const container = document.getElementById('cars-container');
             container.innerHTML = '';
@@ -1366,38 +2120,46 @@
                     
                     const images = car.images && car.images.length ? car.images : ['https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'];
                     const mainImage = images[0];
+                    const extraImages = images.slice(1, 4);
                     
                     const isNew = car.year >= currentYear - 1;
                     
                     const card = document.createElement('div');
                     card.className = 'car-card';
                     
+                    let kmHtml = '';
+                    if (car.kilometers) {
+                        kmHtml = `<p class="car-details"><i class="fas fa-tachometer-alt"></i> ${car.kilometers.toLocaleString('pt-BR')} km</p>`;
+                    }
+                    
+                    let descHtml = '';
+                    if (car.description) {
+                        const short = car.description.length > 100 ? car.description.substring(0, 100) + '...' : car.description;
+                        descHtml = `<p class="car-description">${short}</p>`;
+                    }
+                    
+                    const thumbsMiniHtml = extraImages.map(src => `<img src="${src}" alt="">`).join('');
+                    
                     card.innerHTML = `
                         ${isNew ? '<div class="car-badge">Novo</div>' : ''}
                         <div class="car-image-wrapper">
                             <img src="${mainImage}" alt="${car.name}" class="car-image" loading="lazy">
+                            ${thumbsMiniHtml ? `<div class="car-thumbs-mini">${thumbsMiniHtml}</div>` : ''}
                         </div>
                         <div class="car-info">
-                            <h3 class="car-title">${car.name} ${car.brand} ${car.year}</h3>
+                            <h3 class="car-title">${car.name}</h3>
+                            <p class="car-details"><i class="fas fa-tag"></i> ${car.brand} • ${car.year}${car.color ? ' • ' + car.color : ''}</p>
                             <p class="car-price">R$ ${car.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</p>
-                            <p class="car-location"><i class="fas fa-map-marker-alt"></i> Patos de Minas, MG</p>
-                            <div class="car-details">
-                                <div class="car-detail-item">
-                                    <i class="fas fa-tachometer-alt"></i>
-                                    <span>${car.kilometers ? car.kilometers.toLocaleString('pt-BR') + ' km' : 'N/A'}</span>
-                                </div>
-                                <div class="car-detail-item">
-                                    <i class="fas fa-gas-pump"></i>
-                                    <span>${car.fuel || 'Flex'}</span>
-                                </div>
-                                <div class="car-detail-item">
-                                    <i class="fas fa-cogs"></i>
-                                    <span>${car.transmission || 'Manual'}</span>
-                                </div>
+                            ${kmHtml}
+                            <div class="car-features">
+                                <div class="feature"><i class="fas fa-gas-pump"></i><span>${car.fuel || 'Flex'}</span></div>
+                                <div class="feature"><i class="fas fa-cogs"></i><span>${car.transmission || 'Manual'}</span></div>
+                                <div class="feature"><i class="fas fa-user-friends"></i><span>5 lugares</span></div>
                             </div>
+                            ${descHtml}
                             <div class="car-actions">
                                 <a href="https://wa.me/5534997727797?text=Olá! Tenho interesse no ${car.name} ${car.brand} ${car.year}" class="btn btn-whatsapp btn-icon" target="_blank">
-                                    <i class="fab fa-whatsapp"></i> Contato
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
                                 </a>
                                 <button class="btn btn-outline btn-detail" data-id="${car.id}">Detalhes</button>
                             </div>
@@ -1418,8 +2180,300 @@
             }
         }
 
-        // O restante do JavaScript permanece igual ao código anterior
-        // ... (outras funções)
+        // Dados administrativos
+        async function loadAdminData() {
+            const tbody = document.getElementById('admin-cars-list');
+            tbody.innerHTML = '';
+
+            try {
+                const cars = await loadCarsFromSupabase();
+                const totalCars = cars.length;
+                const totalValue = cars.reduce((sum, car) => sum + (car.price || 0), 0);
+                const avgPrice = totalCars ? totalValue / totalCars : 0;
+
+                document.getElementById('total-cars').innerText = totalCars;
+                document.getElementById('total-value').innerText = 'R$ ' + totalValue.toLocaleString('pt-BR', {minimumFractionDigits: 2});
+                document.getElementById('avg-price').innerText = 'R$ ' + avgPrice.toLocaleString('pt-BR', {minimumFractionDigits: 2});
+
+                if (!cars.length) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="6" class="empty-state">
+                                <i class="fas fa-car"></i>
+                                <p>Nenhum carro cadastrado</p>
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+
+                cars.forEach(car => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${car.name}</td>
+                        <td>${car.brand}</td>
+                        <td>${car.year}</td>
+                        <td>R$ ${car.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</td>
+                        <td>
+                            <span style="padding:0.3rem 0.6rem;border-radius:20px;font-size:0.8rem;font-weight:600;background-color:${car.status === "sold" ? '#e74c3c' : '#27ae60'};color:white;">
+                                ${car.status === "sold" ? 'Vendido' : 'Disponível'}
+                            </span>
+                        </td>
+                        <td>
+                            <button class="action-btn edit-btn" data-id="${car.id}" title="Editar"><i class="fas fa-edit"></i></button>
+                            <button class="action-btn delete-btn" data-id="${car.id}" title="Excluir"><i class="fas fa-trash"></i></button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar dados admin:', error);
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="empty-state">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p>Erro ao carregar dados</p>
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        // Página de detalhes
+        function showCarDetailPage(id) {
+            showPage('detail', id);
+        }
+
+        async function loadCarDetail(id) {
+            try {
+                const cars = await loadCarsFromSupabase();
+                const car = cars.find(c => c.id === id);
+                const container = document.getElementById('car-detail-content');
+                
+                if (!car) {
+                    container.innerHTML = `
+                        <div class="empty-state" style="grid-column:1/-1;">
+                            <i class="fas fa-car"></i>
+                            <h3>Carro não encontrado</h3>
+                            <p>O veículo que você está procurando não está mais disponível.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const images = car.images && car.images.length ? car.images : ['https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'];
+                const mainImage = images[0];
+                
+                let thumbs = '';
+                images.forEach((image, index) => {
+                    thumbs += `<img src="${image}" alt="Imagem ${index + 1}" class="car-thumbnail ${index === 0 ? 'active' : ''}" data-img="${image}" loading="lazy">`;
+                });
+
+                let colorHtml = car.color ? `<div class="spec-item"><i class="fas fa-palette"></i><span>Cor: ${car.color}</span></div>` : '';
+                let kmHtml = car.kilometers ? `<div class="spec-item"><i class="fas fa-tachometer-alt"></i><span>Quilometragem: ${car.kilometers.toLocaleString('pt-BR')} km</span></div>` : '';
+                let descHtml = car.description ? `<div class="car-detail-description"><h3>Descrição</h3><p>${car.description}</p></div>` : '';
+
+                container.innerHTML = `
+                    <div class="car-gallery">
+                        <img src="${mainImage}" alt="${car.name}" class="main-car-image" id="main-car-image" loading="lazy">
+                        <div class="car-thumbnails">${thumbs}</div>
+                    </div>
+                    <div class="car-detail-info">
+                        <h1 class="car-detail-title">${car.name}</h1>
+                        <p class="car-detail-price">R$ ${car.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</p>
+                        <div class="car-detail-specs">
+                            <div class="spec-item"><i class="fas fa-tag"></i><span>Marca: ${car.brand}</span></div>
+                            <div class="spec-item"><i class="fas fa-calendar-alt"></i><span>Ano: ${car.year}</span></div>
+                            ${colorHtml}
+                            ${kmHtml}
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i><span>Combustível: ${car.fuel || 'Flex'}</span></div>
+                            <div class="spec-item"><i class="fas fa-cogs"></i><span>Câmbio: ${car.transmission || 'Manual'}</span></div>
+                        </div>
+                        ${descHtml}
+                        <div class="car-detail-actions">
+                            <a href="https://wa.me/5534997727797?text=Olá! Tenho interesse no ${car.name} ${car.brand} ${car.year}" class="btn btn-whatsapp btn-icon" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Entrar em contato
+                            </a>
+                            <button class="btn" id="back-to-garage-btn"><i class="fas fa-arrow-left"></i> Voltar para a Garagem</button>
+                        </div>
+                    </div>
+                `;
+
+                const mainImgEl = document.getElementById('main-car-image');
+                
+                // Evento para abrir galeria ao clicar na imagem principal
+                mainImgEl.onclick = () => {
+                    openGallery(images, 0);
+                };
+
+                // Eventos para as miniaturas
+                container.querySelectorAll('.car-thumbnail').forEach(thumb => {
+                    thumb.onclick = () => {
+                        mainImgEl.src = thumb.dataset.img;
+                        container.querySelectorAll('.car-thumbnail').forEach(t => t.classList.remove('active'));
+                        thumb.classList.add('active');
+                    };
+                });
+
+                const backBtn = document.getElementById('back-to-garage-btn');
+                backBtn.onclick = () => showPage('home');
+            } catch (error) {
+                console.error('Erro ao carregar detalhes:', error);
+                const container = document.getElementById('car-detail-content');
+                container.innerHTML = `
+                    <div class="empty-state" style="grid-column:1/-1;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Erro ao carregar detalhes</h3>
+                        <p>Tente novamente mais tarde.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Funções da galeria
+        function openGallery(images, startIndex = 0) {
+            state.currentGalleryImages = images;
+            state.currentGalleryIndex = startIndex;
+            updateGallery();
+            document.getElementById('gallery-modal').style.display = 'flex';
+        }
+
+        function closeGallery() {
+            document.getElementById('gallery-modal').style.display = 'none';
+        }
+
+        function updateGallery() {
+            const mainImg = document.getElementById('gallery-main-img');
+            const thumbsContainer = document.getElementById('gallery-thumbs');
+            
+            if (state.currentGalleryImages.length === 0) return;
+            
+            // Pré-carregar imagem
+            const img = new Image();
+            img.onload = function() {
+                mainImg.src = this.src;
+            };
+            img.src = state.currentGalleryImages[state.currentGalleryIndex];
+            
+            // Atualizar miniaturas
+            thumbsContainer.innerHTML = '';
+            state.currentGalleryImages.forEach((image, index) => {
+                const thumb = document.createElement('img');
+                thumb.src = image;
+                thumb.className = `gallery-thumb ${index === state.currentGalleryIndex ? 'active' : ''}`;
+                thumb.alt = `Miniatura ${index + 1}`;
+                thumb.onclick = () => {
+                    state.currentGalleryIndex = index;
+                    updateGallery();
+                };
+                thumbsContainer.appendChild(thumb);
+            });
+        }
+
+        function galleryPrev() {
+            if (state.currentGalleryImages.length === 0) return;
+            state.currentGalleryIndex = (state.currentGalleryIndex - 1 + state.currentGalleryImages.length) % state.currentGalleryImages.length;
+            updateGallery();
+        }
+
+        function galleryNext() {
+            if (state.currentGalleryImages.length === 0) return;
+            state.currentGalleryIndex = (state.currentGalleryIndex + 1) % state.currentGalleryImages.length;
+            updateGallery();
+        }
+
+        function setupGallerySwipe() {
+            const galleryMain = document.querySelector('.gallery-main');
+            let startX = 0;
+            let endX = 0;
+            
+            galleryMain.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+            
+            galleryMain.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const diff = startX - endX;
+                const minSwipeDistance = 50;
+                
+                if (Math.abs(diff) > minSwipeDistance) {
+                    if (diff > 0) {
+                        // Swipe para a esquerda - próxima imagem
+                        galleryNext();
+                    } else {
+                        // Swipe para a direita - imagem anterior
+                        galleryPrev();
+                    }
+                }
+            }
+        }
+
+        // Configurações do site (localStorage)
+        function loadSiteSettings() {
+            let settings = {};
+            try {
+                settings = JSON.parse(localStorage.getItem('siteSettings')) || {};
+            } catch(e) {
+                settings = {};
+            }
+
+            document.getElementById('hero-title').innerText = settings.heroTitle || 'Veículos Selecionados com Qualidade';
+            document.getElementById('hero-description').innerText = settings.heroDescription || 'Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.';
+            document.getElementById('showcase-title').innerText = settings.showcaseTitle || 'Nossa Garagem';
+            document.getElementById('footer-about-text').innerText = settings.footerAbout || 'A Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.';
+
+            if (settings.siteTitle) {
+                document.title = settings.siteTitle + ' - Hebert Richards Veículos Premium';
+            }
+        }
+
+        function loadSiteSettingsForm() {
+            let settings = {};
+            try {
+                settings = JSON.parse(localStorage.getItem('siteSettings')) || {};
+            } catch(e) {
+                settings = {};
+            }
+
+            document.getElementById('site-title').value = settings.siteTitle || '';
+            document.getElementById('hero-title-input').value = settings.heroTitle || 'Veículos Selecionados com Qualidade';
+            document.getElementById('hero-description-input').value = settings.heroDescription || 'Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.';
+            document.getElementById('showcase-title-input').value = settings.showcaseTitle || 'Nossa Garagem';
+            document.getElementById('footer-about-input').value = settings.footerAbout || 'A Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.';
+        }
+
+        function saveSiteSettings() {
+            const settings = {
+                siteTitle: document.getElementById('site-title').value,
+                heroTitle: document.getElementById('hero-title-input').value,
+                heroDescription: document.getElementById('hero-description-input').value,
+                showcaseTitle: document.getElementById('showcase-title-input').value,
+                footerAbout: document.getElementById('footer-about-input').value
+            };
+
+            localStorage.setItem('siteSettings', JSON.stringify(settings));
+            loadSiteSettings();
+            alert('Configurações do site salvas com sucesso!');
+        }
+
+        function resetSiteSettings() {
+            if (!confirm('Tem certeza que deseja restaurar as configurações padrão do site?')) return;
+            localStorage.removeItem('siteSettings');
+            loadSiteSettings();
+            loadSiteSettingsForm();
+            alert('Configurações restauradas para os valores padrão!');
+        }
+
+        // Renderização completa
+        async function renderEverything() {
+            await loadCars();
+            await loadAdminData();
+            loadSiteSettingsForm();
+        }
     </script>
 </body>
 </html>
