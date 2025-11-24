@@ -288,11 +288,11 @@
             border-radius: 2px;
         }
 
-        /* Showcase */
+        /* Showcase - 2 COLUNAS FIXAS */
         .cars-showcase {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
             margin-bottom: 3rem;
         }
 
@@ -306,8 +306,8 @@
         }
 
         .car-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
         .car-badge {
@@ -330,7 +330,7 @@
 
         .car-image {
             width: 100%;
-            height: 250px;
+            height: 200px;
             object-fit: cover;
             border-bottom: 3px solid var(--secondary);
             transition: transform 0.4s ease;
@@ -359,11 +359,11 @@
         }
 
         .car-info {
-            padding: 1.8rem;
+            padding: 1.2rem;
         }
 
         .car-title {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: var(--dark);
         }
@@ -371,7 +371,7 @@
         .car-details {
             color: var(--gray);
             margin-bottom: 0.5rem;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
         }
@@ -384,15 +384,15 @@
         .car-price {
             font-weight: bold;
             color: var(--secondary);
-            font-size: 1.6rem;
-            margin: 0.8rem 0;
+            font-size: 1.4rem;
+            margin: 0.5rem 0;
         }
 
         .car-features {
             display: flex;
             justify-content: space-between;
-            margin: 1.2rem 0;
-            padding-top: 1.2rem;
+            margin: 1rem 0;
+            padding-top: 1rem;
             border-top: 1px solid #eee;
         }
 
@@ -404,20 +404,28 @@
         }
 
         .feature i {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--accent);
             margin-bottom: 5px;
         }
 
         .feature span {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--gray);
         }
 
         .car-actions {
             display: flex;
             justify-content: space-between;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
+            gap: 0.5rem;
+        }
+
+        .car-actions .btn {
+            flex: 1;
+            padding: 0.7rem 0.5rem;
+            font-size: 0.9rem;
+            text-align: center;
         }
 
         .btn-outline {
@@ -438,7 +446,7 @@
         }
 
         .btn-icon i {
-            margin-right: 8px;
+            margin-right: 5px;
         }
 
         /* MODAL - FIXED SCROLL */
@@ -670,7 +678,7 @@
 
         .main-car-image {
             width: 100%;
-            height: 450px;
+            height: 400px;
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 1rem;
@@ -713,14 +721,14 @@
         }
 
         .car-detail-title {
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: var(--dark);
             margin-bottom: 0.5rem;
             font-weight: 700;
         }
 
         .car-detail-price {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--secondary);
             font-weight: bold;
             margin-bottom: 1.5rem;
@@ -1120,8 +1128,8 @@
                 font-size: 1.1rem;
             }
             .cars-showcase {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 2rem;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
             }
             .admin-panel {
                 padding: 2rem;
@@ -1187,7 +1195,7 @@
                 gap: 1.5rem;
             }
             .car-info {
-                padding: 1.5rem;
+                padding: 1.2rem;
             }
             .car-actions {
                 flex-direction: column;
@@ -1260,7 +1268,7 @@
                 font-size: 1.5rem;
             }
             .car-image {
-                height: 200px;
+                height: 180px;
             }
         }
     </style>
