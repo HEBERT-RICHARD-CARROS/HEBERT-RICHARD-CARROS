@@ -1381,7 +1381,7 @@
         <div class="footer-container">
             <div>
                 <div class="footer-logo">Hebert Richards</div>
-                <p class="footer-about" id="footer-about-text">Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.</p>
+                <p class="footer-about" id="footer-about-text">A Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/share/1A4EtfM2ij/" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/hebert.richards.3344?igsh=em0xYXhxY2V3ZWg4" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -1649,22 +1649,30 @@
             
             for (const imageFile of imageFiles) {
                 // Gerar nome único para evitar conflitos
-                const fileName = `${Date.now()}_${Math.random().toString(36).substring(2)}_${imageFile.name}`;
-                const filePath = `public/${fileName}`;
+                const fileExtension = imageFile.name.split('.').pop();
+                const fileName = `${Date.now()}_${Math.random().toString(36).substring(2)}.${fileExtension}`;
+                const filePath = `car-images/${fileName}`;
 
                 try {
+                    console.log('Fazendo upload do arquivo:', fileName);
+                    
                     const { data, error } = await supabase.storage
                         .from('car-images')
                         .upload(filePath, imageFile);
 
-                    if (error) throw error;
+                    if (error) {
+                        console.error('Erro no upload:', error);
+                        throw error;
+                    }
 
                     // Obter URL pública da imagem
                     const { data: { publicUrl } } = supabase.storage
                         .from('car-images')
                         .getPublicUrl(filePath);
 
+                    console.log('Upload bem-sucedido, URL:', publicUrl);
                     imageUrls.push(publicUrl);
+                    
                 } catch (error) {
                     console.error('Erro no upload da imagem:', error);
                     throw error;
@@ -1679,19 +1687,8 @@
             e.preventDefault();
 
             try {
-                const imageFiles = Array.from(document.getElementById('car-image-file').files);
-                let imageUrls = [];
-                
-                // Upload das imagens se houver arquivos
-                if (imageFiles.length > 0) {
-                    imageUrls = await uploadCarImages(imageFiles);
-                }
-                
-                // Adicionar URLs de imagens manuais
-                const manualImageUrls = state.carImages.filter(img => typeof img === 'string');
-                const allImageUrls = [...imageUrls, ...manualImageUrls];
-
-                const carData = {
+                // Coletar dados do formulário primeiro
+                const formData = {
                     name: document.getElementById('car-name').value,
                     brand: document.getElementById('car-brand').value,
                     year: parseInt(document.getElementById('car-year').value),
@@ -1702,15 +1699,38 @@
                     transmission: document.getElementById('car-transmission').value,
                     description: document.getElementById('car-description').value,
                     status: document.getElementById('car-status').value,
-                    images: allImageUrls.length > 0 ? allImageUrls : ['https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80']
                 };
+
+                console.log('Dados do formulário:', formData);
+
+                // Processar imagens
+                const imageFiles = state.carImages.filter(img => img instanceof File);
+                const manualImageUrls = state.carImages.filter(img => typeof img === 'string');
+                
+                let uploadedImageUrls = [];
+                
+                // Fazer upload apenas se houver arquivos
+                if (imageFiles.length > 0) {
+                    uploadedImageUrls = await uploadCarImages(imageFiles);
+                }
+                
+                // Combinar todas as URLs de imagem
+                const allImageUrls = [...uploadedImageUrls, ...manualImageUrls];
+                
+                // Se não houver imagens, usar uma padrão
+                if (allImageUrls.length === 0) {
+                    allImageUrls.push('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');
+                }
+
+                // Adicionar as imagens ao objeto do carro
+                formData.images = allImageUrls;
 
                 // Se está editando, adicionar o ID
                 if (state.editingCarId) {
-                    carData.id = state.editingCarId;
+                    formData.id = state.editingCarId;
                 }
 
-                const savedCar = await saveCarToSupabase(carData);
+                const savedCar = await saveCarToSupabase(formData);
 
                 if (savedCar) {
                     document.getElementById('car-form').reset();
@@ -2119,7 +2139,7 @@
             document.getElementById('hero-title').innerText = settings.heroTitle || 'Veículos Selecionados com Qualidade';
             document.getElementById('hero-description').innerText = settings.heroDescription || 'Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.';
             document.getElementById('showcase-title').innerText = settings.showcaseTitle || 'Nossa Garagem';
-            document.getElementById('footer-about-text').innerText = settings.footerAbout || 'Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.';
+            document.getElementById('footer-about-text').innerText = settings.footerAbout || 'A Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.';
 
             if (settings.siteTitle) {
                 document.title = settings.siteTitle + ' - Hebert Richards Veículos Premium';
@@ -2138,7 +2158,7 @@
             document.getElementById('hero-title-input').value = settings.heroTitle || 'Veículos Selecionados com Qualidade';
             document.getElementById('hero-description-input').value = settings.heroDescription || 'Descubra os melhores carros da nossa garagem, com procedência garantida e condições especiais.';
             document.getElementById('showcase-title-input').value = settings.showcaseTitle || 'Nossa Garagem';
-            document.getElementById('footer-about-input').value = settings.footerAbout || 'Há mais de 15 anos no mercado, a Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.';
+            document.getElementById('footer-about-input').value = settings.footerAbout || 'A Hebert Richards oferece os melhores veículos com procedência garantida e atendimento personalizado.';
         }
 
         function saveSiteSettings() {
